@@ -29,3 +29,7 @@ Route::get('/reporte/pdf', [AlumnoController::class, 'reportePdf']);
 Route::get('/blank', function () {
     return view('blankpage');
 });
+
+Route::get('/justificante', function () {
+    return view('tramites.justificante');
+});
