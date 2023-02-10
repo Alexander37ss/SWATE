@@ -150,15 +150,15 @@
               <div class="info">
                     <a href="#" class="d-block">Usuario</a>
                 {{-- <span>{{(Auth::user()->roles[0]->name)}}</span> --}}
-                {{-- <a class="d-block" href="{{ route('logout') }}"
+              <a class="d-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
                  {{ __('Cerrar sesión') }}
-                </a> --}}
+                </a>
 
-             {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                  @csrf
-             </form> --}}
+             </form> 
               </div>
             </div>
 
@@ -220,7 +220,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{asset('justificante')}}" class="nav-link">
+                        <a href="{{asset('tramites/justificante')}}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Justificante</p>
                         </a>
