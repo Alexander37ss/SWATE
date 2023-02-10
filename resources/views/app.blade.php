@@ -137,7 +137,7 @@
           <!-- Brand Logo -->
           <a href="{{asset('/home')}}" class="brand-link">
             <img src="{{ url('img/cetis.png') }}" alt="baessh" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-bold">CETIS 107</span>
+            <span class="brand-text font-weight-semibold">CETIS 107</span>
           </a>
 
           <!-- Sidebar -->
@@ -148,7 +148,7 @@
                 <img src="{{asset('images/user.png')}}"class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                    <a href="#" class="d-block">Usuario</a>
+                    <a href="#" class="d-block">{{ Auth::user()->name; }}</a>
                 {{-- <span>{{(Auth::user()->roles[0]->name)}}</span> --}}
               <a class="d-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
