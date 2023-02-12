@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TramiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('tramites/justificante', function () {
-        return view('tramites.justificante');
-    });
+    Route::get('tramites/justificante', [TramiteController::class, 'justificante']);
+    Route::get('tramites/constancia', [TramiteController::class, 'constancia']);
     
     Route::get('/home', function () {
         return view('home');
