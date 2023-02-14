@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TramiteController;
+use App\Http\Controllers\AlumnoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
-    
-    Route::get('alumno/consultar', function () {
-        return view('alumno.consultar');
-    });
+    Route::get('alumno/consultar', [AlumnoController::class, 'consultar']);    
+
+    Route::get('reporte/pdf', [AlumnoController::class, 'reporteAlumnoPDF']);    
     
     Route::get('alumno/registrar', function () {
         return view('alumno.registrar');

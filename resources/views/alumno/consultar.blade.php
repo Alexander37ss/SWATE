@@ -21,10 +21,18 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($alumnos as $a)
                 <tr>
-                    <td>2</td>
-                    <td>Juan</td>
-                    <td>18</td>
+                    <td>{{$a->id}}</td>
+                    <td>{{$a->nombre}}</td>
+                    <td>{{$a->edad}}</td>
+                    <td>
+                        @if ($a->sexo == 0)
+                            Femenino
+                        @else
+                            Masculino
+                        @endif
+                    </td>
                     <td>
                         <a href="" class="btn btn-danger btn-sm">
                             <i class="fas fa-times"></i>
@@ -34,6 +42,7 @@
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
