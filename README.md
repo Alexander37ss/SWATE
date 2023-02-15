@@ -7,6 +7,30 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Comandos para descargar y visualizar el proyecto
+```sh
+    git clone https://github.com/Alexander37ss/SWATE.git
+    cd SWATE
+    git checkout -b dev
+    git pull origin dev
+    composer update
+```
+
+- Instalar Node Js (en caso de no tenerlo)
+- Copiar .env.example y renombrarlo a .env
+- crear bd y nombrarla swate
+
+```sh
+    php artisan key:generate
+    php artisan migrate --seed
+    npm install
+    npm run dev
+``` 
+## En caso de querer hacer push a dev
+```sh
+    git push origin dev
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
