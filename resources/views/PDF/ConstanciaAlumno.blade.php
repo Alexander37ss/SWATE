@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-<div class="contenedor">
+    <div class="contenedor">
         <img class="sep" src="{{asset('img/seplogo.png')}}">
         <img class="dgeti" src="{{asset('img/dgetilogo.png')}}" width="200px">
     </div>

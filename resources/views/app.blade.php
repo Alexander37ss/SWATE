@@ -21,7 +21,7 @@
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini sidebar-collapse">
-    <div class="wrapper">
+<div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0" style="background-color: #A7201F;">
             <!-- Left navbar links -->
@@ -226,7 +226,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="{{asset('tramites/constancia')}}" class="nav-link">
+                        <a href = "{{ url('constancia/pdf', auth()->user()->name) }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Constancia</p>
                         </a>
