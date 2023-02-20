@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-            <span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
+            <span class="info-box-icon bg-secondary"><i class="fa fa-file"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text">Clientes</span>
+                <span class="info-box-text">Justificantes</span>
                 <span class="info-box-number">9</span>
             </div>
             <!-- /.info-box-content -->
@@ -18,37 +18,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-            <span class="info-box-icon bg-success"><i class="fas fa-tools"></i></span>
+            <span class="info-box-icon bg-success"><i class="fa fa-file"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text">Servicios</span>
+                <span class="info-box-text">Pases de salida</span>
                 <span class="info-box-number">8</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-warning"><i class="fas fa-cogs"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Mantenimientos</span>
-                <span class="info-box-number">5</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-danger"><i class="fas fa-dollar-sign"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Pagos</span>
-                <span class="info-box-number">2</span>
             </div>
             <!-- /.info-box-content -->
             </div>
