@@ -9,10 +9,10 @@
 
 # Comandos para descargar y visualizar el proyecto
 ```sh
+    cd /c/xampp/htdocs/
     git clone https://github.com/Alexander37ss/SWATE.git
     cd SWATE
-    git checkout -b dev
-    git pull origin dev
+    git checkout dev
     composer update
 ```
 
@@ -29,6 +29,10 @@
 ## En caso de querer hacer push a dev
 ```sh
     git push origin dev
+```
+## En caso de querer hacer pull de todo el proyecto
+```sh
+    git pull
 ```
 
 ## About Laravel
