@@ -12,6 +12,11 @@ class TramiteController extends Controller
     function constancia(){
         return view('tramites.constancia');
     }
+
+    function justificantePOST(){
+        
+    }
+
     function ConstanciaAlumnoPDF($id){
         $alumno = Alumno::find($id); //DAtos de la base de datos
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria

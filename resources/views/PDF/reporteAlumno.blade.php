@@ -17,17 +17,10 @@
         .contenedor{
           display: flex;
         }
-        .sep{
-            top: -50px;
+        .header{
+            top: -25px;
             position: absolute;
-            width: 250px;
-        }
-        .dgeti{
-            top: 50px;
-            position: absolute;
-            width: 150px;
-            top: -4px;
-            left: 280px;
+            width: 650px;
         }
         .tamano{
             font-size: 15px;
@@ -41,9 +34,8 @@
     </style>
 </head>
 <body>
-<div class="contenedor">
-        <img class="sep" src="{{asset('img/seplogo.png')}}">
-        <img class="dgeti" src="{{asset('img/dgetilogo.png')}}" width="200px">
+    <div class="contenedor">
+        <img class="header" src="{{asset('img/header.jpg')}}">
     </div>
     <br><br><br><br><br>
         <div class="tamano">
@@ -58,13 +50,26 @@
     continuación, está inscrito en esta Institución Educativa en el Ciclo Escolar <b>2022-2023:</b>
     <br><br><br>
 
-    Nombre: <span class="datosalumno">{{ $alumno->nombre }}</span>
-    <h5>Edad: {{ $alumno->edad }}</h5>
-    @if ($alumno->sexo == 0)
-        <h5>Sexo: Femenino</h5>
-    @else
-        <h5>Sexo: Masculino</h5>
-    @endif
-    </div>
+    Nombre: <span class="datosalumno">{{ $alumno->nombre }}</span><br>
+    <span>Control: <b>20325061070401</b></span><br>
+    <span>Carrera: <b>PROGRAMACION</b></span><br>
+    <span>Semestre: <b>SEXTO</b></span><br>
+    <span>Grupo: <b>A</b></span><br>
+    <span>Turno: <b>VESPERTINO</b></span><br>
+    <span>Periodo escolar: <b>FEB-JUL 2023, que comprende del 01/FEB2023 al 06/JUL/2023</b></span><br>
+    <span>Periodo vacacional: <b>Del 01/ABR/2023 al 15/ABR/2023 y del 07/JUL/2023 al 06/AGO/2023</b></span><br>
+    <span>Clave: <b>25DCT0107I</b></span><br>
+    <span>Modo: <b>PRESENCIAL</b></span><br><br>
+    <span>Desde la presente en la ciudad de <b>CULIACAN, SINALOA;</b> al dia <b>21</b> del mes de <b>FEBRERO</b> del estudiante para los fines legales que al interesado(a) convengan.</span>
+    <br><br>
+    <p align="center"><b>A T E N T A M E N T E</b></p>
+    <br>
+    <p align="center"><b>____________________________________</b></p>
+    <br>
+    <p align="center"><b>GABRIEL G. VAZQUEZ MARTINEZ</b></p>
+    <p align="center"><b>DIRECTOR DEL PLANTEL</b></p>
+</div>
+<br><br><br><br><br><br><br><br>
+<footer class="main-footer"><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
 </body>
 </html>

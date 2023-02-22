@@ -59,12 +59,15 @@
     <br><br><br>
 
     Nombre: <span class="datosalumno">{{ $alumno->nombre }}</span>
-    <h5>Edad: {{ $alumno->edad }}</h5>
-    @if ($alumno->sexo == 0)
-        <h5>Sexo: Femenino</h5>
-    @else
-        <h5>Sexo: Masculino</h5>
-    @endif
+    <span>Control: <b>20325061070401</b></span>
+    <span>Carrera: <b>PROGRAMACION</b></span>
+    <span>Semestre: <b>SEXTO</b></span>
+    <span>Grupo: <b>A</b></span>
+    <span>Turno: <b>VESPERTINO</b></span>
+    <span>Periodo escolar: <b>FEB-JUL 2023, que comprende del 01/FEB2023 al 06/JUL/2023</b></span>
+    <span>Periodo vacacional: <b>Del 01/ABR/2023 al 15/ABR/2023 y del 07/JUL/2023 al 06/AGO/2023</b></span>
+    <span>Clave: <b>25DCT0107I</b></span>
+    <span>Modo: <b>PRESENCIAL</b></span>
     </div>
 </body>
 </html>

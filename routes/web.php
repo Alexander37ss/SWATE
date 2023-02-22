@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('tramites/justificante', [TramiteController::class, 'justificante']);
     Route::get('tramites/constancia', [TramiteController::class, 'constancia']);
+    Route::get('tramites/procesandojustificante', [TramiteController::class, 'JustificantePOST']);
     
     Route::get('/home', function () {
         return view('home');

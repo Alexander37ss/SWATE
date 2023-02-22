@@ -18,7 +18,7 @@
             <!-- general form elements -->
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="POST" href="{{url('tramites/procesandojustificante')}}">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Correo electronico</label>
