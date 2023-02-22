@@ -10,6 +10,7 @@
 @stop
 
 @section('contenido')
+<link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
     <section class="content>
       <div class="container-fluid">
         <div class="row">
@@ -20,16 +21,23 @@
               <!-- form start -->
               <form action="POST" href="{{url('tramites/procesandojustificante')}}">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Correo electronico</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                        <label>Cuentanos tu motivo:</label>
+                <!-- Motivo -->
+                <div class="form-group">
+                  <label for="exampleSelectBorder">Motivo:</label>
+                  <select class="custom-select form-control-border" id="Motivo" onchange="AparecerOtroMotivo()">
+                    <option>Escoge un motivo...</option>
+                    <option value="Motivo de salud">Motivo de salud</option>
+                    <option value="Motivo vacacional">Motivo vacacional</option>
+                    <option value="Motivo de perdida">Motivo de perdida</option>
+                    <option value="Otro">Otro...</option>
+                  </select>
+                </div>
+                <!-- Otro... -->
+                  <div class="form-group inactive" id="OtroMotivo">
+                        <label>Otro:</label>
                         <textarea class="form-control" rows="3" placeholder="Escribe..."></textarea>
                       </div>
                     </div>
-                    <div class="col-sm">
                   <div class="form-group">
                     <label for="exampleInputFile">Añadir archivo(s)</label>
                     <div class="input-group">
@@ -39,13 +47,13 @@
                     </div>
                     </div>
                   </div>
-                  </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Confirmar</button>
+                  <button type="submit" class="btn btn-success">Confirmar</button>
                 </div>
               </form>
             </div>
+            <script src="{{ asset('jsswate/main.js') }}"></script>
 
 @stop
