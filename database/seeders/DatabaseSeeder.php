@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\AlumnoSeeder;
+use Database\Seeders\FechaSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
         public function run(){
             $this->call(AlumnoSeeder::class);
+            $this->call(FechaSeeder::class);
         
         // \App\Models\User::factory(10)->create();
 

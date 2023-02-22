@@ -31,6 +31,10 @@
             font-weight: bold;
             white-space: inherit;
         }
+        .piedepagina{
+            position: absolute;
+            top: 950px;
+        }
     </style>
 </head>
 <body>
@@ -60,7 +64,7 @@
     <span>Periodo vacacional: <b>Del 01/ABR/2023 al 15/ABR/2023 y del 07/JUL/2023 al 06/AGO/2023</b></span><br>
     <span>Clave: <b>25DCT0107I</b></span><br>
     Modo: <span class="datosalumno">{{ $alumno->modalidad }}</span><br>
-    <span>Se extiende la presente en la ciudad de <b>CULIACAN, SINALOA;</b> al dia <b>21</b> del mes de <b>FEBRERO</b> del año <b>2023</b> para los fines legales que al interesado(a) convengan.</span>
+    <span>Se extiende la presente en la ciudad de <b>CULIACAN, SINALOA;</b> al dia <b>{{ $dia }}</b> de <b>@if($mes == '01')Enero @elseif($mes == '02')Febrero @elseif($mes == '03')Marzo @elseif($mes == '04')Abril @elseif($mes == '05')Mayo @elseif($mes == '06')Junio @elseif($mes == '07')Julio @elseif($mes == '08')Agosto @elseif($mes == '09')Septiembre @elseif($mes == '10')Octubre@elseif($mes == '11')Noviembre@elseif($mes == '12')Diciembre @endif</b>del <b>{{ $ano }}</b> para los fines legales que al interesado(a) convengan.</span>
     <br><br>
     <p align="center"><b>A T E N T A M E N T E</b></p>
     <br>
@@ -69,7 +73,6 @@
     <p align="center"><b>GABRIEL G. VAZQUEZ MARTINEZ</b></p>
     <p align="center"><b>DIRECTOR DEL PLANTEL</b></p>
 </div>
-<br><br><br><br><br><br><br><br>
-<footer class="main-footer"><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
+<footer class="piedepagina"><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
 </body>
 </html>
