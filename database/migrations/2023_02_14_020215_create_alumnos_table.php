@@ -17,9 +17,17 @@ return new class extends Migration
             $table->id();
 
             $table->string('nombre');
+            $table->string('no_control');
             $table->integer('edad');
-            $table->string('grupo');
             $table->string('sexo');
+            $table->string('fecha_nacimiento');
+            $table->string('domicilio');
+            $table->string('telefono');
+            $table->string('modalidad');
+            $table->string('turno');
+            $table->string('grupo');
+            $table->integer('semestre');
+            $table->string('especialidad');
 
             $table->timestamps();
         });

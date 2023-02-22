@@ -17,17 +17,10 @@
         .contenedor{
           display: flex;
         }
-        .sep{
-            top: -50px;
+        .header{
+            top: -25px;
             position: absolute;
-            width: 250px;
-        }
-        .dgeti{
-            top: 50px;
-            position: absolute;
-            width: 150px;
-            top: -4px;
-            left: 280px;
+            width: 650px;
         }
         .tamano{
             font-size: 15px;
@@ -42,8 +35,7 @@
 </head>
 <body>
     <div class="contenedor">
-        <img class="sep" src="{{asset('img/seplogo.png')}}">
-        <img class="dgeti" src="{{asset('img/dgetilogo.png')}}" width="200px">
+        <img class="header" src="{{asset('img/header.jpg')}}">
     </div>
     <br><br><br><br><br>
         <div class="tamano">
@@ -58,16 +50,26 @@
     continuación, está inscrito en esta Institución Educativa en el Ciclo Escolar <b>2022-2023:</b>
     <br><br><br>
 
-    Nombre: <span class="datosalumno">{{ $alumno->nombre }}</span>
-    <span>Control: <b>20325061070401</b></span>
-    <span>Carrera: <b>PROGRAMACION</b></span>
-    <span>Semestre: <b>SEXTO</b></span>
-    <span>Grupo: <b>A</b></span>
-    <span>Turno: <b>VESPERTINO</b></span>
-    <span>Periodo escolar: <b>FEB-JUL 2023, que comprende del 01/FEB2023 al 06/JUL/2023</b></span>
-    <span>Periodo vacacional: <b>Del 01/ABR/2023 al 15/ABR/2023 y del 07/JUL/2023 al 06/AGO/2023</b></span>
-    <span>Clave: <b>25DCT0107I</b></span>
-    <span>Modo: <b>PRESENCIAL</b></span>
-    </div>
+    Nombre: <span class="datosalumno">{{ $alumno->nombre }}</span><br>
+    Control: <span class="datosalumno">{{ $alumno->no_control }}</span><br>
+    Carrera: <span class="datosalumno">{{ $alumno->especialidad }}</span><br>
+    Semestre: <span class="datosalumno">{{ $alumno->semestre }}</span><br>
+    Grupo: <span class="datosalumno">{{ $alumno->grupo }}</span><br>
+    Turno: <span class="datosalumno">{{ $alumno->turno }}</span><br>
+    <span>Periodo escolar: <b>FEB-JUL 2023, que comprende del 01/FEB2023 al 06/JUL/2023</b></span><br>
+    <span>Periodo vacacional: <b>Del 01/ABR/2023 al 15/ABR/2023 y del 07/JUL/2023 al 06/AGO/2023</b></span><br>
+    <span>Clave: <b>25DCT0107I</b></span><br>
+    Modo: <span class="datosalumno">{{ $alumno->modalidad }}</span><br>
+    <span>Se extiende la presente en la ciudad de <b>CULIACAN, SINALOA;</b> al dia <b>21</b> del mes de <b>FEBRERO</b> del año <b>2023</b> para los fines legales que al interesado(a) convengan.</span>
+    <br><br>
+    <p align="center"><b>A T E N T A M E N T E</b></p>
+    <br>
+    <p align="center"><b>____________________________________</b></p>
+    <br>
+    <p align="center"><b>GABRIEL G. VAZQUEZ MARTINEZ</b></p>
+    <p align="center"><b>DIRECTOR DEL PLANTEL</b></p>
+</div>
+<br><br><br><br><br><br><br><br>
+<footer class="main-footer"><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
 </body>
 </html>

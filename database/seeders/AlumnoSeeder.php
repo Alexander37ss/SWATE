@@ -17,44 +17,24 @@ class AlumnoSeeder extends Seeder
     public function run()
     {
         Alumno::create([
-            'nombre'    => 'Juan Perez',
-            'edad'      => 18,
-            'grupo'     => "6AVP",
-            'sexo'      => true,  
-        ]);
-        
-        Alumno::create([
-            'nombre'    => 'Yael lopez',
-            'edad'      => 19,
-            'grupo'     => "6AVP",
-            'sexo'      => true,  
-        ]);
-        
-        Alumno::create([
-            'nombre'    => 'Elpepe',
+            'nombre'    => 'Alexander Palazuelos Beltran',
+            'no_control'    => '20325061070037',
             'edad'      => 16,
-            'grupo'     => "4AVP",
             'sexo'      => true,  
-        ]);
-        
-        Alumno::create([
-            'nombre'    => 'George R.R MARTIN',
-            'edad'      => 40,
-            'grupo'     => "4AVC",
-            'sexo'      => true,  
-        ]);
-        
-        Alumno::create([
-            'nombre'    => 'Jazmin Juarez',
-            'edad'      => 16,
-            'grupo'     => "2BVF",
-            'sexo'      => false,  
+            'fecha_nacimiento'      => '01/08/05',  
+            'domicilio'      => 'Villas del Rio. Culiacán, Sinaloa.',  
+            'telefono'      => '6673012082',  
+            'modalidad'      => 'Presencial',  
+            'turno'      => 'Vespertino',  
+            'grupo'      => 'A',  
+            'semestre'      => 6,  
+            'especialidad'      => 'Programación',  
         ]);
 
         User::create([
-            'name'      => 'Luis Carlos',
-            'email'     => 'santillan.itc@gmail.com',
-            'password'  => '1234'
+            'name'      => 'Alexander Palazuelos Beltran',
+            'email'     => 'alexander@gmail.com',
+            'password'  => '$2y$10$4obaprbVkZFfJ0mSqDUOCuvdzimObAQh5YD63nCEl/xa/X61NFJ72'
         ]);
     }
 }

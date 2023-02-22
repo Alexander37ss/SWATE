@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('reporte/pdf/{id}', [AlumnoController::class, 'reporteAlumnoPDF']);    
 
-    Route::get('constancia/pdf/{alumno}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
     
     Route::get('alumno/registrar', function () {
         return view('alumno.registrar');

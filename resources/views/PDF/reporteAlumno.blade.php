@@ -60,7 +60,7 @@
     <span>Periodo vacacional: <b>Del 01/ABR/2023 al 15/ABR/2023 y del 07/JUL/2023 al 06/AGO/2023</b></span><br>
     <span>Clave: <b>25DCT0107I</b></span><br>
     <span>Modo: <b>PRESENCIAL</b></span><br><br>
-    <span>Desde la presente en la ciudad de <b>CULIACAN, SINALOA;</b> al dia <b>21</b> del mes de <b>FEBRERO</b> del estudiante para los fines legales que al interesado(a) convengan.</span>
+    <span>Se extiende la presente en la ciudad de <b>CULIACAN, SINALOA;</b> al dia <b>21</b> del mes de <b>FEBRERO</b> del año <b>2023</b> para los fines legales que al interesado(a) convengan.</span>
     <br><br>
     <p align="center"><b>A T E N T A M E N T E</b></p>
     <br>
