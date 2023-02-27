@@ -40,16 +40,16 @@
                     </div>
                     <!-- INE -->
                     <div class="form-group">
-                    <label for="exampleInputFile">Añadir evidencia (opcional):</label>
+                    <label for="exampleInputFile">INE del padre o tutor:</label>
                     <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile">
                       <label class="custom-file-label" for="customFile">Elegir archivo</label>
                     </div>
                     </div>
-                    </div>
+                    <br>
                   <div class="form-group">
-                    <label for="exampleInputFile">INE del padre o tutor:</label>
+                    <label for="exampleInputFile">Añadir evidencia(opcional)</label>
                     <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile">
@@ -60,7 +60,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Confirmar</button>
+                  <button type="submit" class="btn btn-success">Confirmar</button>
                 </div>
               </form>
             </div>

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
+  <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
   <style>
@@ -29,9 +30,9 @@
               <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
               </li>
-              <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{url('/home')}}" class="nav-link">Principal</a>
-              </li>
+<!--               <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{url('swate/home')}}" class="nav-link">Principal</a>
+              </li> -->
             </ul>
 
             <!-- SEARCH FORM -->
@@ -179,42 +180,36 @@
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item active">
-                  <a href="{{asset('/home')}}" class="nav-link">
-                  <i class="nav-icon fas fa-home"></i>
-                    <p>
+                <li class="nav-item">
+                  <a href="{{asset('home')}}" class="nav-link" id="home">
+                  <i class="nav-icon fas fa-home" id="homeicon"></i>
+                    <p id = "parrafohome">
                       Inicio
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users""></i>
+                  <a href="#" class="nav-link" id="orientadoras">
+                    <i class="nav-icon fas fa-school""></i>
                     <p>
-                       Alumnos
+                       Orientadoras
                       <i class="fas fa-angle-left right"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="{{asset('/alumno/consultar')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                      <a href="{{asset('/alumno/consultar')}}" class="nav-link" id="consultar">
+                       <i class="far fa-circle nav-icon"></i> 
                         <p>Consultar</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{asset('/alumno/registrar')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Registrar</p>
                       </a>
                     </li>
                   </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-file""></i>
+                    <i class="nav-icon fas fa-user"></i>
                       <p>
-                         Tramites
+                         Usuarios
                         <i class="fas fa-angle-left right"></i>
                       </p>
                     </a>
@@ -302,6 +297,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
+<script src="{{asset('jsswate/main.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

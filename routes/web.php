@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('tramites/constancia', [TramiteController::class, 'constancia']);
     Route::get('tramites/procesandojustificante', [TramiteController::class, 'JustificantePOST']);
     
-    Route::get('/home', function () {
+    Route::get('home', function () {
         return view('home');
     });
     Route::get('alumno/consultar', [AlumnoController::class, 'consultar']);    
@@ -43,9 +43,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
     
-    Route::get('alumno/registrar', function () {
-        return view('alumno.registrar');
-    });
 });
 
 require __DIR__.'/auth.php';
