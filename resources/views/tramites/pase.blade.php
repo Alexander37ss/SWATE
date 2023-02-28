@@ -1,12 +1,12 @@
 @extends('app')
 
 @section('titulo')
-    <h1>Solicitar justificante</h1>
+    <h1>Pase de salida</h1>
 @stop
 
 @section('breadcrum')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
-    <li class="breadcrumb-item active">Solicitar justificante</li>
+    <li class="breadcrumb-item active">Pase de salida</li>
 @stop
 
 @section('contenido')
@@ -21,14 +21,18 @@
               <!-- form start -->
               <form action="POST" href="{{url('tramites/procesandojustificante')}}">
                 <div class="card-body">
+                <!-- Alumno -->
+                <div class = "form-group">
+                <label for="">Alumno:</label>
+                <input type="text" class= "form-control" disabled value="Alexander Palazuelos Beltran">
+                </div>
                 <!-- Motivo -->
                 <div class="form-group">
                   <label for="exampleSelectBorder">Motivo:</label>
                   <select class="custom-select form-control-border" id="Motivo" onchange="AparecerOtroMotivo()">
                     <option>Escoge un motivo...</option>
-                    <option value="Motivo de salud">Motivo de salud</option>
-                    <option value="Motivo vacacional">Motivo vacacional</option>
-                    <option value="Motivo de perdida">Motivo de perdida</option>
+                    <option value="Motivo de salud">Emergencia</option>
+                    <option value="Motivo vacacional">No hay más clases</option>
                     <option value="Otro">Otro...</option>
                   </select>
                 </div>
@@ -38,25 +42,6 @@
                         <textarea class="form-control" rows="3" placeholder="Escribe..."></textarea>
                       </div>
                     </div>
-                    <!-- INE -->
-                    <div class="form-group">
-                    <label for="exampleInputFile">INE del padre o tutor:</label>
-                    <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Elegir archivo</label>
-                    </div>
-                    </div>
-                    <br>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Añadir evidencia(opcional)</label>
-                    <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Elegir archivo</label>
-                    </div>
-                    </div>
-                  </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">

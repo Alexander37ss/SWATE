@@ -15,9 +15,8 @@ class TramiteController extends Controller
     function constancia(){
         return view('tramites.constancia');
     }
-
-    function justificantePOST(){
-        
+    function paseSalida(){
+        return view('tramites.pase');
     }
 
     function ConstanciaAlumnoPDF($nombreusuario){

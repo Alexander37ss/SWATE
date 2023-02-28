@@ -10,12 +10,6 @@ const homebutton = document.querySelector('#home');
 const p_home = document.querySelector('#parrafohome');
 const home_icon = document.querySelector('#homeicon');
 
- const breadcrumb = document.querySelectorAll('.breadcrumb-item');
-breadcrumb.forEach(elemento => {
-    if(elemento.classList.contains('active')){
-        elemento.classList.remove('active');
-    }
-}); 
 
 if(homebutton.classList.contains('active')){
     p_home.classList.add('color-blanco');

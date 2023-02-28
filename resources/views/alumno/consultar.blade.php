@@ -34,10 +34,10 @@
                         @endif
                     </td>
                     <td>
-                        <a href="" class="btn btn-danger btn-sm">
-                            <i class="fas fa-times"></i>
-                        </a>
                         <a href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-success btn-sm">
+                            <i class="far fa-file-pdf"></i>
+                        </a>
+                        <a href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-info btn-sm">
                             <i class="far fa-file-pdf"></i>
                         </a>
                     </td>
