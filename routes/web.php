@@ -39,8 +39,6 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('alumno/consultar', [AlumnoController::class, 'consultar']);    
 
-    Route::get('reporte/pdf/{id}', [AlumnoController::class, 'reporteAlumnoPDF']);    
-
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
     
 });

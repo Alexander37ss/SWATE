@@ -193,6 +193,7 @@
                     <i class="nav-icon fas fa-school""></i>
                     <p>
                        Orientadoras
+                       Orientadoras
                       <i class="fas fa-angle-left right"></i>
                     </p>
                   </a>
