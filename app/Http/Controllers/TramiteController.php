@@ -21,7 +21,7 @@ class TramiteController extends Controller
     }
 
     function ConstanciaAlumnoPDF($nombreusuario){
-        $alumno = Alumno::where('nombre', $nombreusuario)->first(); //DAtos de la base de datos
+        $alumno = Alumno::where('nombre_completo', $nombreusuario)->first(); //DAtos de la base de datos
         $fecha = Carbon::now();
         $dia = $fecha->format('j');
         $mes = $fecha->format('m');

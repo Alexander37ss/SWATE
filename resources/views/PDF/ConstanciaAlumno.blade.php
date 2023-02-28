@@ -54,9 +54,9 @@
     continuación, está inscrito en esta Institución Educativa en el Ciclo Escolar <b>2022-2023:</b>
     <br><br><br>
 
-    Nombre: <span class="datosalumno">{{ $alumno->nombre }}</span><br>
-    Control: <span class="datosalumno">{{ $alumno->no_control }}</span><br>
-    Carrera: <span class="datosalumno">{{ $alumno->especialidad }}</span><br>
+    Nombre: <span class="datosalumno">{{ $alumno->nombre_completo }}</span><br>
+    Control: <span class="datosalumno">{{ $alumno->numero_control }}</span><br>
+    Carrera: <span class="datosalumno">{{ $alumno->carrera }}</span><br>
     Semestre: <span class="datosalumno">{{ $alumno->semestre }}</span><br>
     Grupo: <span class="datosalumno">{{ $alumno->grupo }}</span><br>
     Turno: <span class="datosalumno">{{ $alumno->turno }}</span><br>
