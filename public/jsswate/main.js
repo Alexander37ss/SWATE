@@ -30,16 +30,11 @@ if(tieneClase){
 
 const OtroMotivo = document.querySelector('#OtroMotivo');
 const Motivo = document.querySelector('#Motivo');
-var anterior = 0;
 
-OtroMotivo.addEventListener('click', AparecerOtroMotivo);
-console.log(Motivo.value);
 function AparecerOtroMotivo(){
     if(Motivo.value === "Otro"){
         OtroMotivo.classList.remove('inactive');
-        console.log(Motivo.value);
     }else{
         OtroMotivo.classList.add('inactive');
-        console.log(Motivo.value);
     }
 }

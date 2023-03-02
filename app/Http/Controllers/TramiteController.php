@@ -12,11 +12,30 @@ class TramiteController extends Controller
     function justificante(){
         return view('tramites.justificante');
     }
+    function justificanteOrientadora($nombrealumno){
+        $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
+        return view('tramites.justificanteOrientadora', compact('alumno'));
+    }
+    function justificanteOrientadoraPDF($id){
+        $alumno = Alumno::find($id);
+        $motivo = Request('motivo');
+        $del = Request('del');
+        $al = Request('al');
+        $otro = Request('otro');
+        $fecha = Carbon::now();
+        $dia = $fecha->format('j');
+        $mes = $fecha->format('m');
+        $ano = $fecha->format('Y');
+        PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
+        $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $alumno, 'otro' => $otro, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano, 'motivo' => $motivo, 'del' => $del, 'al' => $al)); //Carga la vista y la convierte a PDF
+        return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
+    }
     function constancia(){
         return view('tramites.constancia');
     }
-    function paseSalida(){
-        return view('tramites.pase');
+    function paseSalida($nombrealumno){
+        $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
+        return view('tramites.pase', compact('alumno'));
     }
 
     function ConstanciaAlumnoPDF($nombreusuario){
@@ -27,7 +46,7 @@ class TramiteController extends Controller
         $ano = $fecha->format('Y');
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
         $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano)); //Carga la vista y la convierte a PDF
-        return $pdf->download("reporteAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
+        return $pdf->download("constanciaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 }
 

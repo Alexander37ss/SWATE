@@ -12,12 +12,13 @@
 @section('contenido')
     <div class="responsive-table">
         <table class="table table-hover">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Edad</th>
-                    <th>Opciones</th>
+                    <th>Sexo</th>
+                    <th>Tramites</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,11 +35,14 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-success btn-sm">
-                            <i class="far fa-file-pdf"></i>
-                        </a>
                         <a href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-info btn-sm">
                             <i class="far fa-file-pdf"></i>
+                        </a>
+                        <a href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-door-open"></i>
+                        </a>
+                        <a href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-file-contract"></i>
                         </a>
                     </td>
                 </tr>

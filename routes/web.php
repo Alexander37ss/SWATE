@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('tramites/justificante', [TramiteController::class, 'justificante']);
-    Route::get('tramites/pase_salida', [TramiteController::class, 'paseSalida']);    
+    Route::get('tramites/justificanteOrientadora/{nombrealumno}', [TramiteController::class, 'justificanteOrientadora']);
+    Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
+    Route::post('tramites/procesoJustificante/{id}', [TramiteController::class, 'justificanteOrientadoraPDF']);    
     
     Route::get('home', function () {
         return view('home');

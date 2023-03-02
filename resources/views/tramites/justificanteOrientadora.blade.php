@@ -1,12 +1,13 @@
 @extends('app')
 
 @section('titulo')
-    <h1>Solicitar justificante</h1>
+    <h1>Justificante</h1>
 @stop
 
 @section('breadcrum')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
-    <li class="breadcrumb-item active">Solicitar justificante</li>
+    <li class="breadcrumb-item"><a href="{{ url('/alumno/consultar') }}">Consultar alumnos</a></li>
+    <li class="breadcrumb-item active">Justificante</li>
 @stop
 
 @section('contenido')
@@ -19,30 +20,35 @@
             <!-- general form elements -->
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="POST" href="{{url('tramites/procesandojustificante')}}">
+              <form action="{{ url('tramites/procesoJustificante')}}/{{$alumno->id}}" method="POST">
+                @csrf
                 <div class="card-body">
+               <!-- Alumno -->
+                <div class = "form-group">
+                <label for="">Alumno:</label>
+                <input name="nombre" type="text" class= "form-control" disabled value="{{ $alumno -> nombre_completo}}">
+                </div>
                 <!-- Motivo -->
                 <div class="form-group">
                   <label for="exampleSelectBorder">Motivo:</label>
-                  <select class="custom-select form-control-border" id="Motivo" onchange="AparecerOtroMotivo()" required>
+                  <select name="motivo" class="custom-select form-control-border" id="MotivoJustificante" onchange="AparecerOtroMotivoJustificante()" required>
                     <option>Escoge un motivo...</option>
-                    <option value="Motivos de salud">Motivo de salud</option>
-                    <option value="Motivos vacacional">Motivo vacacional</option>
-                    <option value="Motivos de perdida">Motivo de perdida</option>
+                    <option value="Motivo de salud">Motivo de salud</option>
+                    <option value="Motivo vacacional">Motivo vacacional</option>
+                    <option value="Motivo de perdida">Motivo de perdida</option>
                     <option value="Otro">Otro...</option>
                   </select>
                 </div>
                 <!-- Otro... -->
-                  <div class="form-group inactive" id="OtroMotivo">
+                  <div class="form-group inactive" id="OtroMotivoJustificante">
                         <label>Otro:</label>
-                        <textarea class="form-control" rows="3" placeholder="Escribe..."></textarea>
+                        <textarea class="form-control" name="otro" rows="3" placeholder="Escribe..."></textarea>
                       </div>
-                    </div>
-                    <div class="row">
+                <div class="row">
                         <!-- Del -->
-                        <div class="form-group mr-5 ml-4">
+                        <div class="form-group mr-5 ml-1">
                             <label for="exampleFormControlSelect2">Del día:</label>
-                            <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <select name="del" multiple class="form-control" id="exampleFormControlSelect2" required>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -77,9 +83,9 @@
             </select>
         </div>
         <!-- Al -->
-        <div class="form-group ml-2">
+        <div class="form-group">
             <label for="exampleFormControlSelect2">Al día:</label>
-            <select multiple class="form-control" id="exampleFormControlSelect2" required>
+            <select name="al" multiple class="form-control" id="exampleFormControlSelect2" required>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -111,38 +117,18 @@
                 <option>29</option>
                 <option>30</option>
                 <option>31</option>
-              </select>
-            </div>
-            <!-- lll -->
-          </div>
-          <!-- row -->
-          <!-- Evidencia -->
-        <div class="form-group ml-2">
-          <label for="exampleInputFile">Añadir evidencia(opcional)</label>
-          <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile">Elegir archivo</label>
-          </div>
-          </div>
+            </select>
         </div>
-          <!-- INE -->
-          <div class="form-group ml-2">
-                    <label for="exampleInputFile">INE del padre o tutor:</label>
-                    <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" required>
-                      <label class="custom-file-label" for="customFile">Elegir archivo</label>
-                    </div>
-                    </div>
-                    <br>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Confirmar</button>
-                </div>
-              </form>
-            </div>
-            <script src="{{ asset('jsswate/main.js') }}"></script>
+        <!-- lll -->
+</div>
+<!-- row -->
+</div>
+<!-- card body -->
+<div class="card-footer">
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+</div>
+</form>
+</div>
+<script src="{{ asset('jsswate/justificanteOrientadora.js') }}"></script>
 
 @stop
