@@ -14,9 +14,9 @@
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Edad</th>
+                    <th>Especialidad</th>
+                    <th>Grupo</th>
                     <th>Sexo</th>
                     <th>Tramites</th>
                 </tr>
@@ -24,11 +24,11 @@
             <tbody>
                 @foreach ($alumnos as $a)
                 <tr>
-                    <td>{{$a->id}}</td>
-                    <td>{{$a->nombre}}</td>
-                    <td>{{$a->edad}}</td>
+                    <td>{{$a->nombre_completo}}</td>
+                    <td>{{$a->carrera}}</td>
+                    <td>{{$a->grupo}}</td>
                     <td>
-                        @if ($a->sexo == 0)
+                        @if ($a->sexo == 'M')
                             Femenino
                         @else
                             Masculino
