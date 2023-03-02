@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tramite_detalles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tramite_id');
             
             $table->string('motivo');
             $table->string('motivo_otro');
@@ -25,7 +26,7 @@ return new class extends Migration
             
             $table->timestamps();
 
-            # $table->foreign('tramite_id')->references('id')->on('tramites');
+            $table->foreign('tramite_id')->references('id')->on('tramites');
         });
     }
 

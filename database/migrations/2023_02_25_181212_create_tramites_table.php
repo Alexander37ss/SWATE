@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tipo_id');
+            $table->unsignedBigInteger('orientadora_id');
+            $table->unsignedBigInteger('alumno_id');
             
-            # $table->foreign('tipo_id')->references('id')->on('tipo_tramites');
-            # $table->foreign('orientadora_id')->references('id')->on('orientadoras');
-            # $table->foreign('alumno_id')->references('id')->on('alumnos');
+            $table->foreign('tipo_id')->references('id')->on('tipo_tramites');
+            $table->foreign('orientadora_id')->references('id')->on('orientadoras');
+            $table->foreign('alumno_id')->references('id')->on('alumnos');
 
             $table->timestamps();
         });
