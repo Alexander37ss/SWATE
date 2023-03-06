@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\OrientadoraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,18 +31,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('tramites/justificante', [TramiteController::class, 'justificante']);
-    Route::get('tramites/justificanteOrientadora/{nombrealumno}', [TramiteController::class, 'justificanteOrientadora']);
-    Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
-    Route::post('tramites/procesoJustificante/{id}', [TramiteController::class, 'justificanteOrientadoraPDF']);    
-    
+    /********************************/
     Route::get('home', function () {
         return view('home');
     });
-    Route::get('alumno/consultar', [AlumnoController::class, 'consultar']);    
 
-    Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('alumno/consultar', [AlumnoController::class, 'consultar']);    
     
+    /* Justificante de parte de orientacion */
+    Route::get('tramites/justificanteOrientadora/{nombrealumno}', [OrientadoraController::class, 'justificanteOrientadora']);
+    Route::post('tramites/procesoJustificante/{id}', [OrientadoraController::class, 'justificanteOrientadoraPDF']);    
+    
+    /* Pase de salida de parte de orientacion */
+    Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
+        
+    /* Justificante de parte del alumno */
+    Route::get('tramites/justificanteAlumno', [AlumnoController::class, 'justificanteAlumno']);
+    Route::get('tramites/justificanteAlumno/{nombrealumno}', [AlumnoController::class, 'justificanteAlumno']);
+
+    /* Constancia de estudio para ambas partes*/
+    Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
 });
 
 require __DIR__.'/auth.php';

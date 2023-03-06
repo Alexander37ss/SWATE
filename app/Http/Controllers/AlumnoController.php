@@ -19,4 +19,7 @@ class AlumnoController extends Controller
         return view('alumno.registrar');
     }
 
+    function justificanteAlumno(){
+        return view('tramites.justificante');
+    }
 }
