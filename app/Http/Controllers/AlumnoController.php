@@ -6,6 +6,7 @@ use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\Pre_justificante;
 use App\Models\User;
 
 class AlumnoController extends Controller
@@ -21,25 +22,34 @@ class AlumnoController extends Controller
         return view('alumno.registrar');
     }
 
-    function justificanteAlumno($nombrealumno){
+    # Nos lleva a la vista tramites.justificates
+    function justificanteAlumno($nombrealumno){ 
 
         $alumno = User::where('name', $nombrealumno)->first();
 
         return view('tramites.justificante', compact('alumno'));
     }
 
-    function pre_justificanteAlumno($id){
-        $alumno = Alumno::find($id);
-        $motivo = Request('motivo');
-        $del = Request('del');
-        $al = Request('al');
-        $otro = Request('otro');
+    # Esto se ejecuta cuando el alumno lleno el formulario para solicitar justificante
+    function pre_justificanteAlumno(Request $request, $id){
+        # Inserción de datos a la tabla pre_justificantes
+        $Pre_justificante = new Pre_justificante;
+
+        $Pre_justificante->alumno_id = $id;
+
+        $Pre_justificante->motivo = $request->input('motivo');
+        $Pre_justificante->motivo_otro = $request->input('motivo_otro', null);
+
+        $Pre_justificante->del = $request->input('del');
+        $Pre_justificante->al = $request->input('al');
+
         $fecha = Carbon::now();
-        $dia = $fecha->format('j');
-        $mes = $fecha->format('m');
-        $ano = $fecha->format('Y');
-        PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $alumno, 'otro' => $otro, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano, 'motivo' => $motivo, 'del' => $del, 'al' => $al)); //Carga la vista y la convierte a PDF
-        return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
+        $Pre_justificante->dia = $fecha->format('j');
+        $Pre_justificante->mes = $fecha->format('m');
+        $Pre_justificante->ano = $fecha->format('Y');
+
+        $Pre_justificante->save();
+
+        return view('tramites.justificante');
     }
 }

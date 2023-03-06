@@ -14,6 +14,12 @@ class OrientadoraController extends Controller
         return view('tramites.justificanteOrientadora', compact('alumno'));
     }
 
+    public function solicitudJustificante(){
+        //consultas el alumno
+        $alumnos = Alumno::all();
+        return view('tramites.solicitudJustificante', compact('alumnos'));
+    }
+
     function justificanteOrientadoraPDF($id){
         $alumno = Alumno::find($id);
         $motivo = Request('motivo');

@@ -19,8 +19,8 @@
         <!-- general form elements -->
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('tramites/prejustificanteAlumno')}}/{{$alumno->id}}" method="POST">
-          @csrf
+          <form action="{{url('tramites/prejustificanteAlumno', auth()->user())}}" method="POST">
+          @csrf 
             <div class="card-body">
             <!-- Alumno -->
             <div class = "form-group">
@@ -41,14 +41,14 @@
             <!-- Otro... -->
               <div class="form-group inactive" id="OtroMotivo">
                     <label>Otro:</label>
-                    <textarea class="form-control" rows="3" placeholder="Escribe..."></textarea>
+                    <textarea name="motivo_otro" class="form-control" rows="3" placeholder="Escribe..."></textarea>
                   </div>
                 </div>
                 <div class="row">
                     <!-- Del -->
                     <div class="form-group mr-5 ml-4">
                       <label for="exampleFormControlSelect2">Del día:</label>
-                      <select multiple class="form-control" id="exampleFormControlSelect2">
+                      <select multiple class="form-control" name="del">
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -85,7 +85,7 @@
                     <!-- Al -->
                     <div class="form-group ml-2">
                         <label for="exampleFormControlSelect2">Al día:</label>
-                          <select multiple class="form-control" id="exampleFormControlSelect2" required>
+                          <select multiple class="form-control" name="al" required>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
