@@ -46,8 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
         
     /* Justificante de parte del alumno */
-    Route::get('tramites/justificanteAlumno', [AlumnoController::class, 'justificanteAlumno']);
-    Route::get('tramites/justificanteAlumno/{nombrealumno}', [AlumnoController::class, 'justificanteAlumno']);
+    Route::get('tramites/justificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'justificanteAlumno']);
+    Route::post('tramites/prejustificanteAlumno/{id}', [AlumnoController::class, 'pre_justificanteAlumno']);
 
     /* Constancia de estudio para ambas partes*/
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    

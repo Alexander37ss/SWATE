@@ -215,7 +215,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{asset('tramites/justificanteAlumno')}}" class="nav-link">
+                        <a href="{{ url('tramites/justificanteAlumno', auth()->user()->name)}}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Justificante</p>
                         </a>
