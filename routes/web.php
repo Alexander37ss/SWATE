@@ -26,7 +26,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+    Route::group(['middleware' => ['admin', 'role:admin']], function(){
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -42,6 +43,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
     
+});
+
+Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
+    Route::get('alumno/home', function () {
+        return view('home');
+    });
 });
 
 require __DIR__.'/auth.php';
