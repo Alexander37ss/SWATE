@@ -46,8 +46,8 @@ Route::get('/dashboard', function () {
 });
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
-    Route::get('alumno/home', function () {
-        return view('home');
+    Route::get('/home', function () {
+        return view('alumno.home');
     });
 });
 
