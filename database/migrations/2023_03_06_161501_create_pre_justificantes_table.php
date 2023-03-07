@@ -13,20 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tramite_detalles', function (Blueprint $table) {
+        Schema::create('pre_justificantes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tramite_id');
-            
+
+            $table->string('nombre_solicitante');
             $table->string('motivo');
             $table->string('motivo_otro')->nullable();
-            $table->string('nom_tutor');
+
+            $table->integer('del'); # desde que dia
+            $table->integer('al');  # hasta que dia
+
+            $table->integer('dia');
+            $table->integer('mes');
+            $table->integer('ano');
+
             # $table->img('INE_img');
             # $table->img('motivo_img');
-            $table->string('fecha');
             
             $table->timestamps();
-
-            $table->foreign('tramite_id')->references('id')->on('tramites');
         });
     }
 
@@ -37,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tramite_detalles');
+        Schema::dropIfExists('pre_justificantes');
     }
 };

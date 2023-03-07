@@ -188,9 +188,10 @@
                     </p>
                   </a>
                 </li>
+                {{-- material de la orientadora --}}
                 <li class="nav-item">
                   <a href="#" class="nav-link" id="orientadoras">
-                    <i class="nav-icon fas fa-school""></i>
+                    <i class="nav-icon fas fa-school"></i>
                     <p>
                        Orientadoras
                       <i class="fas fa-angle-left right"></i>
@@ -199,12 +200,22 @@
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{asset('/alumno/consultar')}}" class="nav-link" id="consultar">
-                       <i class="far fa-circle nav-icon"></i> 
+                        <i class="far fa-circle nav-icon"></i> 
                         <p>Consultar</p>
                       </a>
                     </li>
                   </ul>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
+                        <i class="far fa-circle nav-icon"></i> 
+                        <p>Solicitudes justificate</p>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
+
+                {{-- material de el alumno --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
@@ -215,7 +226,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{asset('tramites/justificante')}}" class="nav-link">
+                        <a href="{{ url('tramites/justificanteAlumno', auth()->user()->name)}}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Justificante</p>
                         </a>
