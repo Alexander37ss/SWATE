@@ -70,7 +70,12 @@
     <span class="linea">P R E S E N T E.</span>
     <br><br>
     <div class="texto">
-        Por este conducto, solicito le sea(n) justificada(s) las inasistencias al alumno(s): <b>{{ $alumno->nombre_completo}}</b> quien, por motivos <b>@if($motivo == 'Otro'){{$otro}} @else {{$motivo}} @endif</b>, no asistió a clase el(los) dia(s):<b>@for ($i = $del; $i <=$al; $i++) {{ $i }}, @endfor DE @if($mes == '01')ENERO @elseif($mes == '02')FEBRERO @elseif($mes == '03')MARZO @elseif($mes == '04')ABRIL @elseif($mes == '05')MAYO @elseif($mes == '06')JUNIO @elseif($mes == '07')JULIO @elseif($mes == '08')AGOSTO @elseif($mes == '09')SEPTIEMBRE @elseif($mes == '10')OCTUBRE@elseif($mes == '11')NOVIEMBRE@elseif($mes == '12')DICIEMBRE @endif del {{$ano}}</b> del presente año. 
+        Por este conducto, solicito le sea(n) justificada(s) las inasistencias al alumno(s): 
+        <b>{{ $alumno->nombre_completo}}</b> quien, por motivos <b>
+        @if($motivo == 'Otro'){{$otro}} @else {{$motivo}} @endif
+        </b>, no asistió a clase el(los) dia(s):<b>
+        @for ($i = $del; $i <=$al; $i++) {{ $i }}, @endfor 
+        DE @if($mes == '01')ENERO @elseif($mes == '02')FEBRERO @elseif($mes == '03')MARZO @elseif($mes == '04')ABRIL @elseif($mes == '05')MAYO @elseif($mes == '06')JUNIO @elseif($mes == '07')JULIO @elseif($mes == '08')AGOSTO @elseif($mes == '09')SEPTIEMBRE @elseif($mes == '10')OCTUBRE@elseif($mes == '11')NOVIEMBRE@elseif($mes == '12')DICIEMBRE @endif del {{$ano}}</b> del presente año. 
         <br>
         Cabe señalar que es RESPONSABILIDAD del ALUMNO(A) regularizarse en la entrega de trabajos y/o tareas que el(la) profesor(a) haya encomendado, haciendo mención que el presente documento NO EXENTA al alumno de sus obligaciones académicas.
     </div>

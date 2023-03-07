@@ -6,6 +6,8 @@ use PDF;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Alumno;
+use App\Models\Pre_justificante;
+
 
 class OrientadoraController extends Controller
 {
@@ -15,9 +17,17 @@ class OrientadoraController extends Controller
     }
 
     public function solicitudJustificante(){
-        //consultas el alumno
-        $alumnos = Alumno::all();
-        return view('tramites.solicitudJustificante', compact('alumnos'));
+        //Optienes todos las solicitudes de justificantes
+        $pre_justificantes = Pre_justificante::all();
+        return view('tramites.solicitudJustificante', compact('pre_justificantes'));
+    }
+
+    public function solicitudJustificanteDetalle($id){
+        //Optienes todos las solicitudes de justificantes
+        $datosSolicitud = Pre_justificante::find($id);
+        $datosAlumno = Alumno::where('nombre_completo', $datosSolicitud->nombre_solicitante)->first();
+
+        return view('tramites.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno'));
     }
 
     function justificanteOrientadoraPDF($id){

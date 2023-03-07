@@ -6,7 +6,7 @@
 
 @section('breadcrum')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
-    <li class="breadcrumb-item active">Consultar Alumnos</li>
+    <li class="breadcrumb-item active">Solicitud Justificante</li>
 @stop
 
 @section('contenido')
@@ -15,36 +15,18 @@
 
             <thead class="thead-dark">
                 <tr>
+                    <th>Ver dellate</th>
                     <th>Nombre</th>
-                    <th>Especialidad</th>
-                    <th>Grupo</th>
-                    <th>Tramites</th>
+                    <th>Efectuar</th>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach ($alumnos as $a)
-                <tr>
-                    <td>{{$a->nombre_completo}}</td>
-                    <td>{{$a->carrera}}</td>
-                    <td>{{$a->grupo}}</td>
-                    <td>
-                        <button>Aceptar</button>
-                        <button>denegar</button>
-                        {{--
-                            
-                            <a href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-info btn-sm">
-                                <i class="far fa-file-pdf"></i>
-                            </a>
-                            <a href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-info btn-sm">
-                                <i class="fas fa-door-open"></i>
-                            </a>
-                            <a href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-info btn-sm">
-                                <i class="fas fa-file-contract"></i>
-                            </a>
-                        --}}
-                    </td>
-                </tr>
+                @foreach ($pre_justificantes as $pre)
+                        <td><a href="{{ url('tramites/solicitudJustificante', $pre->id) }}">Más detalle</a></td>
+                        <td>{{$pre->nombre_solicitante}}</td>
+                        <td>{{$pre->motivo}}</td>
+                    </tr>
                 @endforeach
             </tbody>
 

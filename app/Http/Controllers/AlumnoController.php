@@ -31,14 +31,14 @@ class AlumnoController extends Controller
     }
 
     # Esto se ejecuta cuando el alumno lleno el formulario para solicitar justificante
-    function pre_justificanteAlumno(Request $request, $id){
+    function pre_justificanteAlumno(Request $request, $nombreAlumno){
         # Inserción de datos a la tabla pre_justificantes
         $Pre_justificante = new Pre_justificante;
 
-        $Pre_justificante->alumno_id = $id;
+        $Pre_justificante->nombre_solicitante = $nombreAlumno;
 
         $Pre_justificante->motivo = $request->input('motivo');
-        $Pre_justificante->motivo_otro = $request->input('motivo_otro', null);
+        $Pre_justificante->motivo_otro = $request->input('motivo_otro');
 
         $Pre_justificante->del = $request->input('del');
         $Pre_justificante->al = $request->input('al');

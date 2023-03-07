@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tramite_id');
             
             $table->string('motivo');
-            $table->string('motivo_otro');
+            $table->string('motivo_otro')->nullable();
             $table->string('nom_tutor');
             # $table->img('INE_img');
             # $table->img('motivo_img');

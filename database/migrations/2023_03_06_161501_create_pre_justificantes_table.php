@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('pre_justificantes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('alumno_id');
 
+            $table->string('nombre_solicitante');
             $table->string('motivo');
-            $table->string('motivo_otro');
+            $table->string('motivo_otro')->nullable();
 
             $table->integer('del'); # desde que dia
             $table->integer('al');  # hasta que dia
@@ -30,8 +30,6 @@ return new class extends Migration
             # $table->img('INE_img');
             # $table->img('motivo_img');
             
-            $table->foreign('alumno_id')->references('id')->on('users');
-
             $table->timestamps();
         });
     }

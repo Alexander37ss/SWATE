@@ -19,7 +19,7 @@
         <!-- general form elements -->
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('tramites/prejustificanteAlumno', auth()->user())}}" method="POST">
+          <form action="{{url('tramites/prejustificanteAlumno', auth()->user()->name)}}" method="POST">
           @csrf 
             <div class="card-body">
             <!-- Alumno -->

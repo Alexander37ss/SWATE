@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::post('tramites/procesoJustificante/{id}', [OrientadoraController::class, 'justificanteOrientadoraPDF']);    
     
     Route::get('tramites/solicitudJustificante', [OrientadoraController::class, 'solicitudJustificante']);
+    Route::get('tramites/solicitudJustificante/{id}', [OrientadoraController::class, 'solicitudJustificanteDetalle']);
     
     /* Pase de salida de parte de orientacion */
     Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
