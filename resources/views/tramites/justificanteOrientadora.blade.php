@@ -12,7 +12,7 @@
 
 @section('contenido')
 <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
-    <section class="content>
+    <section class="content">
       <div class="container-fluid">
         <div class="row">
           <!-- left column -->
@@ -119,15 +119,13 @@
                 <option>31</option>
             </select>
         </div>
-        <!-- lll -->
-</div>
-<!-- row -->
-</div>
-<!-- card body -->
-<div class="card-footer">
-    <button type="submit" class="btn btn-primary">Confirmar</button>
-</div>
-</form>
+      </div>
+    </div>
+    <!-- card body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Confirmar</button>
+    </div>
+  </form>
 </div>
 <script src="{{ asset('jsswate/justificanteOrientadora.js') }}"></script>
 
