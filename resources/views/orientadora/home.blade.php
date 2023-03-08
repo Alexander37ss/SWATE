@@ -1,4 +1,4 @@
-@extends('app')
+@extends('appOrientadora')
 
 @section('home')
     <h5 class="mb-2">Información</h5>

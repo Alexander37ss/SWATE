@@ -11,15 +11,21 @@ use App\Models\Pre_justificante;
 
 class OrientadoraController extends Controller
 {
+    public function consultar(){
+        //consultas el alumno
+        $alumnos = Alumno::all();
+        return view('orientadora.consultar', compact('alumnos'));
+    }
+
     function justificanteOrientadora($nombrealumno){
         $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
-        return view('tramites.justificanteOrientadora', compact('alumno'));
+        return view('orientadora.justificanteOrientadora', compact('alumno'));
     }
 
     public function solicitudJustificante(){
         //Optienes todos las solicitudes de justificantes
         $pre_justificantes = Pre_justificante::all();
-        return view('tramites.solicitudJustificante', compact('pre_justificantes'));
+        return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
     }
 
     public function solicitudJustificanteDetalle($id){
@@ -27,7 +33,7 @@ class OrientadoraController extends Controller
         $datosSolicitud = Pre_justificante::find($id);
         $datosAlumno = Alumno::where('nombre_completo', $datosSolicitud->nombre_solicitante)->first();
 
-        return view('tramites.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno'));
+        return view('orientadora.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno'));
     }
 
     function justificanteOrientadoraPDF($id){

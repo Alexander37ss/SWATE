@@ -1,4 +1,4 @@
-@extends('app')
+@extends('appAlumno')
 
 @section('titulo')
     <h1>Solicitar justificante</h1>

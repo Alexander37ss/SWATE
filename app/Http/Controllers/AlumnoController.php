@@ -11,11 +11,6 @@ use App\Models\User;
 
 class AlumnoController extends Controller
 {
-    public function consultar(){
-        //consultas el alumno
-        $alumnos = Alumno::all();
-        return view('alumno.consultar', compact('alumnos'));
-    }
 
     public function registrar(){
         //registras alumnos

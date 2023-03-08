@@ -1,4 +1,4 @@
-@extends('app')
+@extends('appOrientadora')
 
 @section('titulo')
     <h1>Pase de salida</h1>

@@ -23,12 +23,7 @@ Route::get('/', function () {
 });
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-    Route::group(['middleware' => ['admin', 'role:admin']], function(){
+Route::group(['middleware' => ['admin', 'role:admin']], function(){
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -37,7 +32,7 @@ Route::get('/dashboard', function () {
     Route::get('home', [HomeController::class, 'home']);    
 
 
-    Route::get('alumno/consultar', [AlumnoController::class, 'consultar']);    
+    Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);    
     
     /* Justificante de parte de orientacion */
     Route::get('tramites/justificanteOrientadora/{nombrealumno}', [OrientadoraController::class, 'justificanteOrientadora']);
@@ -49,11 +44,6 @@ Route::get('/dashboard', function () {
     /* Pase de salida de parte de orientacion */
     Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
         
-    /* Justificante de parte del alumno */
-    Route::get('tramites/justificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'justificanteAlumno']);
-                        # el :name hace que en vez de buscar el id, busque el name
-    Route::post('tramites/prejustificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
-
     /* Constancia de estudio para ambas partes*/
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
 });
@@ -62,6 +52,10 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
     Route::get('/home', function () {
         return view('alumno.home');
     });
+     /* Justificante de parte del alumno */
+     Route::get('tramites/justificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'justificanteAlumno']);
+     Route::post('tramites/prejustificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
 });
 
 require __DIR__.'/auth.php';
