@@ -18,7 +18,15 @@ class UserSeeder extends Seeder
         User::create([
             'name'      => 'ALEXANDER PALAZUELOS BELTRAN',
             'email'     => 'alexander@gmail.com',
-            'password'  => '$2y$10$4obaprbVkZFfJ0mSqDUOCuvdzimObAQh5YD63nCEl/xa/X61NFJ72'
-        ]);
-    }
+            'password'  => bcrypt('12345678')
+
+        ])->assignRole('alumno');
+
+        User::create([
+            'name'      => 'Orientadora',
+            'email'     => 'orientadora@gmail.com',
+            'password'  => bcrypt('12345678')
+
+        ])->assignRole('admin');
+}
 }
