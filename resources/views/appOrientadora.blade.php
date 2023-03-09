@@ -192,14 +192,14 @@
 
                     <li class="nav-item">
                       <a href="{{asset('/tramites/consultar')}}" class="nav-link" id="consultar">
-                        <i class="far fa-circle nav-icon"></i> 
+                      <i class="fas fa-users nav-icon"></i>
                         <p>Consultar</p>
                       </a>
                     </li>
                 <li class="nav-item">
                       <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
-                        <i class="far fa-circle nav-icon"></i> 
-                        <p>Solicitudes justificate</p>
+                      <i class="far fa-folder-open nav-icon"></i>
+                        <p>Solicitudes justificante</p>
                       </a>
                     </li>
 

@@ -49,13 +49,13 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
 });
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
+    /* Justificante de parte del alumno */
+    Route::get('alumno/justificante', [AlumnoController::class, 'justificante']);
+    Route::post('alumno/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+    Route::get('alumno/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
     Route::get('/home', function () {
         return view('alumno.home');
     });
-     /* Justificante de parte del alumno */
-     Route::get('tramites/justificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'justificanteAlumno']);
-     Route::post('tramites/prejustificanteAlumno/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
-     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
 });
 
 require __DIR__.'/auth.php';

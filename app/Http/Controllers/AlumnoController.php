@@ -11,18 +11,9 @@ use App\Models\User;
 
 class AlumnoController extends Controller
 {
-
-    public function registrar(){
-        //registras alumnos
-        return view('alumno.registrar');
-    }
-
-    # Nos lleva a la vista tramites.justificates
-    function justificanteAlumno($nombrealumno){ 
-
-        $alumno = User::where('name', $nombrealumno)->first();
-
-        return view('tramites.justificante', compact('alumno'));
+    # Nos lleva a la vista tramites.justificantes
+    function justificante(){ 
+        return view('alumno.justificante');
     }
 
     # Esto se ejecuta cuando el alumno lleno el formulario para solicitar justificante

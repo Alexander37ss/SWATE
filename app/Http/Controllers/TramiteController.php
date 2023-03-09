@@ -10,9 +10,6 @@ use Carbon\Carbon;
 class TramiteController extends Controller
 {
 
-    function constancia(){
-        return view('tramites.constancia');
-    }
     function paseSalida($nombrealumno){
         $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
         return view('tramites.pase', compact('alumno'));

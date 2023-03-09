@@ -15,7 +15,7 @@
 
             <thead class="thead-dark">
                 <tr>
-                    <th>Ver dellate</th>
+                    <th>Ver detalle</th>
                     <th>Nombre</th>
                     <th>Efectuar</th>
                 </tr>

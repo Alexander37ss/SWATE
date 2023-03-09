@@ -44,7 +44,7 @@
                     </b>Se desea justificar los días día:<b>
                         @for ($i = $datosSolicitud->del; $i <=$datosSolicitud->al; $i++){{ $i }}, @endfor 
                         DE @if($datosSolicitud->mes == '01')ENERO @elseif($datosSolicitud->mes == '02')FEBRERO @elseif($datosSolicitud->mes == '03')MARZO @elseif($datosSolicitud->mes == '04')ABRIL @elseif($datosSolicitud->mes == '05')MAYO @elseif($datosSolicitud->mes == '06')JUNIO @elseif($datosSolicitud->mes == '07')JULIO @elseif($datosSolicitud->mes == '08')AGOSTO @elseif($datosSolicitud->mes == '09')SEPTIEMBRE @elseif($datosSolicitud->mes == '10')OCTUBRE@elseif($datosSolicitud->mes == '11')NOVIEMBRE@elseif($datosSolicitud->mes == '12')DICIEMBRE @endif 
-                        del {{$datosSolicitud->ano}}</b> del presente año. 
+                        del {{$datosSolicitud->ano}}</b>.
                     <br><br>
                 </div>
 

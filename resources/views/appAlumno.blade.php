@@ -181,65 +181,28 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                  <a href="{{asset('home')}}" class="nav-link" id="home">
+                  <a href="{{asset('/home')}}" class="nav-link" id="home">
                   <i class="nav-icon fas fa-home" id="homeicon"></i>
                     <p id = "parrafohome">
                       Inicio
                     </p>
                   </a>
                 </li>
-                {{-- material de la orientadora --}}
-                <li class="nav-item">
-                  <a href="#" class="nav-link" id="orientadoras">
-                    <i class="nav-icon fas fa-school"></i>
-                    <p>
-                       Orientadoras
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{asset('/alumno/consultar')}}" class="nav-link" id="consultar">
-                        <i class="far fa-circle nav-icon"></i> 
-                        <p>Consultar</p>
-                      </a>
-                    </li>
-                  </ul>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
-                        <i class="far fa-circle nav-icon"></i> 
-                        <p>Solicitudes justificate</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+                {{-- material del alumno --}}
 
-                {{-- material de el alumno --}}
+                    <li class="nav-item">
+                      <a href="{{asset('alumno/justificante')}}" class="nav-link">
+                      <i class="fas fa-file-alt nav-icon"></i>
+                        <p>Solicitar justificante</p>
+                      </a>
+                    </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-user"></i>
-                      <p>
-                         Usuarios
-                        <i class="fas fa-angle-left right"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{ url('tramites/justificanteAlumno', auth()->user()->name)}}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Justificante</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href = "{{ url('constancia/pdf', auth()->user()->name) }}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Constancia</p>
-                        </a>
-                      </li>
-                    </ul>
-                </li>
-              </ul>
+                      <a href="{{url('alumno/constancia/pdf/', auth()->user()->name)}}" class="nav-link">
+                      <i class="fas fa-file-pdf nav-icon"></i>
+                        <p>Descargar constancia</p>
+                      </a>
+                    </li>
+
             </nav>
             <!-- /.sidebar-menu -->
           </div>
