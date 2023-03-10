@@ -12,7 +12,7 @@ use App\Models\User;
 class AlumnoController extends Controller
 {
     # Nos lleva a la vista tramites.justificantes
-    function justificante(){ 
+    function justificante($nombreAlumno){
         return view('alumno.justificante');
     }
 

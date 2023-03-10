@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('alumno_id');
             
             $table->foreign('tipo_id')->references('id')->on('tipo_tramites');
-            $table->foreign('orientadora_id')->references('id')->on('orientadoras');
+            $table->foreign('orientadora_id')->references('id')->on('users');
             $table->foreign('alumno_id')->references('id')->on('alumnos');
 
             $table->timestamps();

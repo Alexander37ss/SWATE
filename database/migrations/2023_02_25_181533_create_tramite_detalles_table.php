@@ -18,11 +18,14 @@ return new class extends Migration
             $table->unsignedBigInteger('tramite_id');
             
             $table->string('motivo');
-            $table->string('motivo_otro')->nullable();
-            $table->string('nom_tutor');
+            $table->string('motivo_otro')->nullable(); # No siempre seleccionaran otro motivo
+            $table->string('nom_tutor')->nullable(); # No se ocupa en Justificante
             # $table->img('INE_img');
             # $table->img('motivo_img');
-            $table->string('fecha');
+            $table->date('fecha');
+
+            $table->string('del')->nullable(); # Solo se usa para justificante
+            $table->string('al')->nullable(); # Solo se usa para justificante
             
             $table->timestamps();
 

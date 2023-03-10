@@ -10,11 +10,6 @@ use Carbon\Carbon;
 class TramiteController extends Controller
 {
 
-    function paseSalida($nombrealumno){
-        $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
-        return view('tramites.pase', compact('alumno'));
-    }
-
     function ConstanciaAlumnoPDF($nombreusuario){
         $alumno = Alumno::where('nombre_completo', $nombreusuario)->first(); //DAtos de la base de datos
         $fecha = Carbon::now();

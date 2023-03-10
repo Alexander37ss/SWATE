@@ -191,13 +191,13 @@
                 {{-- material del alumno --}}
 
                     <li class="nav-item">
-                      <a href="{{asset('alumno/justificante')}}" class="nav-link">
+                      <a href="{{url('alumno/justificante', auth()->user()->name)}}" class="nav-link"> 
                       <i class="fas fa-file-alt nav-icon"></i>
                         <p>Solicitar justificante</p>
                       </a>
                     </li>
                 <li class="nav-item">
-                      <a href="{{url('alumno/constancia/pdf/', auth()->user()->name)}}" class="nav-link">
+                      <a href="{{url('alumno/constancia/pdf', auth()->user()->name)}}" class="nav-link">
                       <i class="fas fa-file-pdf nav-icon"></i>
                         <p>Descargar constancia</p>
                       </a>

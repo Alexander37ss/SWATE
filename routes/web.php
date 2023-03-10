@@ -42,7 +42,8 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('tramites/solicitudJustificante/{id}', [OrientadoraController::class, 'solicitudJustificanteDetalle']);
     
     /* Pase de salida de parte de orientacion */
-    Route::get('tramites/pase_salida/{nombrealumno}', [TramiteController::class, 'paseSalida']);    
+    Route::get('tramites/pase_salida/{nombrealumno}', [OrientadoraController::class, 'paseSalida']);    
+    Route::post('tramites/procesoPaseSalida/{id}', [OrientadoraController::class, 'paseSalidaPDF']);    
         
     /* Constancia de estudio para ambas partes*/
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
@@ -50,9 +51,9 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
     /* Justificante de parte del alumno */
-    Route::get('alumno/justificante', [AlumnoController::class, 'justificante']);
-    Route::post('alumno/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
-    Route::get('alumno/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('/justificante/{nombreAlumno}', [AlumnoController::class, 'justificante']);
+    Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+    Route::get('/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
     Route::get('/home', function () {
         return view('alumno.home');
     });
