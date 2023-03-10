@@ -40,6 +40,13 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     
     Route::get('tramites/solicitudJustificante', [OrientadoraController::class, 'solicitudJustificante']);
     Route::get('tramites/solicitudJustificante/{id}', [OrientadoraController::class, 'solicitudJustificanteDetalle']);
+
+    Route::get('tramites/solicitudAceptarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteAceptar']);
+    Route::get('tramites/solicitudDescargarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteAceptarDescargar']);
+
+
+
+    Route::get('tramites/historialJustificante', [OrientadoraController::class, 'historialJustificante']);
     
     /* Pase de salida de parte de orientacion */
     Route::get('tramites/pase_salida/{nombrealumno}', [OrientadoraController::class, 'paseSalida']);    

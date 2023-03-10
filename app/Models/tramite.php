@@ -9,14 +9,12 @@ class tramite extends Model
 {
     use HasFactory;
 
+    protected $table = 'tramites';
+    
+
     protected $fillable = [
-        'tramite_id',
-        'motivo',
-        'motivo_otro',
-        'del',
-        'al',
-        'dia',
-        'mes',
-        'ano'
+        'tipo_id',
+        'orientadora_id',
+        'alumno_id'
     ];    
 }

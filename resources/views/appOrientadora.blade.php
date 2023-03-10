@@ -190,18 +190,24 @@
                 </li>
                 {{-- material de la orientadora --}}
 
-                    <li class="nav-item">
-                      <a href="{{asset('/tramites/consultar')}}" class="nav-link" id="consultar">
-                      <i class="fas fa-users nav-icon"></i>
-                        <p>Consultar</p>
-                      </a>
-                    </li>
                 <li class="nav-item">
-                      <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
-                      <i class="far fa-folder-open nav-icon"></i>
-                        <p>Solicitudes justificante</p>
-                      </a>
-                    </li>
+                  <a href="{{asset('/tramites/consultar')}}" class="nav-link" id="consultar">
+                  <i class="fas fa-users nav-icon"></i>
+                    <p>Consultar</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
+                  <i class="far fa-folder-open nav-icon"></i>
+                    <p>Solicitudes justificante</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{asset('/tramites/historialJustificante')}}" class="nav-link" id="solicitudes_justificate">
+                  <i class="far fa-folder-open nav-icon"></i>
+                    <p>historial justificante</p>
+                  </a>
+                </li>
 
             </nav>
             <!-- /.sidebar-menu -->

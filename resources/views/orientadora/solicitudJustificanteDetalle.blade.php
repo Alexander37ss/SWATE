@@ -19,7 +19,7 @@
         <!-- general form elements -->
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('tramites/prejustificanteAlumno', auth()->user()->name)}}" method="POST">
+          <form action="{{url('tramites/prejustificanteAlumno', $datosAlumno->nombre_completo)}}" method="POST">
           @csrf 
             <div class="card-body">
             <!-- Alumno -->
@@ -47,22 +47,12 @@
                         del {{$datosSolicitud->ano}}</b>.
                     <br><br>
                 </div>
-
-                <div class="form-group ml-4">
-                _____________________   <br>
-                |---------------------------------|   <br>    
-                |-------Foto evidencia-------|   <br>
-                |---------------------------------|   <br>
-                |---------------------------------|   <br>
-                _____________________
-                </div>
-
-                        
+                     
                 <!-- /.card-body -->
                 <div class="form-group ml-4">
-                  <button type="submit" class="btn btn-primary">Confirmar</button>
+                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar</a>
                   <button type="submit" class="btn btn-primary">Confirmar y Descargar</button>
-                  <button type="submit" class="btn btn-primary">Denegar</button>
+                  <button type="submit" class="btn btn-primary btn-sm">Denegar</button>
                 </div>
           </form>
         </div>
