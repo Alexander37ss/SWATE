@@ -51,7 +51,7 @@
                 <!-- /.card-body -->
                 <div class="form-group ml-4">
                   <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar</a>
-                  <button type="submit" class="btn btn-primary">Confirmar y Descargar</button>
+                  <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar y Descargar</a>
                   <button type="submit" class="btn btn-primary btn-sm">Denegar</button>
                 </div>
           </form>
