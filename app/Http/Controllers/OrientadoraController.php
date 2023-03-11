@@ -122,7 +122,6 @@ class OrientadoraController extends Controller
     public function solicitudJustificanteAceptarDescargar($nombreAlumno, $idPre){
         $datosPre = Pre_justificante::find($idPre);
         $datosAlumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
-        $alumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
 
         $datosPre->estatus_solicitud = 1;
         $datosPre->save();
@@ -131,7 +130,7 @@ class OrientadoraController extends Controller
         $tramite = New tramite;
         $tramite->tipo_id = '3';
         $tramite->orientadora_id = auth()->user()->id;
-        $tramite->alumno_id = $alumno->id;
+        $tramite->alumno_id = $datosAlumno->id;
         $tramite->save();
 
         # Guardamos los datos a la BD (tabla tramite_detalle)
@@ -152,4 +151,15 @@ class OrientadoraController extends Controller
         $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $datosAlumno, 'motivo' => $datosPre->motivo, 'otro' => $datosPre->motivo_otro, 'fecha_solicitada' => $fecha, 'del' => $datosPre->del, 'al' => $datosPre->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
         return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
+
+    public function solicitudJustificanteDenegar($idPre){
+        $datosPre = Pre_justificante::find($idPre);
+
+        $datosPre->estatus_solicitud = 2;
+        $datosPre->save();
+
+        $pre_justificantes = Pre_justificante::where('estatus_solicitud', '=' , 0)->get();
+        return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
+    }
+
 }
