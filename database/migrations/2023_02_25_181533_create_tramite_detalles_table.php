@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('nom_tutor')->nullable(); # No se ocupa en Justificante
             # $table->img('INE_img');
             # $table->img('motivo_img');
-            $table->date('fecha');
+            $table->date('fecha_solicitada');
 
             $table->string('del')->nullable(); # Solo se usa para justificante
             $table->string('al')->nullable(); # Solo se usa para justificante

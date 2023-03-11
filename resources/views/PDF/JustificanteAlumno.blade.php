@@ -51,6 +51,22 @@
         }
     </style>
 </head>
+<?php 
+    $meses = [
+        "01" => 'ENERO',
+        "02" => 'FEBRERO',
+        "03" => 'MARZO',
+        "04" => 'ABRIL',
+        "05" => 'MAYO',
+        "06" => 'JUNIO',
+        "07" => 'JULIO',
+        "08" => 'AGOSTO',
+        "09" => 'SEPTIEMBRE',
+        "10" => 'OCTUBRE',
+        "11" => 'NOVIEMBRE',
+        "12" => 'DICIEMBRE'
+    ];
+?>
 <body>
     <div class="contenedor">
         <img class="header" src="{{asset('img/header.jpg')}}">
@@ -58,7 +74,9 @@
     <div class="tamano">
         <br><br><br><br>
         <div class="fecha-lugar">
-            Culiacán Sin., {{ $dia }} de @if($mes == '01')ENERO @elseif($mes == '02')FEBRERO @elseif($mes == '03')MARZO @elseif($mes == '04')ABRIL @elseif($mes == '05')MAYO @elseif($mes == '06')JUNIO @elseif($mes == '07')JULIO @elseif($mes == '08')AGOSTO @elseif($mes == '09')SEPTIEMBRE @elseif($mes == '10')OCTUBRE@elseif($mes == '11')NOVIEMBRE@elseif($mes == '12')DICIEMBRE @endif del {{$ano}}.
+            Culiacán Sin., {{ $fecha_solicitada->format('j') }} de  
+            <?php echo($meses[ $mes ]); ?>
+            del {{ $fecha_solicitada->format('Y') }}.
         </div>
         <br><br>
         <div align="center"><b>JUSTIFICANTE DE INASISTENCIAS</b><br></div>
@@ -75,7 +93,8 @@
         @if($motivo == 'Otro'){{$otro}} @else {{$motivo}} @endif
         </b>, no asistió a clase el(los) dia(s):<b>
         @for ($i = $del; $i <=$al; $i++) {{ $i }}, @endfor 
-        DE @if($mes == '01')ENERO @elseif($mes == '02')FEBRERO @elseif($mes == '03')MARZO @elseif($mes == '04')ABRIL @elseif($mes == '05')MAYO @elseif($mes == '06')JUNIO @elseif($mes == '07')JULIO @elseif($mes == '08')AGOSTO @elseif($mes == '09')SEPTIEMBRE @elseif($mes == '10')OCTUBRE@elseif($mes == '11')NOVIEMBRE@elseif($mes == '12')DICIEMBRE @endif del {{$ano}}</b> del presente año. 
+        DE <?php echo($meses[ $mes ]);?>
+        del {{ $fecha_solicitada->format('Y') }}</b> del presente año. 
         <br>
         Cabe señalar que es RESPONSABILIDAD del ALUMNO(A) regularizarse en la entrega de trabajos y/o tareas que el(la) profesor(a) haya encomendado, haciendo mención que el presente documento NO EXENTA al alumno de sus obligaciones académicas.
     </div>

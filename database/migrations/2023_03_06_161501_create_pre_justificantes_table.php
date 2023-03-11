@@ -23,9 +23,8 @@ return new class extends Migration
             $table->integer('del'); # desde que dia
             $table->integer('al');  # hasta que dia
 
-            $table->integer('dia');
-            $table->integer('mes');
-            $table->integer('ano');
+            $table->date('fecha_solicitada');
+            $table->integer('estatus_solicitud'); # 0 sin responder - 1 aceptada - 2 negada
 
             # $table->img('INE_img');
             # $table->img('motivo_img');

@@ -202,6 +202,12 @@
                         <p>Solicitudes de justificante</p>
                       </a>
                     </li>
+                    <li class="nav-item">
+                  <a href="{{asset('/tramites/historialJustificante')}}" class="nav-link" id="solicitudes_justificate">
+                  <i class="far fa-folder-open nav-icon"></i>
+                    <p>Historial justificante</p>
+                  </a>
+                </li>
 
             </nav>
             <!-- /.sidebar-menu -->
