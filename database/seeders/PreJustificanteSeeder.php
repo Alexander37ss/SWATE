@@ -21,9 +21,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo_otro' => null,
             'del'       => 3,
             'al'        => 4,
-            'dia'       => 5,
-            'mes'       => 3,
-            'ano'       => 2023
+            'fecha_solicitada' => '2023-03-01',
+            'estatus_solicitud' => 0
         ]);        
         
         Pre_justificante::create([
@@ -32,9 +31,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo_otro' => null,
             'del'       => 3,
             'al'        => 4,
-            'dia'       => 5,
-            'mes'       => 3,
-            'ano'       => 2023
+            'fecha_solicitada' => '2023-03-02',
+            'estatus_solicitud' => 0
         ]);        
         
         Pre_justificante::create([
@@ -43,9 +41,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo_otro' => null,
             'del'       => 3,
             'al'        => 4,
-            'dia'       => 5,
-            'mes'       => 3,
-            'ano'       => 2023
+            'fecha_solicitada' => '2023-03-02',
+            'estatus_solicitud' => 0
         ]);
         
         Pre_justificante::create([
@@ -54,9 +51,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo_otro' => null,
             'del'       => 3,
             'al'        => 4,
-            'dia'       => 5,
-            'mes'       => 3,
-            'ano'       => 2023
+            'fecha_solicitada' => '2023-03-03',
+            'estatus_solicitud' => 0
         ]);
 
         Pre_justificante::create([
@@ -65,9 +61,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo_otro' => 'Dentista',
             'del'       => 3,
             'al'        => 4,
-            'dia'       => 5,
-            'mes'       => 3,
-            'ano'       => 2023
+            'fecha_solicitada' => '2023-03-03',
+            'estatus_solicitud' => 0
         ]);
 
     }

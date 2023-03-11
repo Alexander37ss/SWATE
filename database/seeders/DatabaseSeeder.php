@@ -9,6 +9,8 @@ use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\FechaSeeder;
 use Database\Seeders\PreJustificanteSeeder;
+use Database\Seeders\tramite_detalle;
+use Database\Seeders\tramite;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +25,9 @@ class DatabaseSeeder extends Seeder
             $this->call(UserSeeder::class);
             $this->call(TipoTramiteSeeder::class);
             $this->call(PreJustificanteSeeder::class);
+
+            $this->call(TramiteSeeder::class);
+            $this->call(TramiteDetalleSeeder::class);
         
         // \App\Models\User::factory(10)->create();
 

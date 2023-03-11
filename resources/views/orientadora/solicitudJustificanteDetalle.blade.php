@@ -16,11 +16,6 @@
     <div class="row">
       <!-- left column -->
       <div class="col-md-10">
-        <!-- general form elements -->
-          <!-- /.card-header -->
-          <!-- form start -->
-          <form action="{{url('tramites/prejustificanteAlumno', auth()->user()->name)}}" method="POST">
-          @csrf 
             <div class="card-body">
             <!-- Alumno -->
             <div class = "form-group">
@@ -47,24 +42,13 @@
                         del {{$datosSolicitud->ano}}</b>.
                     <br><br>
                 </div>
-
-                <div class="form-group ml-4">
-                _____________________   <br>
-                |---------------------------------|   <br>    
-                |-------Foto evidencia-------|   <br>
-                |---------------------------------|   <br>
-                |---------------------------------|   <br>
-                _____________________
-                </div>
-
-                        
+                     
                 <!-- /.card-body -->
                 <div class="form-group ml-4">
-                  <button type="submit" class="btn btn-primary">Confirmar</button>
-                  <button type="submit" class="btn btn-primary">Confirmar y Descargar</button>
-                  <button type="submit" class="btn btn-primary">Denegar</button>
+                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar</a>
+                  <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar y Descargar</a>
+                  <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn btn-primary">Denegar</a>
                 </div>
-          </form>
         </div>
       </div>
   </div>

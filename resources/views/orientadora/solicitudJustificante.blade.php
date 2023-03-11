@@ -25,11 +25,10 @@
                 @foreach ($pre_justificantes as $pre)
                         <td><a href="{{ url('tramites/solicitudJustificante', $pre->id) }}">Más detalle</a></td>
                         <td>{{$pre->nombre_solicitante}}</td>
-                        <td>{{$pre->motivo}}</td>
+                        <td>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif</td>     
                     </tr>
                 @endforeach
             </tbody>
-
         </table>
     </div>
 @stop
