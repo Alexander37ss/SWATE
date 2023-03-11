@@ -19,6 +19,20 @@ class OrientadoraController extends Controller
         return view('orientadora.consultar', compact('alumnos'));
     }
 
+    function consultarEspecialidad($especialidad){
+        $alumnos = Alumno::where('carrera', $especialidad)->get();
+        return view('orientadora.consultar', compact('alumnos'));
+    }
+    function consultarSexo($sexo){
+        $alumnos = Alumno::where('sexo', $sexo)->get();
+        return view('orientadora.consultar', compact('alumnos'));
+    }
+
+    function consultarGrupo($grupo){
+        $alumnos = Alumno::where('grupo', 'LIKE', '%'.$grupo.'%')->get();
+        return view('orientadora.consultar', compact('alumnos'));
+    }
+
     function justificanteOrientadora($nombrealumno){
         $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
         return view('orientadora.justificanteOrientadora', compact('alumno'));

@@ -193,13 +193,13 @@
                     <li class="nav-item">
                       <a href="{{asset('/tramites/consultar')}}" class="nav-link" id="consultar">
                       <i class="fas fa-users nav-icon"></i>
-                        <p>Consultar</p>
+                        <p>Consultar alumnos</p>
                       </a>
                     </li>
                 <li class="nav-item">
                       <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
                       <i class="far fa-folder-open nav-icon"></i>
-                        <p>Solicitudes justificante</p>
+                        <p>Solicitudes de justificante</p>
                       </a>
                     </li>
 
@@ -273,6 +273,7 @@
 <script src="{{asset('js/demo.js')}}"></script>
 <script src="{{asset('jsswate/breadcrum.js')}}"></script>
 <script src="{{asset('jsswate/main.js')}}"></script>
+<script src="{{asset('jsswate/consultar.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

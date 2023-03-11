@@ -32,7 +32,10 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('home', [HomeController::class, 'home']);    
 
 
-    Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);    
+    Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
+    Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
+    Route::get('tramites/consultar/grupo/{grupo}', [OrientadoraController::class, 'consultarGrupo']);  
+    Route::get('tramites/consultar/sexo/{sexo}', [OrientadoraController::class, 'consultarSexo']);  
     
     /* Justificante de parte de orientacion */
     Route::get('tramites/justificanteOrientadora/{nombrealumno}', [OrientadoraController::class, 'justificanteOrientadora']);
