@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('tramite_detalles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tramite_id');
             
             $table->string('motivo');
             $table->string('motivo_otro')->nullable(); # No siempre seleccionaran otro motivo
@@ -28,8 +27,6 @@ return new class extends Migration
             $table->string('al')->nullable(); # Solo se usa para justificante
             
             $table->timestamps();
-
-            $table->foreign('tramite_id')->references('id')->on('tramites');
         });
     }
 

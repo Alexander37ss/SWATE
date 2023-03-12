@@ -17,4 +17,24 @@ class tramite extends Model
         'orientadora_id',
         'alumno_id'
     ];    
+    
+    public function tramite_detalle(){ # Aqui estamos haciendo un INNER JOIN
+        return $this->belongsTo(tramite_detalle::class, 'tramite_id'); # Puede tener un 3re parametro que es el valor del primary key
+    }
+    
+    public function tipo(){ 
+        return $this->belongsTo(Tipo_tramite::class, 'tipo_id'); 
+    }
+    
+    public function orientadora(){ 
+        return $this->belongsTo(Orientadora::class, 'orientadora_id'); 
+    }
+
+    public function alumno(){ 
+        return $this->belongsTo(Alumno::class, 'alumno_id');
+    }
+
+    public function prejustificantes(){ 
+        return $this->belongsTo(Pre_justificante::class, 'prejustificante_id');
+    }
 }

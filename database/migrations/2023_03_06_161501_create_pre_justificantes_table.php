@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('pre_justificantes', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nombre_solicitante');
+            $table->unsignedBigInteger('alumno_id');
+            
             $table->string('motivo');
             $table->string('motivo_otro')->nullable();
 
@@ -25,7 +26,8 @@ return new class extends Migration
 
             $table->date('fecha_solicitada');
             $table->integer('estatus_solicitud'); # 0 sin responder - 1 aceptada - 2 negada
-
+            
+            $table->foreign('alumno_id')->references('id')->on('alumnos');
             # $table->img('INE_img');
             # $table->img('motivo_img');
             
