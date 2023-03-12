@@ -34,20 +34,20 @@ class OrientadoraController extends Controller
         //Optienes todos las solicitudes de justificantes
         $datosSolicitud = Pre_justificante::find($id);
         $datosAlumno = Alumno::where('nombre_completo', $datosSolicitud->nombre_solicitante)->first();
+        
+        $fecha = Carbon::parse($datosSolicitud->fecha_solicitada);
+        $mes = $fecha->month; # Aqui obtenemos el mes que se solicito
+        $ano = $fecha->year;
 
-        return view('orientadora.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno'));
+        $fecha_solicitada = $datosSolicitud->fecha_solicitada;
+        
+        return view('orientadora.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno', 'mes', 'ano' ));
     }
 
     function justificanteOrientadoraPDF($id){
-        # Guardamos los datos a la BD (tabla tramite)
-        $tramite = New tramite;
-        $tramite->tipo_id = '3';
-        $tramite->orientadora_id = auth()->user()->id;
-        $tramite->alumno_id = $id;
-        $tramite->save();
+        $alumno = Alumno::find($id);
         
         # Guardamos los datos del formulario a request
-        $alumno = Alumno::find($id);
         $motivo = Request('motivo');
         $otro = Request('otro');
         $del = Request('del');
@@ -56,13 +56,20 @@ class OrientadoraController extends Controller
         
         # Guardamos los datos a la BD (tabla tramite_detalle)
         $tramite_detalles = New tramite_detalle;
-        $tramite_detalles->tramite_id = $tramite->id;
         $tramite_detalles->motivo = $motivo;
         $tramite_detalles->motivo_otro = $otro;
         $tramite_detalles->fecha_solicitada = $fecha->format('Y-m-j');
         $tramite_detalles->del = $del;
         $tramite_detalles->al = $al;
         $tramite_detalles->save();
+        
+        # Guardamos los datos a la BD (tabla tramite)
+        $tramite = New tramite;
+        $tramite->tramite_id = $tramite_detalles->id;
+        $tramite->tipo_id = '3';
+        $tramite->orientadora_id = auth()->user()->id;
+        $tramite->alumno_id = $id;
+        $tramite->save();
 
         $mes = $fecha->format('m');
 
@@ -81,13 +88,24 @@ class OrientadoraController extends Controller
         $alumno = Alumno::find($id);
         $motivo = Request('motivo');
         $otro = Request('otro');
-        
         $fecha = Carbon::now();
-        $dia = $fecha->format('j');
         $mes = $fecha->format('m');
-        $ano = $fecha->format('Y');
+
+        $tramite_detalles = New tramite_detalle;
+        $tramite_detalles->motivo = $motivo;
+        $tramite_detalles->motivo_otro = $otro;
+        $tramite_detalles->fecha_solicitada = $fecha->format('Y-m-j');
+        $tramite_detalles->save();
+
+        $tramite = New tramite;
+        $tramite->tramite_id = $tramite_detalles->id;
+        $tramite->tipo_id = '2';
+        $tramite->orientadora_id = auth()->user()->id;
+        $tramite->alumno_id = $id;
+        $tramite->save();
+
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.paseSalidaAlumno', array('alumno' => $alumno, 'otro' => $otro, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano, 'motivo' => $motivo, )); //Carga la vista y la convierte a PDF
+        $pdf = PDF::loadView('PDF.paseSalidaAlumno',   array('alumno' => $alumno, 'motivo' => $motivo, 'otro' => $otro, 'fecha_solicitada' => $fecha, 'mes' => $mes)); //Carga la vista y la convierte a PDF
         return $pdf->download("paseSalidaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 
@@ -98,22 +116,22 @@ class OrientadoraController extends Controller
         $datosPre->estatus_solicitud = 1;
         $datosPre->save();
         
-        # Guardamos los datos a la BD (tabla tramite)
-        $tramite = New tramite;
-        $tramite->tipo_id = '3';
-        $tramite->orientadora_id = auth()->user()->id;
-        $tramite->alumno_id = $alumno->id;
-        $tramite->save();
-
         # Guardamos los datos a la BD (tabla tramite_detalle)
         $tramite_detalles = New tramite_detalle;
-        $tramite_detalles->tramite_id = $tramite->id;
         $tramite_detalles->motivo = $datosPre->motivo;
         $tramite_detalles->motivo_otro = $datosPre->otro;
         $tramite_detalles->fecha_solicitada = $datosPre->fecha_solicitada;
         $tramite_detalles->del = $datosPre->del;
         $tramite_detalles->al = $datosPre->al;
         $tramite_detalles->save();
+
+        # Guardamos los datos a la BD (tabla tramite)
+        $tramite = New tramite;
+        $tramite->tramite_id = $tramite_detalles->id;
+        $tramite->tipo_id = '3';
+        $tramite->orientadora_id = auth()->user()->id;
+        $tramite->alumno_id = $alumno->id;
+        $tramite->save();
 
         $pre_justificantes = Pre_justificante::where('estatus_solicitud', '=' , 0)->get();
         return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
@@ -125,23 +143,23 @@ class OrientadoraController extends Controller
 
         $datosPre->estatus_solicitud = 1;
         $datosPre->save();
-        
-        # Guardamos los datos a la BD (tabla tramite)
-        $tramite = New tramite;
-        $tramite->tipo_id = '3';
-        $tramite->orientadora_id = auth()->user()->id;
-        $tramite->alumno_id = $datosAlumno->id;
-        $tramite->save();
 
         # Guardamos los datos a la BD (tabla tramite_detalle)
         $tramite_detalles = New tramite_detalle;
-        $tramite_detalles->tramite_id = $tramite->id;
         $tramite_detalles->motivo = $datosPre->motivo;
         $tramite_detalles->motivo_otro = $datosPre->otro;
         $tramite_detalles->fecha_solicitada = $datosPre->fecha_solicitada;
         $tramite_detalles->del = $datosPre->del;
         $tramite_detalles->al = $datosPre->al;
         $tramite_detalles->save();
+        
+        # Guardamos los datos a la BD (tabla tramite)
+        $tramite = New tramite;
+        $tramite->tramite_id = $tramite_detalles->id;
+        $tramite->tipo_id = '3';
+        $tramite->orientadora_id = auth()->user()->id;
+        $tramite->alumno_id = $datosAlumno->id;
+        $tramite->save();
 
         $fecha = Carbon::now();
         $mes = $fecha->format('m');
@@ -149,17 +167,24 @@ class OrientadoraController extends Controller
         # Creación del PDF
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
         $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $datosAlumno, 'motivo' => $datosPre->motivo, 'otro' => $datosPre->motivo_otro, 'fecha_solicitada' => $fecha, 'del' => $datosPre->del, 'al' => $datosPre->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
-        return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
+        return $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 
     public function solicitudJustificanteDenegar($idPre){
         $datosPre = Pre_justificante::find($idPre);
-
+        
         $datosPre->estatus_solicitud = 2;
         $datosPre->save();
-
+        
         $pre_justificantes = Pre_justificante::where('estatus_solicitud', '=' , 0)->get();
         return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
     }
+    
+    public function historialJustificante(){
+        $justificantes = tramite::where([
+            ['orientadora_id', auth()->user()->id],['tipo_id', 3]
+        ])->get();
 
+        return view('orientadora.historialJustificante', compact('justificantes'));
+    }
 }

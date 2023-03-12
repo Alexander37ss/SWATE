@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
             $this->call(TipoTramiteSeeder::class);
             $this->call(PreJustificanteSeeder::class);
 
-            $this->call(TramiteSeeder::class);
             $this->call(TramiteDetalleSeeder::class);
+            $this->call(TramiteSeeder::class);
         
         // \App\Models\User::factory(10)->create();
 

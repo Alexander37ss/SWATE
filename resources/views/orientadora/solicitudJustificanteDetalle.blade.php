@@ -10,6 +10,26 @@
 @stop
 
 @section('contenido')
+<?php 
+    $meses = [
+        "01" => 'ENERO',
+        "02" => 'FEBRERO',
+        "03" => 'MARZO',
+        "3" => 'MARZO',
+        "04" => 'ABRIL',
+        "05" => 'MAYO',
+        "06" => 'JUNIO',
+        "07" => 'JULIO',
+        "08" => 'AGOSTO',
+        "09" => 'SEPTIEMBRE',
+        "10" => 'OCTUBRE',
+        "11" => 'NOVIEMBRE',
+        "12" => 'DICIEMBRE'
+    ];
+?>
+<?php
+ if($fdsfa = "{{ }}")
+?>
 <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 <section class="content">
   <div class="container-fluid">
@@ -36,10 +56,11 @@
 
                 <div class="form-group ml-4">
                     <!-- Del -->
-                    </b>Se desea justificar los días día:<b>
+                    </b>Se desea justificar los día(s):<b>
                         @for ($i = $datosSolicitud->del; $i <=$datosSolicitud->al; $i++){{ $i }}, @endfor 
-                        DE @if($datosSolicitud->mes == '01')ENERO @elseif($datosSolicitud->mes == '02')FEBRERO @elseif($datosSolicitud->mes == '03')MARZO @elseif($datosSolicitud->mes == '04')ABRIL @elseif($datosSolicitud->mes == '05')MAYO @elseif($datosSolicitud->mes == '06')JUNIO @elseif($datosSolicitud->mes == '07')JULIO @elseif($datosSolicitud->mes == '08')AGOSTO @elseif($datosSolicitud->mes == '09')SEPTIEMBRE @elseif($datosSolicitud->mes == '10')OCTUBRE@elseif($datosSolicitud->mes == '11')NOVIEMBRE@elseif($datosSolicitud->mes == '12')DICIEMBRE @endif 
-                        del {{$datosSolicitud->ano}}</b>.
+                        DE <?php echo($meses[ $mes ]);?>
+                        del <?php echo($ano);?></b>.
+                        
                     <br><br>
                 </div>
                      

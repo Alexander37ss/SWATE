@@ -19,5 +19,5 @@ class tramite_detalle extends Model
         'fecha',
         'del',
         'al'
-    ];    
+    ];
 }

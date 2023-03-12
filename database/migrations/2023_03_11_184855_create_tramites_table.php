@@ -15,13 +15,17 @@ return new class extends Migration
     {
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tramite_id');
             $table->unsignedBigInteger('tipo_id');
             $table->unsignedBigInteger('orientadora_id');
             $table->unsignedBigInteger('alumno_id');
+            $table->unsignedBigInteger('prejustificante_id')->nullable();
             
-            $table->foreign('tipo_id')->references('id')->on('tipo_tramites');
-            $table->foreign('orientadora_id')->references('id')->on('users');
-            $table->foreign('alumno_id')->references('id')->on('alumnos');
+            $table->foreign('tramite_id')       ->references('id')->on('tramite_detalles');
+            $table->foreign('tipo_id')          ->references('id')->on('tipo_tramites');
+            $table->foreign('orientadora_id')   ->references('id')->on('users');
+            $table->foreign('alumno_id')        ->references('id')->on('alumnos');
+            $table->foreign('prejustificante_id')->references('id')->on('pre_justificantes');
 
             $table->timestamps();
         });
