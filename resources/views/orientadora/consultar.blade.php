@@ -28,7 +28,7 @@
 </div>
     <br>
     <div class="responsive-table">
-        <table class="table table-sm table-hover" id="tabla">
+        <table class="table table-sm table-hover table-striped" id="tabla">
             <thead>
                 <tr>
                 <!-- Nombre -->
@@ -92,13 +92,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-info btn-sm">
+                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-info btn-sm">
                             <i class="far fa-file-pdf"></i>
                         </a>
-                        <a href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-info btn-sm">
+                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-info btn-sm">
                         <i class="fas fa-door-open"></i>
                         </a>
-                        <a href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-info btn-sm">
+                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-info btn-sm">
                         <i class="fas fa-file-contract"></i>
                         </a>
                     </td>

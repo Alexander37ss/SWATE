@@ -198,13 +198,15 @@
                     </li>
                 <li class="nav-item">
                       <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
-                      <i class="far fa-folder-open nav-icon"></i>
-                        <p>Solicitudes de justificante</p>
+                      <i class="fas fa-tags nav-icon"></i>
+                        <p>Solicitudes pendientes
+                          <span class="badge badge-warning right">6</span>
+                        </p>
                       </a>
                     </li>
                     <li class="nav-item">
                   <a href="{{asset('/tramites/historialJustificante')}}" class="nav-link" id="solicitudes_justificate">
-                  <i class="far fa-folder-open nav-icon"></i>
+                  <i class="fas fa-clock nav-icon"></i>
                     <p>Historial justificante</p>
                   </a>
                 </li>

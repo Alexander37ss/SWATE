@@ -1,4 +1,5 @@
 import './bootstrap';
+window.Swal = require('sweetalert2');
 
 import Alpine from 'alpinejs';
 

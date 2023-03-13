@@ -12,7 +12,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
-
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
   <style>
     div nav ul {
@@ -197,7 +197,7 @@
                       </a>
                     </li>
                 <li class="nav-item">
-                      <a href="{{url('alumno/constancia/pdf', auth()->user()->name)}}" class="nav-link">
+                      <a href="{{url('alumno/constancia/pdf', auth()->user()->name)}}" class="nav-link" onclick="constanciaDescargar();">
                       <i class="fas fa-file-pdf nav-icon"></i>
                         <p>Descargar constancia</p>
                       </a>
@@ -270,8 +270,10 @@
 <script src="{{asset('js/Chart.min.js')}}"></script>
 
 <!-- AdminLTE for demo purposes -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script src="{{asset('js/demo.js')}}"></script>
 <script src="{{asset('jsswate/breadcrum.js')}}"></script>
+<script src="{{asset('jsswate/appAlumno.js')}}"></script>
 <script src="{{asset('jsswate/main.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->

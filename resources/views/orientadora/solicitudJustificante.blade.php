@@ -1,12 +1,12 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h1>Consultar Alumnos</h1>
+    <h1>Solicitudes de justificantes</h1>
 @stop
 
 @section('breadcrum')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
-    <li class="breadcrumb-item active">Solicitud Justificante</li>
+    <li class="breadcrumb-item active">Solicitudes pendientes</li>
 @stop
 
 @section('contenido')
