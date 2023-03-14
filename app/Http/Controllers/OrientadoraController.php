@@ -13,6 +13,7 @@ use App\Models\tramite;
 
 class OrientadoraController extends Controller
 {
+    # Funciones para visualizar la vista consultar y sus filtros
     public function consultar(){
         //consultas el alumno
         $alumnos = Alumno::all();
@@ -27,37 +28,16 @@ class OrientadoraController extends Controller
         $alumnos = Alumno::where('sexo', $sexo)->get();
         return view('orientadora.consultar', compact('alumnos'));
     }
-
     function consultarGrupo($grupo){
         $alumnos = Alumno::where('grupo', 'LIKE', '%'.$grupo.'%')->get();
         return view('orientadora.consultar', compact('alumnos'));
     }
 
+    # Creación de justificante 
     function justificanteOrientadora($nombrealumno){
         $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
         return view('orientadora.justificanteOrientadora', compact('alumno'));
     }
-
-    public function solicitudJustificante(){
-        //Optienes todos las solicitudes de justificantes
-        $pre_justificantes = Pre_justificante::where('estatus_solicitud', 0)->get();
-        return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
-    }
-
-    public function solicitudJustificanteDetalle($id){
-        //Optienes todos las solicitudes de justificantes
-        $datosSolicitud = Pre_justificante::find($id);
-        $datosAlumno = Alumno::where('nombre_completo', $datosSolicitud->nombre_solicitante)->first();
-        
-        $fecha = Carbon::parse($datosSolicitud->fecha_solicitada);
-        $mes = $fecha->month; # Aqui obtenemos el mes que se solicito
-        $ano = $fecha->year;
-
-        $fecha_solicitada = $datosSolicitud->fecha_solicitada;
-        
-        return view('orientadora.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno', 'mes', 'ano' ));
-    }
-
     function justificanteOrientadoraPDF($id){
         $alumno = Alumno::find($id);
         
@@ -92,12 +72,12 @@ class OrientadoraController extends Controller
         $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $alumno, 'motivo' => $motivo, 'otro' => $otro, 'fecha_solicitada' => $fecha, 'del' => $del, 'al' => $al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
         return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
-    
+
+    # Creación de pase de salida 
     function paseSalida($nombrealumno){
         $alumno = Alumno::where('nombre_completo', $nombrealumno)->first();
         return view('orientadora.pase', compact('alumno'));
     }
-    
     function paseSalidaPDF($id){
         $alumno = Alumno::find($id);
         $motivo = Request('motivo');
@@ -123,6 +103,26 @@ class OrientadoraController extends Controller
         return $pdf->download("paseSalidaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 
+    # Funciones para visualizar las solicitudes e individuales 
+    public function solicitudJustificante(){
+        //Optienes todos las solicitudes de justificantes
+        $pre_justificantes = Pre_justificante::where('estatus_solicitud', 0)->get();
+        return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
+    }
+    public function solicitudJustificanteDetalle($id){
+        //Optienes todos las solicitudes de justificantes
+        $datosSolicitud = Pre_justificante::find($id);
+        $datosAlumno = Alumno::where('nombre_completo', $datosSolicitud->nombre_solicitante)->first();
+        
+        $fecha = Carbon::parse($datosSolicitud->fecha_solicitada);
+        $mes = $fecha->month; # Aqui obtenemos el mes que se solicito
+        $ano = $fecha->year;
+
+        $fecha_solicitada = $datosSolicitud->fecha_solicitada;
+        
+        return view('orientadora.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno', 'mes', 'ano' ));
+    }
+    # Funciones para afectuar una solicitud
     public function solicitudJustificanteAceptar($nombreAlumno, $idPre){
         $datosPre = Pre_justificante::find($idPre);
         $alumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
@@ -150,7 +150,6 @@ class OrientadoraController extends Controller
         $pre_justificantes = Pre_justificante::where('estatus_solicitud', '=' , 0)->get();
         return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
     }
-
     public function solicitudJustificanteAceptarDescargar($nombreAlumno, $idPre){
         $datosPre = Pre_justificante::find($idPre);
         $datosAlumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
@@ -183,7 +182,6 @@ class OrientadoraController extends Controller
         $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $datosAlumno, 'motivo' => $datosPre->motivo, 'otro' => $datosPre->motivo_otro, 'fecha_solicitada' => $fecha, 'del' => $datosPre->del, 'al' => $datosPre->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
         return $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
-
     public function solicitudJustificanteDenegar($idPre){
         $datosPre = Pre_justificante::find($idPre);
         
@@ -194,11 +192,26 @@ class OrientadoraController extends Controller
         return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
     }
     
+    # Funciones para visualización del historial
     public function historialJustificante(){
-        $justificantes = tramite::where([
-            ['orientadora_id', auth()->user()->id],['tipo_id', 3]
-        ])->get();
+        $fecha = Carbon::now();
+        $mes = $fecha->format('m');
+        
+        $tramites = tramite::where('orientadora_id', auth()->user()->id)->get();
+        $justificantes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])->whereMonth('created_at', $mes)->get();
+        $paseSalida = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])->whereMonth('created_at', $mes)->get();
 
-        return view('orientadora.historialJustificante', compact('justificantes'));
+        return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes'));
     }
+    
+    public function historialJustificanteTipo($tipo){
+        $fecha = Carbon::now();
+        $mes = $fecha->format('m');
+        
+        $tramites = tramite::where([['orientadora_id', auth()->user()->id], ['tipo_id', $tipo]])->get();
+        $justificantes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])->whereMonth('created_at', $mes)->get();
+        $paseSalida = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])->whereMonth('created_at', $mes)->get();
+
+        return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes'));
+    }    
 }

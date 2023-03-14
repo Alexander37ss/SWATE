@@ -1,89 +1,86 @@
 @extends('appOrientadora')
 
 @section('home')
-    <h5 class="mb-2">Información</h5>
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Clientes</span>
-                <span class="info-box-number">9</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-success"><i class="fas fa-tools"></i></span>
+<?php 
+    $meses = [
+        "01" => 'Enero',
+        "02" => 'Febrero',
+        "03" => 'Marzo',
+        "04" => 'Abril',
+        "05" => 'Mayo',
+        "06" => 'Junio',
+        "07" => 'Julio',
+        "08" => 'Agosto',
+        "09" => 'Septiembre',
+        "10" => 'Octubre',
+        "11" => 'Noviembre',
+        "12" => 'Diciembre'
+    ];
+?>
+<h3 class="mb-2">Información</h3>
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-12">
+    <div class="info-box">
+    <span class="info-box-icon bg-secondary"><i class="fa fa-file"></i></span>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Servicios</span>
-                <span class="info-box-number">8</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-warning"><i class="fas fa-cogs"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Mantenimientos</span>
-                <span class="info-box-number">5</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-danger"><i class="fas fa-dollar-sign"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Pagos</span>
-                <span class="info-box-number">2</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
+      <div class="info-box-content">
+      <span class="info-box-text">Justificantes de <?php echo($meses[ $mes ]);?></span>
+      <span class="info-box-number">{{ $justificantes->count() }}</span>
+      </div>
+      <!-- /.info-box-content -->
+      </div>
+    <!-- /.info-box -->
     </div>
-    <br>
-    <h5 class="mb-2">Registros</h5>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card card-outline card-warning">
-                <div class="card-header">
-                  <h3 class="card-title">Otra información</h3>
-                </div>
-                <div class="card-body">
-                  Contenido
-                </div>
-                <div class="card-footer">
-                  Footer
-                </div>
-              </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card card-outline card-danger">
-                <div class="card-header">
-                  <h3 class="card-title">Más información</h3>
-                </div>
-                <div class="card-body">
-                  contenido puede ser una tabla
-                </div>
-                <div class="card-footer">
-                  footer
-                </div>
-              </div>
-        </div>
+  <!-- /.col -->
+  <div class="col-md-6 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-success"><i class="fa fa-file"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Pases de salida de de <?php echo($meses[ $mes ]);?></span>
+        <span class="info-box-number">{{ $paseSalida->count() }}</span>
+      </div>
     </div>
+  </div>
+
+</div>
+<br>
+
+<h3 class="mb-2"><i class="fas fa-clock nav-icon"></i> Historial De Tramites</h3>
+<div class="responsive-table">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>                    <!-- Especialidad -->
+                <th>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>Tipo de tramite</b>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{url('tramites/historialJustificante', ['tipo' => 2])}}">Pase De Salida</a>
+                            <a class="dropdown-item" href="{{url('tramites/historialJustificante', ['tipo' => 3])}}">Justificante</a>
+                        </div>
+                    </div>
+                </th>
+                <th>Nombre Alumno</th>
+                <th>Motivo</th>
+                <th>Fecha Creada</th>
+                <th>Dia(s) solicitados</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach ($tramites as $tra)
+                <tr>
+                    <td>{{$tra->tipo->nombre}}</td>
+                    <td>{{$tra->alumno->nombre_completo}}</td>
+                    <td>{{$tra->tramite_detalle->motivo}}</td>
+                    <td>{{$tra->tramite_detalle->fecha_solicitada}}</td>
+                    <td>{{$tra->tramite_detalle->del}} - {{$tra->tramite_detalle->al}}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @endsection
