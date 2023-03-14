@@ -29,8 +29,10 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     /******************************************************************************/
-    Route::get('home', [HomeController::class, 'home']);    
-
+    
+    # Capacidad de visualizar las deciciones de orientadoras a peticiones justificantes 
+    Route::get('home', [OrientadoraController::class, 'historialJustificante']);    
+    Route::get('tramites/historialJustificante/{tipo}', [OrientadoraController::class, 'historialJustificanteTipo']);
 
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
     Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
@@ -48,8 +50,6 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('tramites/solicitudAceptarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteAceptar']);
     Route::get('tramites/solicitudDescargarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteAceptarDescargar']);
     Route::get('tramites/solicitudDenegarJustificante/{idPre}', [OrientadoraController::class, 'solicitudJustificanteDenegar']);
-    # Capacidad de visualizar las deciciones de orientadoras a peticiones justificantes 
-    Route::get('tramites/historialJustificante', [OrientadoraController::class, 'historialJustificante']);
     
     /* Pase de salida de parte de orientacion */
     Route::get('tramites/pase_salida/{nombrealumno}', [OrientadoraController::class, 'paseSalida']);    

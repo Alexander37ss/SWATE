@@ -39,29 +39,31 @@
                 </div>
             </th>
                     <!-- Especialidad -->
-                <th><div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Especialidad</b>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'ELECTRÓNICA'])}}">ELECTRÓNICA</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'OFIMÁTICA'])}}">OFIMÁTICA</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'PROGRAMACIÓN'])}}">PROGRAMACIÓN</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONTABILIDAD'])}}">CONTABILIDAD</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONSTRUCCIÓN'])}}">CONSTRUCCIÓN</a>
-                </div>
+            <th>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b>Especialidad</b>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'ELECTRÓNICA'])}}">ELECTRÓNICA</a>
+                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'OFIMÁTICA'])}}">OFIMÁTICA</a>
+                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'PROGRAMACIÓN'])}}">PROGRAMACIÓN</a>
+                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONTABILIDAD'])}}">CONTABILIDAD</a>
+                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONSTRUCCIÓN'])}}">CONSTRUCCIÓN</a>
+                    </div>
                 </div>
             </th>
             <!-- Grupo -->
-            <th><div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Grupo</b>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '6',])}}">6 semestre</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '4',])}}">4 semestre</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '2',])}}">2 semestre</a>
-                </div>
+            <th>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b>Grupo</b>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '6',])}}">6 semestre</a>
+                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '4',])}}">4 semestre</a>
+                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '2',])}}">2 semestre</a>
+                    </div>
                 </div>
             </th>
             <!-- Sexo -->
