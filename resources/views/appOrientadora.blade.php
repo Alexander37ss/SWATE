@@ -18,6 +18,12 @@
     div nav ul {
         justify-content: center;
     }
+    .lopez{
+      color: #A7201F;
+    }
+    .lopez:hover{
+      color: #ff5c7b;
+    }
   </style>
 
 </head>
@@ -249,7 +255,7 @@
           <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 1.0
           </div>
-          <a href="">Página web</a>
+          <a class="lopez" href="">Página web</a>
         </footer>
       </div>
       <!-- ./wrapper -->

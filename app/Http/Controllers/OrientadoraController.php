@@ -179,7 +179,10 @@ class OrientadoraController extends Controller
         # Creación del PDF
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
         $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $datosAlumno, 'motivo' => $datosPre->motivo, 'otro' => $datosPre->motivo_otro, 'fecha_solicitada' => $fecha, 'del' => $datosPre->del, 'al' => $datosPre->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
-        return $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf");
+        
+        $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf");
+        
+        return redirect('tramites/solicitudJustificante');
     }
     public function solicitudJustificanteDenegar($idPre){
         $datosPre = Pre_justificante::find($idPre);
