@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
     <li class="breadcrumb-item active">Solicitudes pendientes</li>
 @stop
 
@@ -23,7 +23,7 @@
 
             <tbody>
                 @foreach ($pre_justificantes as $pre)
-                        <td><a href="{{ url('tramites/solicitudJustificante', $pre->id) }}">Más detalle</a></td>
+                        <td><a href="{{ url('tramites/solicitudJustificante', $pre->id) }}" class="lopez">Más detalle</a></td>
                         <td>{{$pre->alumno->nombre_completo}}</td>
                         <td>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif</td>     
                     </tr>

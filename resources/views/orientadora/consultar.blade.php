@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
     <li class="breadcrumb-item active">Consultar Alumnos</li>
 @stop
 
@@ -16,8 +16,8 @@
         <input class="form-control mr-sm-2" id="busquedaConsultar" type="search" placeholder="Filtrar alumnos..." aria-label="Search" onchange="BuscarAlumnos();">
         <div class="input-group-append">
             <!-- boton buscador icono -->
-            <button class="btn btn-navbar bg-info shadow-sm" id="BotonBuscador">
-                <i class="fas fa-search"></i>
+            <button class="btn btn-navbar shadow-sm" id="BotonBuscador" style="background-color: #a7201f;">
+                <i class="fas fa-search link-activo"></i>
             </button>
         </div>
         <div class="input-group-append">
@@ -94,14 +94,14 @@
                         @endif
                     </td>
                     <td>
-                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-info btn-sm">
-                            <i class="far fa-file-pdf"></i>
+                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
+                            <i class="far fa-file-pdf link-activo"></i>
                         </a>
-                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-info btn-sm">
-                        <i class="fas fa-door-open"></i>
+                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-sm " style="background-color: #a7201f;">
+                        <i class="fas fa-door-open link-activo"></i>
                         </a>
-                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-info btn-sm">
-                        <i class="fas fa-file-contract"></i>
+                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
+                        <i class="fas fa-file-contract link-activo"></i>
                         </a>
                     </td>
                 </tr>

@@ -146,7 +146,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                <img src="{{asset('images/user.png')}}"class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('images/userojo.png')}}"class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
                     <a href="#" class="d-block">{{ Auth::user()->name; }}</a>
@@ -247,7 +247,7 @@
           <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 1.0
           </div>
-          <a href="">Página web</a>
+          <a class="lopez">Página web</a>
         </footer>
       </div>
       <!-- ./wrapper -->

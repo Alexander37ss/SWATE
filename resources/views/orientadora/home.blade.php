@@ -22,7 +22,7 @@
 <div class="row">
   <div class="col-md-6 col-sm-6 col-12">
     <div class="info-box">
-    <span class="info-box-icon bg-secondary"><i class="fa fa-file"></i></span>
+    <span class="info-box-icon bg-cetis"><i class="fa fa-file"></i></span>
 
       <div class="info-box-content">
       <span class="info-box-text">Justificantes de <?php echo($meses[ $mes ]);?></span>
@@ -35,7 +35,7 @@
   <!-- /.col -->
   <div class="col-md-6 col-sm-6 col-12">
     <div class="info-box">
-      <span class="info-box-icon bg-success"><i class="fa fa-file"></i></span>
+      <span class="info-box-icon bg-cetis"><i class="fa fa-file"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Pases de salida de de <?php echo($meses[ $mes ]);?></span>
         <span class="info-box-number">{{ $paseSalida->count() }}</span>
@@ -45,9 +45,25 @@
 
 </div>
 <br>
+<div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <!-- Default box -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="mb-2 card-title"><i class="far fa-clock"></i> Historial De Tramites</h3>
 
-<h3 class="mb-2"><i class="far fa-clock nav-icon"></i> Historial De Tramites</h3>
-<div class="responsive-table">
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+<!--                   <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                  </button> -->
+                </div>
+              </div>
+              <div class="card-body">
+              <div class="responsive-table">
     <table class="table table-sm table-hover table-striped" id="TablaHistorial">
         <thead>
             <tr>                    <!-- Especialidad -->
@@ -92,4 +108,16 @@
         </tbody>
     </table>
 </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                Footer
+              </div>
+              <!-- /.card-footer-->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+
 @endsection

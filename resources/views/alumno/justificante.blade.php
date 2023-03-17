@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
     <li class="breadcrumb-item active">Solicitar justificante</li>
 @stop
 
@@ -145,7 +145,7 @@
                         
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Confirmar</button>
+                  <button type="submit" class="btn bg-cetis">Confirmar</button>
                 </div>
           </form>
         </div>
