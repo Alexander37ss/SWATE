@@ -66,9 +66,9 @@
                      
                 <!-- /.card-body -->
                 <div class="form-group ml-4">
-                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar</a>
+                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-success">Confirmar</a>
                   <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar y Descargar</a>
-                  <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn btn-primary">Denegar</a>
+                  <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn btn-danger">Denegar</a>
                 </div>
         </div>
       </div>

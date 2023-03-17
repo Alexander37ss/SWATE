@@ -11,9 +11,9 @@
 
 @section('contenido')
     <div class="responsive-table">
-        <table class="table table-hover">
+        <table class="table table-sm table-hover table-striped">
 
-            <thead class="thead-dark">
+            <thead>
                 <tr>
                     <th>Ver detalle</th>
                     <th>Nombre</th>

@@ -201,7 +201,6 @@
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
                     <i class="fas fa-tags nav-icon"></i>
                     <p>Solicitudes pendientes
-                      <span class="badge badge-warning right">6</span>
                     </p>
                   </a>
                 </li>
@@ -277,6 +276,7 @@
 <script src="{{asset('jsswate/breadcrum.js')}}"></script>
 <script src="{{asset('jsswate/main.js')}}"></script>
 <script src="{{asset('jsswate/consultar.js')}}"></script>
+<script src="{{asset('jsswate/historial.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

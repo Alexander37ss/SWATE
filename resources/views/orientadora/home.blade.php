@@ -46,10 +46,10 @@
 </div>
 <br>
 
-<h3 class="mb-2"><i class="fas fa-clock nav-icon"></i> Historial De Tramites</h3>
+<h3 class="mb-2"><i class="far fa-clock nav-icon"></i> Historial De Tramites</h3>
 <div class="responsive-table">
-    <table class="table table-hover table-striped">
-        <thead class="thead-dark">
+    <table class="table table-sm table-hover table-striped" id="TablaHistorial">
+        <thead>
             <tr>                    <!-- Especialidad -->
                 <th>
                     <div class="dropdown">
@@ -64,7 +64,16 @@
                 </th>
                 <th>Nombre Alumno</th>
                 <th>Motivo</th>
-                <th>Fecha Creada</th>
+                <th>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>Fecha creada</b>
+                        </button>
+                        <div class="dropdown-menu pt-0 pb-0" aria-labelledby="dropdownMenuButton">
+                        <input class="form-control" id="busquedaFecha" type="date" placeholder="YYYY-MM" aria-label="Search" onchange="BuscarFecha();">
+                        </div>
+                    </div>
+                </th>
                 <th>Dia(s) solicitados</th>
             </tr>
         </thead>
