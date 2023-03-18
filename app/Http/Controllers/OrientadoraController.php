@@ -193,28 +193,4 @@ class OrientadoraController extends Controller
         $pre_justificantes = Pre_justificante::where('estatus_solicitud', '=' , 0)->get();
         return view('orientadora.solicitudJustificante', compact('pre_justificantes'));
     }
-    
-    # Funciones para visualización del historial
-    public function historialJustificante(){
-        $fecha = Carbon::now();
-        $mes = $fecha->format('m');
-        $ano = $fecha->format('Y');
-        
-        $tramites = tramite::where('orientadora_id', auth()->user()->id)->get();
-        $justificantes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])->whereMonth('created_at', $mes)->whereYear('created_at', $ano)->get();
-        $paseSalida = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])->whereMonth('created_at', $mes)->get();
-
-        return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes'));
-    }
-    
-    public function historialJustificanteTipo($tipo){
-        $fecha = Carbon::now();
-        $mes = $fecha->format('m');
-        
-        $tramites = tramite::where([['orientadora_id', auth()->user()->id], ['tipo_id', $tipo]])->get();
-        $justificantes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])->whereMonth('created_at', $mes)->get();
-        $paseSalida = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])->whereMonth('created_at', $mes)->get();
-
-        return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes'));
-    }    
 }

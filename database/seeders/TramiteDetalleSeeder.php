@@ -33,11 +33,11 @@ class TramiteDetalleSeeder extends Seeder
         tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Viaje educativo','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-05','del'=>12,'al'=>12]);   
         tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Reunión estudiantil','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-06','del'=>17,'al'=>22]);   
         # 15
-        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Reunión estudiantil','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-06','del'=>14,'al'=>22]);   
-        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Citado en dirección','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-07','del'=>25,'al'=>26]);   
-        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Citado en dirección','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-07','del'=>25,'al'=>26]);   
-        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Creando proyecto swate','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-07','del'=>28,'al'=>29]);   
-        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Creando proyecto sigare','nom_tutor'=> null,'fecha_solicitada'=>'2023-03-07','del'=>28,'al'=>29]);   
+        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Reunión estudiantil','nom_tutor'=> null,'fecha_solicitada'=>'2022-03-06','del'=>14,'al'=>22]);
+        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Citado en dirección','nom_tutor'=> null,'fecha_solicitada'=>'2022-03-07','del'=>25,'al'=>26]);  
+        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Citado en dirección','nom_tutor'=> null,'fecha_solicitada'=>'2022-03-07','del'=>25,'al'=>26]);
+        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Creando proyecto swate','nom_tutor'=> null,'fecha_solicitada'=>'2022-03-07','del'=>28,'al'=>29]); 
+        tramite_detalle::create(['motivo'=>'Otro...','motivo_otro'=>'Creando proyecto sigare','nom_tutor'=> null,'fecha_solicitada'=>'2022-03-07','del'=>28,'al'=>29]);  
         # 20
         tramite_detalle::create(['motivo'=>'Motivo de salud','motivo_otro'=>null,'nom_tutor'=> null,'fecha_solicitada'=>'2023-03-01','del'=>3,'al'=>4]);   
         tramite_detalle::create(['motivo'=>'Motivo de salud','motivo_otro'=>null,'nom_tutor'=> null,'fecha_solicitada'=>'2023-03-01','del'=>3,'al'=>20]);   

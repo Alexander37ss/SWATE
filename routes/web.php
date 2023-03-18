@@ -31,8 +31,8 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     /******************************************************************************/
     
     # Capacidad de visualizar las deciciones de orientadoras a peticiones justificantes 
-    Route::get('home', [OrientadoraController::class, 'historialJustificante']);    
-    Route::get('tramites/historialJustificante/{tipo}', [OrientadoraController::class, 'historialJustificanteTipo']);
+    Route::get('home', [HomeController::class, 'homeHistorial']);    
+    Route::get('tramites/historialJustificante/{tipo}', [HomeController::class, 'homeHistorialTipo']);
 
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
     Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
