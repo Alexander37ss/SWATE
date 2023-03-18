@@ -1,89 +1,88 @@
 @extends('appAlumno')
 
 @section('home')
-    <h5 class="mb-2">Información</h5>
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-info"><i class="fa fa-users"></i></span>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-2 card-title"><i class="far fa-clock"></i> Historial De Tramites</h3>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Clientes</span>
-                <span class="info-box-number">9</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
         </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-success"><i class="fas fa-tools"></i></span>
+        <div class="card-body">
+          <div class="responsive-table">
+            <table class="table table-sm table-hover table-striped" id="TablaHistorial">
+                <thead>
+                    <tr>                    <!-- Especialidad -->
+                        <th>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b>Tipo de tramite</b>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{url('alumno/home', ['tipo' => 2])}}">Pase De Salida</a>
+                                    <a class="dropdown-item" href="{{url('alumno/home', ['tipo' => 3])}}">Justificante</a>
+                                </div>
+                            </div>
+                        </th>
+                        <th>Orientadora a cargo</th>
+                        <th>Motivo</th>
+                        <th>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b>Fecha creada</b>
+                                </button>
+                                <div class="dropdown-menu pt-0 pb-0" aria-labelledby="dropdownMenuButton">
+                                  <input class="form-control" id="busquedaFecha" type="date" placeholder="YYYY-MM" aria-label="Search" onchange="BuscarFecha();">
+                                </div>
+                            </div>
+                        </th>
+                        <th>Dia(s) solicitados</th>
+                    </tr>
+                </thead>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Servicios</span>
-                <span class="info-box-number">8</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
+                <tbody>
+                  @foreach ($justificantes as $just)
+                      <tr>
+                          <td>{{$just->tipo->nombre}}</td>
+                          <td>{{$just->user->name}}</td>
+                          <td>
+                            @if ($just->tramite_detalle->motivo != 'Otro...')
+                              {{$just->tramite_detalle->motivo}}
+                            @else
+                              {{$just->tramite_detalle->motivo_otro}}
+                            @endif
+                          </td>
+                          <td>{{$just->tramite_detalle->fecha_solicitada}}</td>
+                          <td>                              
+                            @if ($just->tramite_detalle->del == $just->tramite_detalle->al)
+                              {{$just->tramite_detalle->del}}
+                            @else
+                              {{$just->tramite_detalle->del}} - {{$just->tramite_detalle->al}}
+                            @endif
+                          </td>
+                      </tr>
+                  @endforeach
+                </tbody>
+            </table>
+          </div>
         </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-warning"><i class="fas fa-cogs"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Mantenimientos</span>
-                <span class="info-box-number">5</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-            <span class="info-box-icon bg-danger"><i class="fas fa-dollar-sign"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Pagos</span>
-                <span class="info-box-number">2</span>
-            </div>
-            <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
+      </div>
     </div>
-    <br>
-    <h5 class="mb-2">Registros</h5>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card card-outline card-warning">
-                <div class="card-header">
-                  <h3 class="card-title">Otra información</h3>
-                </div>
-                <div class="card-body">
-                  Contenido
-                </div>
-                <div class="card-footer">
-                  Footer
-                </div>
-              </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card card-outline card-danger">
-                <div class="card-header">
-                  <h3 class="card-title">Más información</h3>
-                </div>
-                <div class="card-body">
-                  contenido puede ser una tabla
-                </div>
-                <div class="card-footer">
-                  footer
-                </div>
-              </div>
-        </div>
-    </div>
+  </div>
+</div>
 @endsection
+
+
+
+
+
+
+
+

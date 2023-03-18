@@ -275,6 +275,8 @@
 <script src="{{asset('jsswate/breadcrum.js')}}"></script>
 <script src="{{asset('jsswate/appAlumno.js')}}"></script>
 <script src="{{asset('jsswate/main.js')}}"></script>
+<script src="{{asset('jsswate/historial.js')}}"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

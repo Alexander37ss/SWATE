@@ -60,13 +60,18 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
 });
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
+    /*visitar el home del alumno*/
+    Route::get('/home', [HomeController::class, 'homeAlumno']);
+    Route::get('/home/{tipo}', [HomeController::class, 'homeAlumnoTipo']);
+
     /* Justificante de parte del alumno */
     Route::get('/justificante/{nombreAlumno}', [AlumnoController::class, 'justificante']);
+    
+    /* pre-justificante de parte del alumno */
     Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+    
+    /* crear constancia del alumno */
     Route::get('/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
-    Route::get('/home', function () {
-        return view('alumno.home');
-    });
 });
 
 require __DIR__.'/auth.php';

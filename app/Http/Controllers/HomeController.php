@@ -9,7 +9,7 @@ use App\Models\tramite;
 
 class HomeController extends Controller
 {
-        # Funciones para visualización del historial
+        /** Funciones para visualización del historial de orientadora */
         public function homeHistorial(){
             $fecha = Carbon::now();
             $mes = $fecha->format('m');
@@ -49,5 +49,22 @@ class HomeController extends Controller
     
             return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes', 'ano'));
         }  
+
+        /** Funciones para visualización del historial del alumno */ 
+        public function homeAlumno(){
+            $justificantes = tramite::where('alumno_id', auth()->user()->id)
+            ->orderBy('id', 'DESC')
+            ->get();
+
+            return view('alumno.home', compact('justificantes'));
+        }
+
+        public function homeAlumnoTipo($tipo){
+            $justificantes = tramite::where([['alumno_id', auth()->user()->id],['tipo_id', $tipo]])
+            ->orderBy('id', 'DESC')
+            ->get();
+
+            return view('alumno.home', compact('justificantes'));
+        }
 
 }
