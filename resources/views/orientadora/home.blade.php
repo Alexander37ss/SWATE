@@ -60,10 +60,27 @@
           </div>
         </div>
         <div class="card-body">
+          <!-- barra de busqueda -->
+          <div class="shadow-sm">
+            <div class="input-group input-group-sm">
+              <input class="form-control mr-sm-2" id="busquedaHistorial" type="search" placeholder="Escribe el nombre del alumno..." aria-label="Search" onchange="BuscarAlumnosHistorial();">
+              <div class="input-group-append">
+                <button class="btn btn-navbar shadow-sm" id="busquedaBotonHistorial" style="background-color: #a7201f;">
+                  <i class="fas fa-search link-activo"></i>
+                </button>
+              </div>
+              <div class="input-group-append">
+                <a id="BotonFiltroHistorial" class="btn btn-secondary btn-sm" href="{{asset('home')}}">Borrar filtros</a>
+              </div>
+            </div>
+          </div>
+          <!-- fin barra de busqueda -->
+          <br>
+          <!-- TABLA -->
           <div class="responsive-table">
             <table class="table table-sm table-hover table-striped" id="TablaHistorial">
                 <thead>
-                    <tr>                    <!-- Especialidad -->
+                    <tr>
                         <th>
                             <div class="dropdown">
                                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +92,7 @@
                                 </div>
                             </div>
                         </th>
-                        <th>Nombre Alumno</th>
+                        <th>Alumno</th>
                         <th>Motivo</th>
                         <th>
                             <div class="dropdown">

@@ -13,7 +13,7 @@
 <!-- barra de busqueda -->
 <div class="shadow-sm">
     <div class="input-group input-group-sm">
-        <input class="form-control mr-sm-2" id="busquedaConsultar" type="search" placeholder="Filtrar alumnos..." aria-label="Search" onchange="BuscarAlumnos();">
+        <input class="form-control mr-sm-2" id="busquedaConsultar" type="search" placeholder="Escribe el nombre del alumno..." aria-label="Search" onchange="BuscarAlumnos();">
         <div class="input-group-append">
             <!-- boton buscador icono -->
             <button class="btn btn-navbar shadow-sm" id="BotonBuscador" style="background-color: #a7201f;">
@@ -21,7 +21,6 @@
             </button>
         </div>
         <div class="input-group-append">
-        <!-- Borrar filtros :( -->
 <a id="BotonFiltro" class="btn btn-secondary btn-sm" href="{{asset('tramites/consultar')}}">Borrar filtros</a>
 </div>
     </div>

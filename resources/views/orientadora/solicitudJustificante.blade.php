@@ -17,7 +17,7 @@
                 <tr>
                     <th>Ver detalle</th>
                     <th>Nombre</th>
-                    <th>Efectuar</th>
+                    <th>Motivo</th>
                 </tr>
             </thead>
 
