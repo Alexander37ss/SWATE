@@ -47,7 +47,8 @@ function BuscarAlumnosHistorial() {
 
 function BuscarFecha() {
     var filter, table, tr, td, i, txtValue;
-    filter = inputHistorial.value.toUpperCase();
+    const inputFecha = document.querySelector('#busquedaFecha');
+    filter = inputFecha.value.toUpperCase();
     table = document.getElementById("TablaHistorial");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {

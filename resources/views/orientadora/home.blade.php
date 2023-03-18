@@ -18,7 +18,7 @@
         "12" => 'Diciembre'
     ];
 ?>
-<h3 class="mb-2">Información</h3>
+<!-- <h3 class="mb-2">Información</h3> -->
 <div class="row">
   <div class="col-md-6 col-sm-6 col-12">
     <div class="info-box">
