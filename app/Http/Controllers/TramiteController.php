@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\tramite;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use PDF;
 use Carbon\Carbon;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TramiteController extends Controller
 {
     # Descargar el QR vista general (sin iniciar sesión)
     function crearQr($idJustificante){
-        return QrCode::size()->generate('descargar/qr/'.$idJustificante);
+        return QrCode::size(300)->generate('descargar/qr/'.$idJustificante);
     }
 
     function QrDescargarJustificante($idJustificante){

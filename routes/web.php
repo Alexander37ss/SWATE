@@ -5,7 +5,6 @@ use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrientadoraController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +58,7 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
 });
 
-Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'justificanteQr']);
+Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'crearQr']);
 Route::get('descargar/qr/{idJustificante}', [TramiteController::class, 'QrDescargarJustificante']);
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
