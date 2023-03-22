@@ -18,7 +18,6 @@ function BorrarFiltroDinamico(){
     if(url !== "/SWATE/public/tramites/consultar"){
         BotonFiltro.classList.add('btn-danger');
         BotonFiltro.classList.remove('btn-secondary');
-        console.log("xd");
     }
 }
 /* Enfocar la barra de busqueda */

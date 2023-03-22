@@ -5,25 +5,25 @@
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
     <li class="breadcrumb-item active">Solicitudes pendientes</li>
 @stop
 
 @section('contenido')
     <div class="responsive-table">
-        <table class="table table-hover">
+        <table class="table table-sm table-hover table-striped">
 
-            <thead class="thead-dark">
+            <thead>
                 <tr>
                     <th>Ver detalle</th>
                     <th>Nombre</th>
-                    <th>Efectuar</th>
+                    <th>Motivo</th>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach ($pre_justificantes as $pre)
-                        <td><a href="{{ url('tramites/solicitudJustificante', $pre->id) }}">Más detalle</a></td>
+                        <td><a href="{{ url('tramites/solicitudJustificante', $pre->id) }}" class="lopez">Más detalle</a></td>
                         <td>{{$pre->alumno->nombre_completo}}</td>
                         <td>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif</td>     
                     </tr>

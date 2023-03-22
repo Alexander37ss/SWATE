@@ -31,8 +31,8 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     /******************************************************************************/
     
     # Capacidad de visualizar las deciciones de orientadoras a peticiones justificantes 
-    Route::get('home', [OrientadoraController::class, 'historialJustificante']);    
-    Route::get('tramites/historialJustificante/{tipo}', [OrientadoraController::class, 'historialJustificanteTipo']);
+    Route::get('home', [HomeController::class, 'homeHistorial']);    
+    Route::get('tramites/historialJustificante/{tipo}', [HomeController::class, 'homeHistorialTipo']);
 
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
     Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
@@ -60,13 +60,18 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
 });
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
+    /*visitar el home del alumno*/
+    Route::get('/home', [HomeController::class, 'homeAlumno']);
+    Route::get('/home/{tipo}', [HomeController::class, 'homeAlumnoTipo']);
+
     /* Justificante de parte del alumno */
     Route::get('/justificante/{nombreAlumno}', [AlumnoController::class, 'justificante']);
+    
+    /* pre-justificante de parte del alumno */
     Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+    
+    /* crear constancia del alumno */
     Route::get('/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
-    Route::get('/home', function () {
-        return view('alumno.home');
-    });
 });
 
 require __DIR__.'/auth.php';

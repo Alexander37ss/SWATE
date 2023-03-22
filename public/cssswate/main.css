@@ -12,4 +12,13 @@
 .swal2-title {
     color: black !important;
   }
-
+.bg-cetis{
+    background-color: #a7201f;
+    color: white;
+}
+.lopez{
+    color: #A7201F;
+  }
+  .lopez:hover{
+    color: #ff5c7b;
+  }

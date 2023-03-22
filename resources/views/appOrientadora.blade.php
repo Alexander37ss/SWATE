@@ -108,22 +108,22 @@
                 </div>
               </li> -->
               <!-- Notifications Dropdown Menu -->
-              {{-- <li class="nav-item dropdown">
+               <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                   <i class="far fa-bell"></i>
-                  <span class="badge badge-warning navbar-badge">00</span>
+                  <span class="badge badge-warning navbar-badge">0</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <span class="dropdown-item dropdown-header">0 Notifications</span>
+                  <span class="dropdown-item dropdown-header">0 Notificaciones</span>
                   <div class="dropdown-divider"></div>
                   <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> No existen notificaciones98908
+                    <i class="fas fa-envelope mr-2"></i> No existen notificaciones
                     <span class="float-right text-muted text-sm">0</span>
                   </a>
                   <div class="dropdown-divider"></div>
                   <a href="#" class="dropdown-item dropdown-footer">Ver todas las notificaciones</a>
                 </div>
-              </li> --}}
+              </li>
               <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                   <i class="fas fa-expand-arrows-alt"></i>
@@ -146,7 +146,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                <img src="{{asset('images/user.png')}}"class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('images/userojo.png')}}"class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
                     <a href="#" class="d-block">{{ Auth::user()->name; }}</a>
@@ -197,11 +197,11 @@
                     <p>Consultar alumnos</p>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
                     <i class="fas fa-tags nav-icon"></i>
                     <p>Solicitudes pendientes
-                      <span class="badge badge-warning right">6</span>
                     </p>
                   </a>
                 </li>
@@ -250,7 +250,7 @@
           <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 1.0
           </div>
-          <a href="">Página web</a>
+          <a class="lopez">Página web</a>
         </footer>
       </div>
       <!-- ./wrapper -->
@@ -277,6 +277,7 @@
 <script src="{{asset('jsswate/breadcrum.js')}}"></script>
 <script src="{{asset('jsswate/main.js')}}"></script>
 <script src="{{asset('jsswate/consultar.js')}}"></script>
+<script src="{{asset('jsswate/historial.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

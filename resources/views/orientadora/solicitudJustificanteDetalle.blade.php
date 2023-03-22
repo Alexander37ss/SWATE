@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
     <li class="breadcrumb-item active">Solicitar justificante</li>
 @stop
 
@@ -66,9 +66,9 @@
                      
                 <!-- /.card-body -->
                 <div class="form-group ml-4">
-                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar</a>
-                  <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn btn-primary">Confirmar y Descargar</a>
-                  <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn btn-primary">Denegar</a>
+                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar</a>
+                  <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar y Descargar</a>
+                  <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
                 </div>
         </div>
       </div>

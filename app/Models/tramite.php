@@ -26,8 +26,8 @@ class tramite extends Model
         return $this->belongsTo(Tipo_tramite::class, 'tipo_id'); 
     }
     
-    public function orientadora(){ 
-        return $this->belongsTo(Orientadora::class, 'orientadora_id'); 
+    public function user(){ 
+        return $this->belongsTo(User::class, 'orientadora_id'); 
     }
 
     public function alumno(){ 
