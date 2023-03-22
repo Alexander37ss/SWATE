@@ -1,6 +1,9 @@
 @extends('appOrientadora')
 
-@section('home')
+@section('titulo')
+@stop
+
+@section('contenido')
 
 <?php 
     $meses = [
@@ -18,12 +21,10 @@
         "12" => 'Diciembre'
     ];
 ?>
-<!-- <h3 class="mb-2">Información</h3> -->
 <div class="row">
-  <div class="col-md-6 col-sm-6 col-12">
-    <div class="info-box">
-    <span class="info-box-icon bg-cetis"><i class="fa fa-file"></i></span>
-
+  <div class="mr-1 col-md-4">
+  <div class="info-box bg-success">
+      <span class="info-box-icon"><i class="fa fa-file"></i></span>
       <div class="info-box-content">
       <span class="info-box-text">Justificantes de <?php echo($meses[ $mes ]);?> del {{$ano}}</span>
       <span class="info-box-number">{{ $justificantes->count() }}</span>
@@ -33,28 +34,36 @@
     <!-- /.info-box -->
     </div>
   <!-- /.col -->
-  <div class="col-md-6 col-sm-6 col-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-cetis"><i class="fa fa-file"></i></span>
+  <div class="col-md-4">
+    <div class="info-box bg-success">
+      <span class="info-box-icon"><i class="fa fa-file"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Pases de salida de <?php echo($meses[ $mes ]);?> del {{$ano}}</span>
         <span class="info-box-number">{{ $paseSalida->count() }}</span>
       </div>
+      <!-- /.info-box-content -->
     </div>
+        <!-- /.info-box -->
   </div>
-    <!-- otro -->
-    <div class="col-md-6 col-sm-6 col-12">
-
-  <div class="info-box bg-gradient-warning">
-  <span class="info-box-icon"><i class="far fa-bell"></i></span>
-  <div class="info-box-content">
-    <span class="info-box-text">Tramites pendientes</span>
-    <span class="info-box-number">{{ $preJustificantes }}</span>
+  <!-- /.col -->
+    <div class="ml-1 col-md-8 col-sm-6 col-12">
+    <div class="small-box bg-gradient-warning">
+  <div class="inner">
+    <h3>{{ $preJustificantes }}</h3>
+    <p>Solicitudes pendientes</p>
   </div>
+  <div class="icon">
+    <i class="fas fa-bell"></i>
+  </div>
+  <a href="{{asset('tramites/solicitudJustificante')}}" class="small-box-footer">
+    Ver más <i class="fas fa-arrow-circle-right"></i>
+  </a>
 </div>
+      <!-- /.info-box-content -->
 </div>
-
+        <!-- /.info-box -->
 </div>
+  <!-- /.col -->
 <br>
 <div class="container-fluid">
   <div class="row">
@@ -149,5 +158,4 @@
     </div>
   </div>
 </div>
-
 @stop

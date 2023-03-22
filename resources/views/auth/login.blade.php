@@ -12,6 +12,7 @@
         background-color: #DA3B3A;
     }
 </style>
+<link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 <x-guest-layout>
 
     <!-- Session Status -->

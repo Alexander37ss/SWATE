@@ -46,6 +46,11 @@
                       </div>
                 <div class="row">       
       </div>
+      <!-- Observaciones -->
+      <div class = "form-group">
+       <label for="">Observaciones:</label>
+       <textarea type="text" class= "form-control" name="observaciones"></textarea>
+       </div>
     </div>
     <!-- card body -->
     <div class="card-footer">

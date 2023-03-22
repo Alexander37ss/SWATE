@@ -1,6 +1,9 @@
 @extends('appAlumno')
 
-@section('home')
+@section('titulo')
+@stop
+
+@section('contenido')
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -19,7 +22,7 @@
           <div class="responsive-table">
             <table class="table table-sm table-hover table-striped" id="TablaHistorial">
                 <thead>
-                    <tr>                    <!-- Especialidad -->
+                    <tr>
                         <th>
                             <div class="dropdown">
                                 <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,11 +81,3 @@
   </div>
 </div>
 @stop
-
-
-
-
-
-
-
-
