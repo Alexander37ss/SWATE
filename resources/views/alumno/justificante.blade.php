@@ -10,6 +10,7 @@
 @stop
 
 @section('contenido')
+
 <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 <section class="content">
   <div class="container-fluid">
@@ -19,7 +20,8 @@
         <!-- general form elements -->
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{url('tramites/prejustificanteAlumno', auth()->user()->name)}}" method="POST">
+
+          <form action="{{url('alumno/prejustificante', auth()->user()->name)}}" method="POST">
           @csrf 
             <div class="card-body">
             <!-- Alumno -->

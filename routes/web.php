@@ -59,6 +59,9 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
 });
 
+Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'justificanteQr']);
+Route::get('descargar/qr/{idJustificante}', [TramiteController::class, 'QrDescargarJustificante']);
+
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
     /*visitar el home del alumno*/
     Route::get('/home', [HomeController::class, 'homeAlumno']);
@@ -71,7 +74,7 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
     Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
     
     /* crear constancia del alumno */
-    Route::get('/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('/constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
 });
 
 require __DIR__.'/auth.php';

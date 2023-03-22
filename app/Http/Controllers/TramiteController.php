@@ -4,21 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\tramite;
+
 use PDF;
 use Carbon\Carbon;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TramiteController extends Controller
 {
-
-    function ConstanciaAlumnoPDF($nombreusuario){
-        $alumno = Alumno::where('nombre_completo', $nombreusuario)->first(); //DAtos de la base de datos
-        $fecha = Carbon::now();
-        $dia = $fecha->format('j');
-        $mes = $fecha->format('m');
-        $ano = $fecha->format('Y');
-        PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano)); //Carga la vista y la convierte a PDF
-        return $pdf->download("constanciaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
+    # Descargar el QR vista general (sin iniciar sesión)
+    function crearQr($idJustificante){
+        return QrCode::size()->generate('descargar/qr/'.$idJustificante);
     }
+
+    function QrDescargarJustificante($idJustificante){
+
+
+        
+        PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
+        $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $alumno, 'motivo' => $motivo, 'otro' => $otro, 'fecha_solicitada' => $fecha, 'del' => $del, 'al' => $al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
+        return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf");
+    }
+
 }
 
