@@ -22,3 +22,22 @@
   .lopez:hover{
     color: #ff5c7b;
   }
+  .irizar{
+    color: black;
+  }
+  .irizar:hover{
+    color: #2A2A2A;
+  }
+  .logo-cetis{
+    margin-left: 10.5em;
+  }
+  .h-18{
+    height: 18%;
+  }
+  .w-13{
+    width: 13%;
+  }
+  .cursor-open{
+    cursor: pointer;
+  }
+  

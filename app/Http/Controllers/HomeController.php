@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Carbon\Carbon;
 use App\Models\tramite;
+use App\Models\Pre_justificante;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,10 @@ class HomeController extends Controller
             $mes = $fecha->format('m');
             $ano = $fecha->format('Y');
             
+            $preJustificantes = Pre_justificante::where('estatus_solicitud', 0)
+            ->get();
+            $preJustificantes = $preJustificantes->count();
+
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
             ->orderBy('id', 'DESC')
             ->get();
@@ -27,7 +32,7 @@ class HomeController extends Controller
             ->whereYear('created_at', $ano)
             ->get();
     
-            return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes', 'ano'));
+            return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes', 'ano', 'preJustificantes'));
         }
         
         public function homeHistorialTipo($tipo){

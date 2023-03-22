@@ -32,7 +32,7 @@
                 <tr>
                 <!-- Nombre -->
                 <th><div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" onclick="EnfocarBarraBusqueda();">
+                <button class="btn bg-white dropdown-toggle" type="button" onclick="EnfocarBarraBusqueda();">
                     <b>Nombre</b>
                 </button>
                 </div>
@@ -40,7 +40,7 @@
                     <!-- Especialidad -->
             <th>
                 <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <b>Especialidad</b>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -55,7 +55,7 @@
             <!-- Grupo -->
             <th>
                 <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <b>Grupo</b>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -67,7 +67,7 @@
             </th>
             <!-- Sexo -->
             <th><div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <b>Sexo</b>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

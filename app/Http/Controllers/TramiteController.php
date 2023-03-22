@@ -7,7 +7,7 @@ use App\Models\Alumno;
 use PDF;
 use Carbon\Carbon;
 
-class TramiteController extends Controller
+class TramiteController extends BaseController
 {
 
     function ConstanciaAlumnoPDF($nombreusuario){

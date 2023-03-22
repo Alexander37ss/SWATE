@@ -42,6 +42,17 @@
       </div>
     </div>
   </div>
+    <!-- otro -->
+    <div class="col-md-6 col-sm-6 col-12">
+
+  <div class="info-box bg-gradient-warning">
+  <span class="info-box-icon"><i class="far fa-bell"></i></span>
+  <div class="info-box-content">
+    <span class="info-box-text">Tramites pendientes</span>
+    <span class="info-box-number">{{ $preJustificantes }}</span>
+  </div>
+</div>
+</div>
 
 </div>
 <br>
@@ -83,7 +94,7 @@
                     <tr>
                         <th>
                             <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <b>Tipo de tramite</b>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -96,7 +107,7 @@
                         <th>Motivo</th>
                         <th>
                             <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn bg-white dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <b>Fecha creada</b>
                                 </button>
                                 <div class="dropdown-menu pt-0 pb-0" aria-labelledby="dropdownMenuButton">
@@ -139,4 +150,4 @@
   </div>
 </div>
 
-@endsection
+@stop
