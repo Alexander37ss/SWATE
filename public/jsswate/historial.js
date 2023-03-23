@@ -46,20 +46,20 @@ function BuscarAlumnosHistorial() {
 
 
 function BuscarFecha() {
-    var filter, table, tr, td, i, txtValue;
-    const inputFecha = document.querySelector('#busquedaFecha');
-    filter = inputFecha.value.toUpperCase();
-    table = document.getElementById("TablaHistorial");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[3];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
+  var filter, table, tr, td, i, txtValue;
+  const inputFecha = document.querySelector('#busquedaFecha');
+  table = document.getElementById("TablaHistorial");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue == inputFecha.value) {
+        console.log(txtValue);
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
       }
     }
   }
+}

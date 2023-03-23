@@ -1,6 +1,9 @@
 @extends('appAlumno')
 
-@section('home')
+@section('titulo')
+@stop
+
+@section('contenido')
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -24,7 +27,7 @@
                         <th>Motivo</th>
                         <th>
                             <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn bg-white dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <b>Fecha creada</b>
                                 </button>
                                 <div class="dropdown-menu pt-0 pb-0" aria-labelledby="dropdownMenuButton">
@@ -72,4 +75,4 @@
     </div>
   </div>
 </div>
-@endsection
+@stop

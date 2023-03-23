@@ -138,7 +138,7 @@
           <!-- Brand Logo -->
           <a href="{{asset('/home')}}" class="brand-link">
             <img src="{{ url('img/cetis.png') }}" alt="baessh" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-semibold">CETIS 107</span>
+            <span class="brand-text font-weight-semibold">SWATE</span>
           </a>
 
           <!-- Sidebar -->

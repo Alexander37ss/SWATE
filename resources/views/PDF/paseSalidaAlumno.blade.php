@@ -26,7 +26,7 @@
             width: 650px;
         }
         .tamano{
-            font-size: 15px;
+            font-size: 10px;
             font-family: sans-serif;
             text-align: justify;
         }
@@ -49,6 +49,9 @@
         .linea{
             text-decoration: underline;
         }
+        .dos{
+            width: 650px;
+        }
     </style>
 </head>
 <?php
@@ -68,89 +71,85 @@
     ];
 ?>
 <body>
-    <div class="contenedor">
+            <!-- UNO -->
+            <div class="contenedor">
         <img class="header" src="{{asset('img/header.jpg')}}">
     </div>
     <div class="tamano">
-        <br><br><br><br>
+        <br><br>
         <div class="fecha-lugar">
             Culiacán Sin., {{ $fecha_solicitada->format('j') }} 
             de <?php echo($meses[ $mes ]); ?>
             del {{ $fecha_solicitada->format('Y') }}.
         </div>
-        <div class="oficio">
-            <span class="linea">OFICIO: </span><b></b><br>
-        </div>
-        <br><br>
+        <br>
         <div align="center"><b>PASE DE SALIDA</b><br></div>
 
     <br>
-    <span class="linea">C.C. PROFESORES DEL GRUPO: </span><b>{{ $alumno->grupo }}</b><br>
-    <span class="linea">ESPECIALIDAD: </span><b>{{ $alumno->carrera }}</b><br>
-    <span class="linea">GRUPO Y GRADO: </span><b class="datosalumno">{{ $alumno->grupo }}</b><br>
-    <span class="linea">P R E S E N T E.</span>
+    <span class="linea">NOMBRE: </span><b>{{ $alumno->nombre_completo }}</b><br>
+    <span class="linea">HORA DE SALIDA: </span><b>{{ $hora }}</b><br>
+    <span class="linea">MOTIVO DE SALIDA: </span><b class="datosalumno">{{ $motivo }}</b><br>
+    <span class="linea">OBSERVACIONES: </span><b>{{ $observaciones }}</b><br>
     <br><br>
-    <div class="texto">
-        Por este conducto, solicito le sea(n) justificada(s) las inasistencias al alumno(s): 
-        <b>{{ $alumno->nombre_completo}}</b> quien, por motivos <b>
-        </b>, no asistió a clase el(los) dia(s):<b>
-        DE <?php echo($meses[ $mes ]); ?>
-        del {{ $fecha_solicitada->format('Y') }}</b> del presente año. 
-        <br>
-        Cabe señalar que es RESPONSABILIDAD del ALUMNO(A) regularizarse en la entrega de trabajos y/o tareas que el(la) profesor(a) haya encomendado, haciendo mención que el presente documento NO EXENTA al alumno de sus obligaciones académicas.
+    <div class="row">
+        <div class="float-left ml-5">
+            <div class="text-center">
+                <p><b>A T E N T A M E N T E</b></p><br>
+                <p ><b>____________________________________</b></p>
+                <p ><b>LIC. ROSANGEL CAMACHO GONZÁLEZ</b></p>
+                <p ><b>ORIENTADORA EDUCATIVA DEL 2DO. SEMESTRE</b></p>
+            </div>
+        </div>
+        <div>
+            <div class="text-center">
+                <p><b>A T E N T A M E N T E</b></p><br>
+                <p><b>____________________________________</b></p>
+                <p><b>{{$alumno -> nombre_completo}}</b></p>
+                <p><b>PAPÁ</b></p>
+            </div>
+        </div>
     </div>
+        <br>
+        <footer ><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
+
+        <br><br><br><br><hr><br>
+            <!-- DOS -->
+        <img class="dos" src="{{asset('img/header.jpg')}}">
+    <div class="tamano">
+        <br><br>
+        <div class="fecha-lugar">
+            Culiacán Sin., {{ $fecha_solicitada->format('j') }} 
+            de <?php echo($meses[ $mes ]); ?>
+            del {{ $fecha_solicitada->format('Y') }}.
+        </div>
+        <br>
+        <div align="center"><b>PASE DE SALIDA</b><br></div>
+
     <br>
-    <p align="center"><b>A T E N T A M E N T E</b></p>
-    <br>
-    <p align="center"><b>____________________________________</b></p>
-    <br>
-    <p align="center"><b>LIC. ROSANGEL CAMACHO GONZÁLEZ</b></p>
-    <p align="center"><b>ORIENTADORA EDUCATIVA DEL 2DO. SEMESTRE</b></p>
-    <br>
-<!--     tabla -->
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Asignatura</th>
-                <th>Nombre del Profesor</th>
-                <th>Firma</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    Fundamentos en los Artículos 31 y 80 del Reglamento Escolar del Plantel
-</div>
-<footer class="piedepagina"><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
+    <span class="linea">NOMBRE: </span><b>{{ $alumno->nombre_completo }}</b><br>
+    <span class="linea">HORA DE SALIDA: </span><b>{{ $hora }}</b><br>
+    <span class="linea">MOTIVO DE SALIDA: </span><b class="datosalumno">{{ $motivo }}</b><br>
+    <span class="linea">OBSERVACIONES: </span><b>{{ $observaciones }}</b><br>
+    <br><br>
+    <div class="row">
+        <div class="float-left ml-5">
+            <div class="text-center">
+                <p><b>A T E N T A M E N T E</b></p><br>
+                <p ><b>____________________________________</b></p>
+                <p ><b>LIC. ROSANGEL CAMACHO GONZÁLEZ</b></p>
+                <p ><b>ORIENTADORA EDUCATIVA DEL 2DO. SEMESTRE</b></p>
+            </div>
+        </div>
+        <div>
+            <div class="text-center">
+                <p><b>A T E N T A M E N T E</b></p><br>
+                <p><b>____________________________________</b></p>
+                <p><b>{{$alumno -> nombre_completo}}</b></p>
+                <p><b>PAPÁ</b></p>
+            </div>
+        </div>
+    </div>
+        <br>
+        <footer ><img src="{{asset('img/footer.jpg')}}" alt=""></footer>
 </body>
 </html>

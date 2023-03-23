@@ -11,7 +11,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PDF;
 use Carbon\Carbon;
 
-class TramiteController extends Controller
+class TramiteController extends BaseController
 {
     # Descargar el QR vista general (sin iniciar sesión)
     function crearQr($idJustificante){

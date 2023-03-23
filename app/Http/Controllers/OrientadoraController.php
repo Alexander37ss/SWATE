@@ -77,8 +77,22 @@ class OrientadoraController extends Controller
         $alumno = Alumno::find($id);
         $motivo = Request('motivo');
         $otro = Request('otro');
+        $observaciones = Request('observaciones');
         $fecha = Carbon::now();
         $mes = $fecha->format('m');
+
+        $hora = $fecha->format('H:i');
+        $horario = 'AM';
+
+        if($hora > 12){
+            $horario = 'PM';
+        }else{
+            $horario = 'AM';
+        }
+
+        if($motivo == 'Otro'){
+            $motivo = $otro;
+        }
 
         $tramite_detalles = New tramite_detalle;
         $tramite_detalles->motivo = $motivo;
@@ -94,7 +108,7 @@ class OrientadoraController extends Controller
         $tramite->save();
 
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.paseSalidaAlumno',   array('alumno' => $alumno, 'motivo' => $motivo, 'otro' => $otro, 'fecha_solicitada' => $fecha, 'mes' => $mes)); //Carga la vista y la convierte a PDF
+        $pdf = PDF::loadView('PDF.paseSalidaAlumno',   array('alumno' => $alumno, 'motivo' => $motivo, 'otro' => $otro, 'fecha_solicitada' => $fecha, 'mes' => $mes, 'hora' => $hora, 'horario' => $horario, 'observaciones' => $observaciones)); //Carga la vista y la convierte a PDF
         return $pdf->download("paseSalidaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 
