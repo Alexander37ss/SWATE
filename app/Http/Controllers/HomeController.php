@@ -77,5 +77,4 @@ class HomeController extends Controller
 
             return view('alumno.home', compact('justificantes', 'preJustificantes'));
         }
-
 }

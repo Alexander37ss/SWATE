@@ -10,16 +10,15 @@
 @stop
 
 @section('contenido')
+
 <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 <section class="content">
   <div class="container-fluid">
     <div class="row">
       <!-- left column -->
       <div class="col-md-10">
-        <!-- general form elements -->
-          <!-- /.card-header -->
-          <!-- form start -->
-          <form action="{{url('tramites/prejustificanteAlumno', auth()->user()->name)}}" method="POST">
+
+          <form action="{{url('alumno/prejustificante', auth()->user()->name)}}" method="POST">
           @csrf 
             <div class="card-body">
             <!-- Alumno -->
@@ -30,7 +29,7 @@
             <!-- Motivo -->
             <div class="form-group">
               <label for="exampleSelectBorder">Motivo:</label>
-              <select name="motivo" class="custom-select form-control-border" id="Motivo" onchange="AparecerOtroMotivo()" required>
+              <select name="motivo" class="custom-select form-control-border" id="motivos" onchange="AparecerOtroMotivo()" required>
                 <option>Escoge un motivo...</option>
                 <option value="Motivos de salud">Motivo de salud</option>
                 <option value="Motivos vacacional">Motivo vacacional</option>
@@ -121,8 +120,8 @@
                     </div>
                   </div>
 
-              <!-- Evidencia -->
-              <div class="form-group ml-2">
+              <!--
+                <div class="form-group ml-2">
                 <label for="exampleInputFile">Añadir evidencia(opcional)</label>
                 <div class="input-group">
                   <div class="custom-file">
@@ -132,7 +131,6 @@
                 </div>
               </div>
 
-              <!-- INE -->
               <div class="form-group ml-2">
                   <label for="exampleInputFile">INE del padre o tutor:</label>
                   <div class="input-group">
@@ -143,7 +141,7 @@
                   </div>
                   <br>
                         
-                <!-- /.card-body -->
+                -->
                 <div class="card-footer">
                   <button type="submit" class="btn bg-cetis">Confirmar</button>
                 </div>

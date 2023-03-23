@@ -1,12 +1,12 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h1>Solicitar justificante</h1>
+    <h1>Solicitud justificante</h1>
 @stop
 
 @section('breadcrum')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
-    <li class="breadcrumb-item active">Solicitar justificante</li>
+    <li class="breadcrumb-item active">Solicitud justificante</li>
 @stop
 
 @section('contenido')
@@ -65,12 +65,17 @@
                 </div>
                      
                 <!-- /.card-body -->
-                <div class="form-group ml-4">
-                  <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar</a>
-                  <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar y Descargar</a>
-                  <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
-                </div>
-        </div>
+                
+            <!-- Alumno -->
+                  <div class='form-group ml-4'>
+                    <a href="{{asset('/tramites/solicitudJustificante')}}" class="btn bg-cetis inactive" id="regresar"> Regresar </a> 
+                  </div>
+                  <div class="form-group ml-4" id="botonesDetalle">
+                    <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar</a>
+                    <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis" id="refresh">Confirmar y Descargar</a>
+                    <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
+                  </div>
+              </div>
       </div>
   </div>
 <script src="{{ asset('jsswate/main.js') }}"></script>

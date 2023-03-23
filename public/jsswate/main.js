@@ -22,19 +22,4 @@ const home_icon = document.querySelector('#homeicon');
 const orientadoras = document.querySelector('#orientadoras');
 const consultar = document.querySelector('#consultar');
 const tieneClase = consultar.classList.contains('active');
-/* if(tieneClase){
-    orientadoras.classList.add('link-activo');
-}else{
-    orientadoras.classList.remove('link-activo');
-} */
 
-const OtroMotivo = document.querySelector('#OtroMotivo');
-const Motivo = document.querySelector('#Motivo');
-
-function AparecerOtroMotivo(){
-    if(Motivo.value === "Otro"){
-        OtroMotivo.classList.remove('inactive');
-    }else{
-        OtroMotivo.classList.add('inactive');
-    }
-}

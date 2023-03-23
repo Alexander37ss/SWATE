@@ -5,7 +5,6 @@ use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrientadoraController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +36,6 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
     Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
     Route::get('tramites/consultar/grupo/{grupo}', [OrientadoraController::class, 'consultarGrupo']);  
-    Route::get('tramites/consultar/sexo/{sexo}', [OrientadoraController::class, 'consultarSexo']);  
     
     /* Justificante de parte de orientacion */
     Route::get('tramites/justificanteOrientadora/{nombrealumno}', [OrientadoraController::class, 'justificanteOrientadora']);
@@ -56,8 +54,11 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::post('tramites/procesoPaseSalida/{id}', [OrientadoraController::class, 'paseSalidaPDF']);    
         
     /* Constancia de estudio para ambas partes*/
-    Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
 });
+
+Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'crearQr']);
+Route::get('descargar/qr/{idJustificante}', [TramiteController::class, 'QrDescargarJustificante']);
 
 Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], function(){
     /*visitar el home del alumno*/
@@ -71,7 +72,7 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
     Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
     
     /* crear constancia del alumno */
-    Route::get('/constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('/constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
 });
 
 require __DIR__.'/auth.php';

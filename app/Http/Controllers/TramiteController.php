@@ -4,21 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\tramite;
+use App\Models\tramite_detalle;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 use PDF;
 use Carbon\Carbon;
 
 class TramiteController extends BaseController
 {
-
-    function ConstanciaAlumnoPDF($nombreusuario){
-        $alumno = Alumno::where('nombre_completo', $nombreusuario)->first(); //DAtos de la base de datos
-        $fecha = Carbon::now();
-        $dia = $fecha->format('j');
-        $mes = $fecha->format('m');
-        $ano = $fecha->format('Y');
-        PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano)); //Carga la vista y la convierte a PDF
-        return $pdf->download("constanciaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
+    # Descargar el QR vista general (sin iniciar sesión)
+    function crearQr($idJustificante){
+        return QrCode::size(300)->generate('htpp://164.92.190.198/descargar/qr/'.$idJustificante);
     }
+
+    function QrDescargarJustificante($idJustificante){
+        # Obtenemos los datos de la base
+        $tramite = tramite::find($idJustificante);
+        $alumno = Alumno::find($tramite->alumno_id);
+        $tramite_detalle = tramite_detalle::find($tramite->tramite_id);
+
+        $mes = $tramite_detalle->created_at->format('m'); # Obtenemos el mes en el que se solicito
+        
+        $fecha_solicitada = $tramite_detalle->created_at;
+        
+        PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
+        $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $alumno, 
+                            'motivo' => $tramite_detalle->motivo, 'otro' => $tramite_detalle->motivo_otro, 
+                            'fecha_solicitada' => $fecha_solicitada, 
+                            'del' => $tramite_detalle->del, 'al' => $tramite_detalle->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
+        
+        return $pdf->stream("justificanteAlumno".$alumno->nombre.".pdf");
+    }
+
 }
 

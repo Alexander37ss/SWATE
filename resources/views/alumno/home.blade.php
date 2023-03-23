@@ -23,17 +23,6 @@
             <table class="table table-sm table-hover table-striped" id="TablaHistorial">
                 <thead>
                     <tr>
-                        <th>
-                            <div class="dropdown">
-                                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <b>Tipo de tramite</b>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{url('alumno/home', ['tipo' => 2])}}">Pase De Salida</a>
-                                    <a class="dropdown-item" href="{{url('alumno/home', ['tipo' => 3])}}">Justificante</a>
-                                </div>
-                            </div>
-                        </th>
                         <th>Orientadora a cargo</th>
                         <th>Motivo</th>
                         <th>
@@ -47,19 +36,19 @@
                             </div>
                         </th>
                         <th>Dia(s) solicitados</th>
+                        <th>Descargar</th>
                     </tr>
                 </thead>
 
                 <tbody>
                   @foreach ($justificantes as $just)
                       <tr>
-                          <td>{{$just->tipo->nombre}}</td>
-                          <td>{{$just->user->name}}</td>
-                          <td>
+                        <td>{{$just->user->name}}</td>
+                        <td>
                             @if ($just->tramite_detalle->motivo != 'Otro...')
-                              {{$just->tramite_detalle->motivo}}
+                            {{$just->tramite_detalle->motivo}}
                             @else
-                              {{$just->tramite_detalle->motivo_otro}}
+                            {{$just->tramite_detalle->motivo_otro}}
                             @endif
                           </td>
                           <td>{{$just->tramite_detalle->fecha_solicitada}}</td>
@@ -70,6 +59,12 @@
                               {{$just->tramite_detalle->del}} - {{$just->tramite_detalle->al}}
                             @endif
                           </td>
+                          <td>
+                                <a title="Descargar QR" class="btn" style="color: white; background-color: #a7201f;" href="{{url('crear/qr', $just->id)}}">
+                                  <i class="fas fa-qrcode"></i>
+                                </a>
+                          </td>
+
                       </tr>
                   @endforeach
                 </tbody>
