@@ -278,6 +278,7 @@
 <script src="{{asset('jsswate/main.js')}}"></script>
 <script src="{{asset('jsswate/consultar.js')}}"></script>
 <script src="{{asset('jsswate/historial.js')}}"></script>
+<script src="{{asset('jsswate/recargarPagina.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

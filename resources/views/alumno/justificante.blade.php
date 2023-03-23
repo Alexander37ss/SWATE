@@ -17,9 +17,6 @@
     <div class="row">
       <!-- left column -->
       <div class="col-md-10">
-        <!-- general form elements -->
-          <!-- /.card-header -->
-          <!-- form start -->
 
           <form action="{{url('alumno/prejustificante', auth()->user()->name)}}" method="POST">
           @csrf 

@@ -21,8 +21,8 @@
             </button>
         </div>
         <div class="input-group-append">
-<a id="BotonFiltro" class="btn btn-secondary btn-sm" href="{{asset('tramites/consultar')}}">Borrar filtros</a>
-</div>
+            <a id="BotonFiltro" class="btn btn-secondary btn-sm" href="{{asset('tramites/consultar')}}">Borrar filtros</a>
+        </div>
     </div>
 </div>
     <br>
@@ -65,33 +65,15 @@
                     </div>
                 </div>
             </th>
-            <!-- Sexo -->
-            <th><div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Sexo</b>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{url('tramites/consultar/sexo', ['Sexo' => 'H',])}}">Masculino</a>
-                    <a class="dropdown-item" href="{{url('tramites/consultar/sexo', ['Sexo' => 'M',])}}">Femenino</a>
-                </div>
-                </div>
-            </th>
-                    <th></th>
-                </tr>
+            <th></th>
+            </tr>
             </thead>
             <tbody>
                 @foreach ($alumnos as $a)
                 <tr id="Alumno">
                     <td id="AlumnoTd">{{$a->nombre_completo}}</td>
                     <td>{{$a->carrera}}</td>
-                    <td>{{$a->grupo}}</td>
-                    <td>
-                        @if ($a->sexo == 'M')
-                            Femenino
-                        @else
-                            Masculino
-                        @endif
-                    </td>
+                    <td>{{$a->grupo}}</td>  
                     <td>
                         <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
                             <i class="far fa-file-pdf link-activo"></i>

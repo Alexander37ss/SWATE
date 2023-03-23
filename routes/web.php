@@ -36,7 +36,6 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
     Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
     Route::get('tramites/consultar/grupo/{grupo}', [OrientadoraController::class, 'consultarGrupo']);  
-    Route::get('tramites/consultar/sexo/{sexo}', [OrientadoraController::class, 'consultarSexo']);  
     
     /* Justificante de parte de orientacion */
     Route::get('tramites/justificanteOrientadora/{nombrealumno}', [OrientadoraController::class, 'justificanteOrientadora']);
@@ -55,7 +54,7 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::post('tramites/procesoPaseSalida/{id}', [OrientadoraController::class, 'paseSalidaPDF']);    
         
     /* Constancia de estudio para ambas partes*/
-    Route::get('constancia/pdf/{nombreusuario}', [TramiteController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
 });
 
 Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'crearQr']);

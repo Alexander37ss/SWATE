@@ -19,13 +19,8 @@ class OrientadoraController extends Controller
         $alumnos = Alumno::all();
         return view('orientadora.consultar', compact('alumnos'));
     }
-
     function consultarEspecialidad($especialidad){
         $alumnos = Alumno::where('carrera', $especialidad)->get();
-        return view('orientadora.consultar', compact('alumnos'));
-    }
-    function consultarSexo($sexo){
-        $alumnos = Alumno::where('sexo', $sexo)->get();
         return view('orientadora.consultar', compact('alumnos'));
     }
     function consultarGrupo($grupo){
@@ -180,9 +175,8 @@ class OrientadoraController extends Controller
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
         $pdf = PDF::loadView('PDF.JustificanteAlumno', array('alumno' => $datosAlumno, 'motivo' => $datosPre->motivo, 'otro' => $datosPre->motivo_otro, 'fecha_solicitada' => $fecha, 'del' => $datosPre->del, 'al' => $datosPre->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
         
-        $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf");
+        return $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf");
         
-        return redirect('tramites/solicitudJustificante');
     }
     public function solicitudJustificanteDenegar($idPre){
         $datosPre = Pre_justificante::find($idPre);
