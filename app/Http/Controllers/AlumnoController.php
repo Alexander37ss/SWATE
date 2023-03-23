@@ -6,6 +6,7 @@ use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\tramite;
 use App\Models\Pre_justificante;
 use App\Models\User;
 
@@ -37,9 +38,17 @@ class AlumnoController extends Controller
 
         $Pre_justificante->save();
 
-        session()->flash('status', 'Solicitud enviada!');
-
-        return view('alumno.justificante');
+        session()->flash('status', 'Tu solicitud de justificante ha sido enviada exitosamente!, se te notificará cuando sea aceptada.');
+        
+        
+        $justificantes = tramite::where('alumno_id', auth()->user()->id)
+        ->orderBy('id', 'DESC')
+        ->get();
+        $preJustificantes = Pre_justificante::where('estatus_solicitud', 0)
+        ->get();
+        $preJustificantes = $preJustificantes->count();
+        
+        return view('alumno.home', compact('justificantes'));
     }
     
     # Descargar constancia estudio, vista alumno

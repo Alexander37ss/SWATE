@@ -8,6 +8,13 @@
   <div class="row">
     <div class="col-12">
       <!-- Default box -->
+      @if(session('status'))
+      <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-check"></i> Realizado con éxito!</h5>
+                  {{ session('status') }}
+                </div>
+        @endif
       <div class="card">
         <div class="card-header">
           <h3 class="mb-2 card-title"><i class="far fa-clock"></i> Historial De Tramites</h3>
@@ -18,6 +25,7 @@
             </button>
           </div>
         </div>
+        
         <div class="card-body">
           <div class="responsive-table">
             <table class="table table-sm table-hover table-striped" id="TablaHistorial">
