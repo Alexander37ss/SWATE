@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import '@sweetalert2/themes/dark/dark.scss';
+
 @charset "UTF-8";
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
@@ -53,6 +55,7 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+
 
 body {
   margin: 0;

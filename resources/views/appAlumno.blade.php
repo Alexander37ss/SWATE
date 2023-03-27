@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
-
+  <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
   <style>
     div nav ul {
@@ -21,7 +22,7 @@
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini sidebar-collapse">
-    <div class="wrapper">
+<div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0" style="background-color: #A7201F;">
             <!-- Left navbar links -->
@@ -29,9 +30,9 @@
               <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
               </li>
-              <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{url('/')}}" class="nav-link">Principal</a>
-              </li>
+<!--               <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{url('swate/home')}}" class="nav-link">Principal</a>
+              </li> -->
             </ul>
 
             <!-- SEARCH FORM -->
@@ -137,7 +138,7 @@
           <!-- Brand Logo -->
           <a href="{{asset('/home')}}" class="brand-link">
             <img src="{{ url('img/cetis.png') }}" alt="baessh" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-semibold">CETIS 107</span>
+            <span class="brand-text font-weight-semibold">SWATE</span>
           </a>
 
           <!-- Sidebar -->
@@ -145,7 +146,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                <img src="{{asset('images/user.png')}}"class="img-circle elevation-2" alt="User Image">
+                <img src="{{asset('images/userojo.png')}}"class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
                     <a href="#" class="d-block">{{ Auth::user()->name; }}</a>
@@ -179,61 +180,29 @@
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item active">
-                  <a href="{{asset('/home')}}" class="nav-link">
-                  <i class="nav-icon fas fa-home"></i>
-                    <p>
+                <li class="nav-item">
+                  <a href="{{asset('/home')}}" class="nav-link" id="home">
+                  <i class="nav-icon fas fa-home" id="homeicon"></i>
+                    <p id = "parrafohome">
                       Inicio
                     </p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users""></i>
-                    <p>
-                       Alumnos
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
+                {{-- material del alumno --}}
+
                     <li class="nav-item">
-                      <a href="{{asset('/alumno/consultar')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Consultar</p>
+                      <a href="{{url('alumno/justificante', auth()->user()->name)}}" class="nav-link"> 
+                      <i class="fas fa-file-alt nav-icon"></i>
+                        <p>Solicitar justificante</p>
                       </a>
                     </li>
-                    <li class="nav-item">
-                      <a href="{{asset('/alumno/registrar')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Registrar</p>
+                <li class="nav-item">
+                      <a href="{{url('alumno/constancia/pdf', auth()->user()->name)}}" class="nav-link" onclick="constanciaDescargar();">
+                      <i class="fas fa-file-pdf nav-icon"></i>
+                        <p>Descargar constancia</p>
                       </a>
                     </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-file""></i>
-                      <p>
-                         Tramites
-                        <i class="fas fa-angle-left right"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{asset('tramites/justificante')}}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Justificante</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{asset('tramites/constancia')}}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Constancia</p>
-                        </a>
-                      </li>
-                    </ul>
-                </li>
-              </ul>
+
             </nav>
             <!-- /.sidebar-menu -->
           </div>
@@ -278,7 +247,7 @@
           <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 1.0
           </div>
-          <a href="">Página web</a>
+          <a class="lopez">Página web</a>
         </footer>
       </div>
       <!-- ./wrapper -->
@@ -301,7 +270,14 @@
 <script src="{{asset('js/Chart.min.js')}}"></script>
 
 <!-- AdminLTE for demo purposes -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script src="{{asset('js/demo.js')}}"></script>
+<script src="{{asset('jsswate/breadcrum.js')}}"></script>
+<script src="{{asset('jsswate/appAlumno.js')}}"></script>
+<script src="{{asset('jsswate/main.js')}}"></script>
+<script src="{{asset('jsswate/justificanteAlumno.js')}}"></script>
+<script src="{{asset('jsswate/historial.js')}}"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')

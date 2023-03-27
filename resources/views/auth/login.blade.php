@@ -12,6 +12,7 @@
         background-color: #DA3B3A;
     }
 </style>
+<link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 <x-guest-layout>
 
     <!-- Session Status -->
@@ -19,6 +20,11 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <a href="/">
+                    <img class="w-13 h-18 fill-current text-gray-800 logo-cetis mt-2 mb-2" src="{{asset('/img/cetis.png')}}">
+                </a>
+                <hr>
+                <br>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Correo electronico')" />
@@ -46,16 +52,16 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-center mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+<!--                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Has olvidado la contraseña?') }}
-                </a>
+                </a> -->
             @endif
 
             <!-- Botón iniciar sesion -->
             <div class="ml-3">
-                <button class="inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-custom focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >Iniciar sesión</button>
+                <button class="text-custom bg-cetis inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-custom focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >Iniciar sesión</button>
             </div>
         </div>
     </form>
