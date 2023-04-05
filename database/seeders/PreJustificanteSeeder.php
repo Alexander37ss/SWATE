@@ -22,6 +22,20 @@ class PreJustificanteSeeder extends Seeder
             'fecha_solicitada' => '2023-03-01',
             'estatus_solicitud' => 1
         ]); 
+        Pre_justificante::create([
+            'alumno_id' => 1, 
+            'motivo'    => 'Motivos de salud','motivo_otro' => null,
+            'del'       => 3,'al'=> 8,
+            'fecha_solicitada' => '2023-03-01',
+            'estatus_solicitud' => 0
+        ]); 
+        Pre_justificante::create([
+            'alumno_id' => 1, 
+            'motivo'    => 'Motivos de prueba','motivo_otro' => null,
+            'del'       => 4,'al'=> 10,
+            'fecha_solicitada' => '2023-03-01',
+            'estatus_solicitud' => 0
+        ]); 
         
         Pre_justificante::create([
             'alumno_id' => 2, 

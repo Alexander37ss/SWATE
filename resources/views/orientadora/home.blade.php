@@ -46,7 +46,7 @@
         <!-- /.info-box -->
   </div>
   <!-- /.col -->
-    <div class="ml-1 col-md-8 col-sm-6 col-12">
+<!--     <div class="ml-1 col-md-8 col-sm-6 col-12">
     <div class="small-box bg-gradient-warning">
   <div class="inner">
     <h3>{{ $preJustificantes }}</h3>
@@ -58,7 +58,7 @@
   <a href="{{asset('tramites/solicitudJustificante')}}" class="small-box-footer">
     Ver más <i class="fas fa-arrow-circle-right"></i>
   </a>
-</div>
+</div> -->
       <!-- /.info-box-content -->
 </div>
         <!-- /.info-box -->

@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pre_justificante;
+use View;
 
 class BaseController extends Controller
 {
-    protected $preJustificantes;
-    public function construct() 
+    protected $justificantesPendientes;
+    protected $justificanteDetalles;
+
+    public function __construct() 
     {
-        $preJustificantes = Pre_justificante::where('estatus_solicitud', 0)
-        ->get();
-        View::share('preJustificantes', $this->preJustificantes);
+        $this->justificantesPendientes = Pre_justificante::where('estatus_solicitud', 0)
+        ->get()->count();
+        $this->justificanteDetalles = Pre_justificante::where('estatus_solicitud', 0)->get();
+        View::share('justificantesPendientes', $this->justificantesPendientes);
+        View::share('justificanteDetalles', $this->justificanteDetalles);
     }
 }

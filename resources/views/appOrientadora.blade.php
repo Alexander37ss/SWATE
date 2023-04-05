@@ -19,9 +19,12 @@
         justify-content: center;
     }
   </style>
-
+<?php 
+  $i = 0;
+?>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini sidebar-collapse">
+
 <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0" style="background-color: #A7201F;">
@@ -108,22 +111,29 @@
                 </div>
               </li> -->
               <!-- Notifications Dropdown Menu -->
-   <!--             <li class="nav-item dropdown">
+              <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                   <i class="far fa-bell"></i>
-                  <span class="badge badge-warning navbar-badge"></span>
+                  <span class="badge badge-warning navbar-badge">{{$preJustificantes}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                   <span class="dropdown-item dropdown-header">Notificaciones</span>
                   <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> No existen notificaciones
-                    <span class="float-right text-muted text-sm">0</span>
+                  @foreach ($pre_justificantes as $pre)
+                  <a href="{{ url('tramites/solicitudJustificante', $pre->id)}}" class="dropdown-item">
+                    <i class="fas fa-envelope mr-2"></i>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif
+                    <span class="float-left text-muted text-sm">{{$pre->alumno->nombre_completo}}</span>
                   </a>
+                  @if(++$i == 3) 
+                  <?php 
+                  break;
+                  ?>
+                  @endif
+                  @endforeach
                   <div class="dropdown-divider"></div>
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="dropdown-item dropdown-footer">Ver todas las notificaciones</a>
                 </div>
-              </li> -->
+              </li> 
               <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                   <i class="fas fa-expand-arrows-alt"></i>
