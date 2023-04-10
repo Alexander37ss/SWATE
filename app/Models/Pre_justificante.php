@@ -17,7 +17,8 @@ class Pre_justificante extends Model
         'al',
         'dia',
         'mes',
-        'ano'
+        'ano',
+        'grupo'
     ];
 
     public function alumno(){ # Aqui estamos haciendo un INNER JOIN

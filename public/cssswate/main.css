@@ -1,3 +1,6 @@
+.saludo-home{
+  color: #2A2A2A;
+}
 .home-header{
   font-weight: bold;
   color: rgb(128, 128, 128);
@@ -24,13 +27,17 @@
     color: black !important;
   }
 .bg-cetis{
-    background-color: #a7201f;
-    color: white;
+    background-color: #cf2c2c !important;
+    color: white !important;
 }
-.bg-cetis:hover{
-    background-color: #a83535;
-    color: white;
+.bg-cetis2{
+    background-color: #9f2241 !important;
+    color: white !important;
 }
+/* .bg-cetis:hover{
+    background-color: #d43131 !important;
+    color: white !important;
+} */
 .lopez{
     color: #A7201F;
   }

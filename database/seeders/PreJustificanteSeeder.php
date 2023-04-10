@@ -20,21 +20,24 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivos de salud','motivo_otro' => null,
             'del'       => 3,'al'=> 4,
             'fecha_solicitada' => '2023-03-01',
-            'estatus_solicitud' => 1
+            'estatus_solicitud' => 1,
+            'grupo' => 6
         ]); 
         Pre_justificante::create([
             'alumno_id' => 1, 
             'motivo'    => 'Motivos de salud','motivo_otro' => null,
             'del'       => 3,'al'=> 8,
             'fecha_solicitada' => '2023-03-01',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 6
         ]); 
         Pre_justificante::create([
             'alumno_id' => 1, 
             'motivo'    => 'Motivos de prueba','motivo_otro' => null,
             'del'       => 4,'al'=> 10,
             'fecha_solicitada' => '2023-03-01',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 6
         ]); 
         
         Pre_justificante::create([
@@ -42,7 +45,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivos de salud','motivo_otro' => null,
             'del'       => 3,'al'=> 20,
             'fecha_solicitada' => '2023-03-01',
-            'estatus_solicitud' => 1
+            'estatus_solicitud' => 1,
+            'grupo' => 6
         ]); 
 
         Pre_justificante::create([
@@ -50,7 +54,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivos de salud','motivo_otro' => null,
             'del'       => 4, 'al' => 22,
             'fecha_solicitada' => '2023-03-10',
-            'estatus_solicitud' => 1
+            'estatus_solicitud' => 1,
+            'grupo' => 4
         ]);
         
         Pre_justificante::create([
@@ -58,7 +63,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivo vacacional','motivo_otro' => null,
             'del'       => 3,'al'=> 4,
             'fecha_solicitada' => '2023-03-02',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 4
         ]);        
         
         Pre_justificante::create([
@@ -66,7 +72,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivo vacacional','motivo_otro' => null,
             'del'       => 3,'al'=> 4,
             'fecha_solicitada' => '2023-03-02',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 4
         ]);
 
         Pre_justificante::create([
@@ -74,7 +81,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivo vacacional','motivo_otro' => null,
             'del'       => 3,'al'=> 4,
             'fecha_solicitada' => '2023-03-02',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 2
         ]);
         
         Pre_justificante::create([
@@ -82,7 +90,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivo de perdida','motivo_otro' => null,
             'del'       => 3, 'al'=> 4,
             'fecha_solicitada' => '2023-03-03',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 2
         ]);
 
         Pre_justificante::create([
@@ -90,7 +99,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Motivo de perdida','motivo_otro' => null,
             'del'       => 3, 'al'=> 4,
             'fecha_solicitada' => '2023-03-04',
-            'estatus_solicitud' => 2
+            'estatus_solicitud' => 2,
+            'grupo' => 2
         ]);
 
         Pre_justificante::create([
@@ -98,7 +108,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Otro','motivo_otro' => 'Dentista',
             'del'       => 3, 'al'=> 4,
             'fecha_solicitada' => '2023-03-05',
-            'estatus_solicitud' => 0
+            'estatus_solicitud' => 0,
+            'grupo' => 2
         ]);
 
         Pre_justificante::create([
@@ -106,7 +117,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Otro','motivo_otro' => 'Dentista',
             'del'       => 3, 'al'=> 4,
             'fecha_solicitada' => '2023-03-06',
-            'estatus_solicitud' => 2
+            'estatus_solicitud' => 2,
+            'grupo' => 2
         ]);
 
         Pre_justificante::create([
@@ -114,7 +126,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Otro','motivo_otro' => 'Se quedo dormido',
             'del'       => 4, 'al'        => 5,
             'fecha_solicitada' => '2023-03-06',
-            'estatus_solicitud' => 2
+            'estatus_solicitud' => 2,
+            'grupo' => 4
         ]);
 
         Pre_justificante::create([
@@ -122,7 +135,8 @@ class PreJustificanteSeeder extends Seeder
             'motivo'    => 'Otro','motivo_otro' => 'Se le fue el camión',
             'del'       => 3, 'al'        => 4,
             'fecha_solicitada' => '2023-03-07',
-            'estatus_solicitud' => 2
+            'estatus_solicitud' => 2,
+            'grupo' => 6
         ]);
 
     }

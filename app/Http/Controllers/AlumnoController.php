@@ -35,6 +35,8 @@ class AlumnoController extends Controller
         $Pre_justificante->fecha_solicitada = $fecha->format('Y-m-j');
 
         $Pre_justificante->estatus_solicitud = 0;
+        
+        $Pre_justificante->grupo = $datosAlumno->grupo;
 
         $Pre_justificante->save();
 

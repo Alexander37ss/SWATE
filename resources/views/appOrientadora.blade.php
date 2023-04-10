@@ -31,7 +31,7 @@
 
 <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0" style="background-color: #A7201F;">
+        <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0 shadow-md" style="background-color: #A7201F;">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
