@@ -18,21 +18,27 @@ class HomeController extends BaseController
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
 
-        
 
+        
+        
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
             ->orderBy('id', 'DESC')
-            ->get();
-            $justificantes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
-            ->whereMonth('created_at', $mes)
-            ->whereYear('created_at', $ano)
-            ->get();
-            $paseSalida = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
-            ->whereMonth('created_at', $mes)
-            ->whereYear('created_at', $ano)
-            ->get();
-    
-            return view('orientadora.home', compact('tramites', 'justificantes', 'paseSalida', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
+            ->paginate(12);
+            $justificantesMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $justificantesAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $paseSalidaMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $paseSalidaAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            return view('orientadora.home', compact('tramites', 'justificantesMes', 'justificantesAno', 'paseSalidaMes', 'paseSalidaAno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
         }
         
         public function homeHistorialTipo($tipo){

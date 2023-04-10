@@ -1,3 +1,14 @@
+.home-header{
+  font-weight: bold;
+  color: rgb(128, 128, 128);
+  transition: color 0.3s;
+}
+.home-header:hover{
+  color: black !important;
+}
+.rojoFuego{
+  color: #d63737;
+}
 .inactive{
     display: none;
 }
@@ -16,11 +27,27 @@
     background-color: #a7201f;
     color: white;
 }
+.bg-cetis:hover{
+    background-color: #a83535;
+    color: white;
+}
 .lopez{
     color: #A7201F;
   }
   .lopez:hover{
     color: #ff5c7b;
+  }
+  .dropdown-item:focus{
+    background-color: #ffffff !important; 
+    color: #2A2A2A;
+  }
+  .dropdown-item:active{
+    background-color: #ffffff !important; 
+    color: #2A2A2A;
+  }
+  .dropdown-item:hover{
+    background-color: #ffffff !important; 
+    color: #444444;
   }
   .irizar{
     color: black;
@@ -37,7 +64,17 @@
   .w-13{
     width: 13%;
   }
-  .cursor-open{
+  .cursor-pointer{
     cursor: pointer;
   }
+  .ml-custom{
+    margin-left: 7em;
+  }
+  .mr-custom{
+    margin-right: 4em;
+  }
+
+/*   .page-link:active{
+    background-color: #A7201F !important;
+  } */
   

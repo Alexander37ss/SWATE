@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
 
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+  <!-- rubik font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
   <style>
     div nav ul {
         justify-content: center;
@@ -112,16 +116,16 @@
               </li> -->
               <!-- Notifications Dropdown Menu -->
               <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                  <i class="far fa-bell"></i>
-                  <span class="badge badge-warning navbar-badge">{{$preJustificantes}}</span>
+                <a class="nav-link" data-toggle="dropdown" >
+                  <i class="fa fa-inbox cursor-pointer"></i>
+                  <span class="badge badge-warning navbar-badge cursor-pointer">{{$preJustificantes}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <span class="dropdown-item dropdown-header">Notificaciones</span>
+                  <span class="dropdown-header">Notificaciones</span>
                   <div class="dropdown-divider"></div>
                   @foreach ($pre_justificantes as $pre)
-                  <a href="{{ url('tramites/solicitudJustificante', $pre->id)}}" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif
+                  <a href="{{ url('tramites/solicitudJustificante', $pre->id)}}" class="dropdown-item btn">
+                    <i class="fas fa-envelope mr-2"></i>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif 
                     <span class="float-left text-muted text-sm">{{$pre->alumno->nombre_completo}}</span>
                   </a>
                   @if(++$i == 3) 
@@ -131,7 +135,7 @@
                   @endif
                   @endforeach
                   <div class="dropdown-divider"></div>
-                  <a href="{{asset('/tramites/solicitudJustificante')}}" class="dropdown-item dropdown-footer">Ver todas las notificaciones</a>
+                  <a href="{{asset('/tramites/solicitudJustificante')}}" class="dropdown-item dropdown-footer rojo-cetis">Ver todas las notificaciones</a>
                 </div>
               </li> 
               <li class="nav-item">
@@ -239,8 +243,8 @@
             </section>
             <section class="content" style="padding:0 .99rem !important;">
                 @yield('home')
-                <div class="card card-secondary">
-                    <div class="card-body table-responsive">
+                <div class="">
+                    <div class="">
                         @yield('contenido')
                     </div>
                 </div>
@@ -289,6 +293,8 @@
 <script src="{{asset('jsswate/consultar.js')}}"></script>
 <script src="{{asset('jsswate/historial.js')}}"></script>
 <script src="{{asset('jsswate/recargarPagina.js')}}"></script>
+<script src="{{asset('jsswate/graficas.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->
 @yield('scripts')
