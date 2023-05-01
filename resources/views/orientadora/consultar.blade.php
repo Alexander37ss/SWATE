@@ -1,7 +1,7 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h1>Consultar Alumnos</h1>
+    <h4><i class="fas fa-graduation-cap mr-1"></i>Consultar Alumnos</h4>
 @stop
 
 @section('breadcrum')
@@ -10,6 +10,8 @@
 @stop
 
 @section('contenido')
+<div class="card shadow-md mr-4 ml-3 border-radius-0">
+<div class="card-body">
 <!-- barra de busqueda -->
 <div class="shadow-sm">
     <div class="input-group input-group-sm">
@@ -21,7 +23,7 @@
             </button>
         </div>
         <div class="input-group-append">
-            <a id="BotonFiltro" class="btn btn-secondary btn-sm" href="{{asset('tramites/consultar')}}">Borrar filtros</a>
+            <a id="BotonFiltro" class="btn btn-secondary btn-sm border-radius-0" href="{{asset('tramites/consultar')}}"><i class="fas fa-trash"></i></a>
         </div>
     </div>
 </div>
@@ -75,13 +77,13 @@
                     <td>{{$a->carrera}}</td>
                     <td>{{$a->grupo}}</td>  
                     <td>
-                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
+                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-sm border-radius-0" style="background-color: #a7201f;">
                             <i class="far fa-file-pdf link-activo"></i>
                         </a>
-                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-sm " style="background-color: #a7201f;">
+                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-sm border-radius-0" style="background-color: #a7201f;">
                         <i class="fas fa-door-open link-activo"></i>
                         </a>
-                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
+                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-sm border-radius-0" style="background-color: #a7201f;">
                         <i class="fas fa-file-contract link-activo"></i>
                         </a>
                     </td>
@@ -89,5 +91,7 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    </div>
     </div>
 @stop

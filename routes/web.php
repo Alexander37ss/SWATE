@@ -55,6 +55,10 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
         
     /* Constancia de estudio para ambas partes*/
     Route::get('constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
+
+    /* Otros */
+    Route::get('/graficas', [OrientadoraController::class, 'grafica']);
+    Route::get('/historial', [OrientadoraController::class, 'historial']);
 });
 
 Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'crearQr']);
@@ -66,10 +70,10 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
     Route::get('/home/{tipo}', [HomeController::class, 'homeAlumnoTipo']);
 
     /* Justificante de parte del alumno */
-    Route::get('/justificante/{nombreAlumno}', [AlumnoController::class, 'justificante']);
+    Route::get('/justificante', [AlumnoController::class, 'justificante']);
     
     /* pre-justificante de parte del alumno */
-    Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+    Route::post('/prejustificante/{nombrealumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
     
     /* crear constancia del alumno */
     Route::get('/constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    

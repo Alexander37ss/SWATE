@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
   <style>
     div nav ul {
         justify-content: center;
@@ -56,6 +57,8 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+              <!-- search -->
+              
               <!-- Messages Dropdown Menu -->
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -121,7 +124,7 @@
                   <span class="badge badge-warning navbar-badge cursor-pointer">{{$preJustificantes}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <span class="dropdown-header">Notificaciones</span>
+                  <span class="dropdown-header">Bandeja de entrada</span>
                   <div class="dropdown-divider"></div>
                   @foreach ($pre_justificantes as $pre)
                   <a href="{{ url('tramites/solicitudJustificante', $pre->id)}}" class="dropdown-item btn">
@@ -148,7 +151,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar elevation-4 sidebar-light-warning">
+        <aside class="main-sidebar elevation-4 sidebar-light-warning" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;">
           <!-- Brand Logo -->
           <a href="{{asset('/home')}}" class="brand-link">
             <img src="{{ url('img/cetis.png') }}" alt="baessh" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -207,10 +210,46 @@
 
                 <li class="nav-item">
                   <a href="{{asset('/tramites/consultar')}}" class="nav-link" id="consultar">
-                  <i class="fas fa-users nav-icon"></i>
+                  <i class="fas fa-graduation-cap nav-icon"></i>
                     <p>Consultar alumnos</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{asset('/historial')}}" class="nav-link" id="consultar">
+                  <i class="fas fa-clock nav-icon"></i>
+                    <p>Historial de trámites</p>
+                  </a>
+                </li>
+                <!-- treeview -->
+                <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="fas fa-plus-square nav-icon"></i>
+              <p>
+                Otros
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('/graficas')}}" class="nav-link">
+                <i class="fas fa-info nav-icon"></i>
+                  <p>Información</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v3</p>
+                </a>
+              </li>
+            </ul>
+          </li>
 <!-- 
                 <li class="nav-item">
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">

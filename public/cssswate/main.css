@@ -1,5 +1,35 @@
+body{
+  font-family: 'Poppins', sans-serif !important;
+}
+.border-radius-0{
+  border-radius: 0 !important;
+}
+.page-item.active .page-link{
+  background-color: #A7201F !important;
+  border-color: #A7201F !important;
+  color: white !important;
+}
+.page-link{
+  color: #691C32 !important;
+}
+.bg-yellow-custom{
+  background-color: rgb(241, 241, 29);
+}
+.font-light{
+ color: hsl(229, 6%, 66%);
+ font-weight: lighter;
+}
+.font-size-low{
+  font-size: 60%;
+}
+.font-bold{
+ font-weight: bold !important;
+}
 .saludo-home{
   color: #2A2A2A;
+}
+.shadow-border{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px !important;
 }
 .home-header{
   font-weight: bold;
@@ -8,6 +38,12 @@
 }
 .home-header:hover{
   color: black !important;
+}
+.tipo-card:hover{
+  color: black;
+}
+.tipo-card{
+  color: #a5aeb7;
 }
 .rojoFuego{
   color: #d63737;
@@ -33,6 +69,14 @@
 .bg-cetis2{
     background-color: #9f2241 !important;
     color: white !important;
+}
+.justificante{
+  background-color: #98989A;
+  color: black !important;
+}
+.paseSalida{
+  background-color: #691C32;
+  color: white !important;
 }
 /* .bg-cetis:hover{
     background-color: #d43131 !important;

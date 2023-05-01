@@ -4,10 +4,10 @@ const ctx2 = document.getElementById('myChartDos');
 const ctx3 = document.getElementById('myChartTres');
 const ctx4 = document.getElementById('myChartCuatro');
 const ctx5 = document.getElementById('myChartCinco');
-const numJustificante = document.getElementById('numJustificante').innerHTML;
-const numPaseSalida = document.getElementById('numPaseSalida').innerHTML;
-const numJustificanteMes = document.getElementById('numJustificanteMes').innerHTML;
-const numPaseSalidaMes = document.getElementById('numPaseSalidaMes').innerHTML;
+const numJustificante = document.getElementById('justificanteAno').innerHTML;
+const numPaseSalida = document.getElementById('paseSalidaAno').innerHTML;
+const numJustificanteMes = document.getElementById('justificanteMes').innerHTML;
+const numPaseSalidaMes = document.getElementById('paseSalidaMes').innerHTML;
 const graficaMesEvent = document.getElementById('graficaMonth');
 const graficaMesEvent2 = document.getElementById('graficaMonthDos');
 const graficaAnoEvent = document.getElementById('graficaYear');
@@ -34,7 +34,7 @@ const motivoOtro = document.getElementById('motivoOtro').innerHTML;
 const grupoDos = document.getElementById('grupoDos').innerHTML;
 const grupoCuatro = document.getElementById('grupoCuatro').innerHTML;
 const grupoSeis = document.getElementById('grupoSeis').innerHTML;
-
+console.log(numJustificante);
 /* Eventos */
 graficaMesEvent.addEventListener('click', showGraphicMonth);
 graficaAnoEvent.addEventListener('click', showGraphicYear);
@@ -60,8 +60,8 @@ new Chart(ctx, {
       label: 'Numero de tramites',
       data: [numJustificante, numPaseSalida],
       borderWidth: 1,
-      borderColor: ['#cf8e4e', '#9f2241'],
-      backgroundColor: ['#cf8e4e', '#9f2241'],
+      borderColor: ['#ff9b00', '#a11f43'],
+      backgroundColor: ['#ff9b00', '#a11f43'],
     }]
   },
   options: {
@@ -81,8 +81,8 @@ new Chart(ctx2, {
       label: 'Numero de tramites',
       data: [numJustificanteMes, numPaseSalidaMes],
       borderWidth: 1,
-      borderColor: ['#cf8e4e', '#9f2241'],
-      backgroundColor: ['#cf8e4e', '#9f2241'],
+      borderColor: ['#ff9b00', '#a11f43'],
+      backgroundColor: ['#ff9b00', '#a11f43'],
     }]
   },
   options: {
@@ -99,7 +99,7 @@ new Chart(ctx3, {
   data: {
     labels: ['enero','febrero','marzo', 'abril','mayo', 'junio','julio', 'agosto','septiembre', 'octubre','noviembre', 'diciembre'],
     datasets: [{
-      label: numTotal +' tramites en total',
+      label: 'tramites por mes',
       data: [enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre],
       borderWidth: 1,
       borderColor: ['#9f2241', '#9f2241','#9f2241', '#9f2241','#9f2241', '#9f2241','#9f2241', '#9f2241','#9f2241', '#9f2241','#9f2241', '#9f2241'],

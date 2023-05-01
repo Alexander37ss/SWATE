@@ -13,7 +13,7 @@ use App\Models\User;
 class AlumnoController extends Controller
 {
     # Nos lleva a la vista tramites.justificantes
-    function justificante($nombreAlumno){
+    function justificante(){
         return view('alumno.justificante');
     }
 
@@ -50,7 +50,11 @@ class AlumnoController extends Controller
         ->get();
         $preJustificantes = $preJustificantes->count();
         
-        return view('alumno.home', compact('justificantes'));
+        $numJustificantes = tramite::where('alumno_id', auth()->user()->id)
+        ->get()
+        ->count();
+        
+        return view('alumno.home', compact('justificantes', 'numJustificantes'));
     }
     
     # Descargar constancia estudio, vista alumno
@@ -61,7 +65,7 @@ class AlumnoController extends Controller
         $mes = $fecha->format('m');
         $ano = $fecha->format('Y');
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano)); //Carga la vista y la convierte a PDF
+        $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano, )); //Carga la vista y la convierte a PDF
         return $pdf->download("constanciaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 }

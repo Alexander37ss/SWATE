@@ -13,6 +13,138 @@ use App\Models\tramite;
 
 class OrientadoraController extends BaseController
 {
+    function historial(){
+        $alumnosNum = Alumno::all()->count();
+        $fecha = Carbon::now();
+        $hora = $fecha->format('H');
+        $dia = $fecha->format('d');
+        $mes = $fecha->format('m');
+        $ano = $fecha->format('Y');
+        $tramitesNumAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+        ->whereYear('created_at', '=', $ano)
+        ->get()->count();
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+
+            //info de tramites
+            $tramites = tramite::where('orientadora_id', auth()->user()->id)
+            ->orderBy('id', 'DESC')
+            ->paginate(12);
+            $justificantesMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $justificantesAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $paseSalidaMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $paseSalidaAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+
+
+            return view('orientadora.historial', compact('tramites', 'justificantesMes', 'justificantesAno', 'paseSalidaMes', 'paseSalidaAno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
+    }
+    function grafica(){
+        $alumnosNum = Alumno::all()->count();
+        $fecha = Carbon::now();
+        $hora = $fecha->format('H');
+        $dia = $fecha->format('d');
+        $mes = $fecha->format('m');
+        $ano = $fecha->format('Y');
+        $tramitesNumAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+        ->whereYear('created_at', '=', $ano)
+        ->get()->count();
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+
+            //info de tramites
+            $tramites = tramite::where('orientadora_id', auth()->user()->id)
+            ->orderBy('id', 'DESC')
+            ->paginate(12);
+            $justificantesMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $justificantesDia = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereDay('created_at', '=', $dia)
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $justificantesMesAtras = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereMonth('created_at', '=', $mes-1)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $justificantesAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $paseSalidaMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
+            ->whereMonth('created_at', '=', $mes)
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+            $paseSalidaAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
+            ->whereYear('created_at', '=', $ano)
+            ->get()->count();
+
+            //info meses
+            $enero = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '01')
+            ->get()->count();
+            $febrero = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '02')
+            ->get()->count();
+            $marzo = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '03')
+            ->get()->count();
+            $abril = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '04')
+            ->get()->count();
+            $mayo = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '05')
+            ->get()->count();
+            $junio = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '06')
+            ->get()->count();
+            $julio = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '07')
+            ->get()->count();
+            $agosto = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '08')
+            ->get()->count();
+            $septiembre = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '09')
+            ->get()->count();
+            $octubre = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '10')
+            ->get()->count();
+            $noviembre = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '11')
+            ->get()->count();
+            $diciembre = tramite::where([['orientadora_id', auth()->user()->id]])
+            ->whereMonth('created_at', '=', '12')
+            ->get()->count();
+            /* motivo */
+            $motivoVacacional = tramite_detalle::where('motivo', 'Motivo vacacional')
+            ->get()->count();
+            $motivoSalud = tramite_detalle::where('motivo', 'Motivo de salud')
+            ->get()->count();
+            $motivoPerdida = tramite_detalle::where('motivo', 'Motivo de perdida')
+            ->get()->count();
+            $motivoOtro = tramite_detalle::where('motivo', 'Otro...')
+            ->get()->count();
+            /* grupo */
+            $grupoDos = Pre_justificante::where('grupo', 2)->get()->count();
+            $grupoCuatro = Pre_justificante::where('grupo', 4)->get()->count();
+            $grupoSeis = Pre_justificante::where('grupo', 6)->get()->count();
+            /* calculos */
+            $diferenciaMeses = $justificantesMes-$justificantesMesAtras;
+
+
+            return view('orientadora.graficas', compact('diferenciaMeses', 'hora', 'justificantesDia', 'grupoDos', 'tramitesNumAno', 'alumnosNum', 'grupoCuatro', 'grupoSeis', 'motivoVacacional', 'motivoSalud', 'motivoPerdida', 'motivoOtro','enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'tramites', 'justificantesMes', 'justificantesAno', 'paseSalidaMes', 'paseSalidaAno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
+    }
     # Funciones para visualizar la vista consultar y sus filtros
     public function consultar(){
         //consultas el alumno

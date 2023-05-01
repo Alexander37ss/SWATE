@@ -120,20 +120,19 @@ class HomeController extends BaseController
             $justificantes = tramite::where('alumno_id', auth()->user()->id)
             ->orderBy('id', 'DESC')
             ->get();
-            $preJustificantes = $this->justificantesPendientes;
-        $pre_justificantes = $this->justificanteDetalles;
+            $numJustificantes = tramite::where('alumno_id', auth()->user()->id)
+            ->get()
+            ->count();
 
 
-            return view('alumno.home', compact('justificantes', 'pre_justificantes'));
+            return view('alumno.home', compact('justificantes', 'numJustificantes'));
         }
 
         public function homeAlumnoTipo($tipo){
             $justificantes = tramite::where([['alumno_id', auth()->user()->id],['tipo_id', $tipo]])
             ->orderBy('id', 'DESC')
             ->get();
-            $preJustificantes = $this->justificantesPendientes;
-        $pre_justificantes = $this->justificanteDetalles;
 
-            return view('alumno.home', compact('justificantes', 'preJustificantes', 'pre_justificantes'));
+            return view('alumno.home', compact('justificantes',));
         }
 }

@@ -191,7 +191,7 @@
                 {{-- material del alumno --}}
 
                     <li class="nav-item">
-                      <a href="{{url('alumno/justificante', auth()->user()->name)}}" class="nav-link"> 
+                      <a href="{{url('alumno/justificante')}}" class="nav-link"> 
                       <i class="fas fa-file-alt nav-icon"></i>
                         <p>Solicitar justificante</p>
                       </a>
@@ -226,8 +226,8 @@
             </section>
             <section class="content" style="padding:0 .99rem !important;">
                 @yield('home')
-                <div class="card card-secondary">
-                    <div class="card-body table-responsive">
+                <div>
+                    <div>
                         @yield('contenido')
                     </div>
                 </div>
@@ -277,6 +277,7 @@
 <script src="{{asset('jsswate/main.js')}}"></script>
 <script src="{{asset('jsswate/justificanteAlumno.js')}}"></script>
 <script src="{{asset('jsswate/historial.js')}}"></script>
+<script src="{{asset('jsswate/alumnoHome.js')}}"></script>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->

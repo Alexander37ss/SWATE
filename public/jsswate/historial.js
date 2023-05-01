@@ -10,11 +10,9 @@ console.log(urlHome);
 
 window.addEventListener('load', BorrarFiltroDinamicoHistorial);
 busquedaBotonHistorial.addEventListener('click', BuscarAlumnosHistorial);
-PaseDeSalida.addEventListener('click', FiltrarPaseSalida);
-Justificante.addEventListener('click', FiltrarJustificante);
 
 function BorrarFiltroDinamicoHistorial(){
-    if(urlHome !== "/SWATE/public/home"){
+    if(urlHome !== "/SWATE/public/historial"){
       BotonFiltroHistorial.classList.add('btn-danger');
       BotonFiltroHistorial.classList.remove('btn-secondary');
     }
@@ -89,11 +87,11 @@ function BuscarAlumnosHistorial() {
 
 
 function BuscarFecha() {
-  var filter, table, tr, td, i, txtValue;
+  var tr, td, i, txtValue;
   const inputFecha = document.querySelector('#busquedaFecha');
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[3];
+    td = tr[i].getElementsByTagName("td")[0];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue == inputFecha.value) {
