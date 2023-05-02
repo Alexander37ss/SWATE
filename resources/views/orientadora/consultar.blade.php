@@ -1,7 +1,7 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h4><i class="fas fa-graduation-cap mr-1"></i>Consultar Alumnos</h4>
+    <h4><i class="fas fa-graduation-cap mr-1 ml-3"></i>Consultar Alumnos</h4>
 @stop
 
 @section('breadcrum')
@@ -10,20 +10,20 @@
 @stop
 
 @section('contenido')
-<div class="card shadow-md mr-4 ml-3 border-radius-0">
+<div class="card shadow-border mr-4 ml-3 border-radius-0">
 <div class="card-body">
 <!-- barra de busqueda -->
 <div class="shadow-sm">
-    <div class="input-group input-group-sm">
+    <div class="input-group input-group-sm border-radius-custom">
         <input class="form-control mr-sm-2" id="busquedaConsultar" type="search" placeholder="Escribe el nombre del alumno..." aria-label="Search" onchange="BuscarAlumnos();">
         <div class="input-group-append">
             <!-- boton buscador icono -->
-            <button class="btn btn-navbar shadow-sm" id="BotonBuscador" style="background-color: #a7201f;">
+            <button class="btn btn-navbar shadow-sm btn-search-cetis" id="BotonBuscador">
                 <i class="fas fa-search link-activo"></i>
             </button>
         </div>
         <div class="input-group-append">
-            <a id="BotonFiltro" class="btn btn-secondary btn-sm border-radius-0" href="{{asset('tramites/consultar')}}"><i class="fas fa-trash"></i></a>
+            <a id="BotonFiltro" class="btn btn-trash-cetis btn-sm" href="{{asset('tramites/consultar')}}"><i class="fas fa-trash"></i></a>
         </div>
     </div>
 </div>

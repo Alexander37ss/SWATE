@@ -1,13 +1,47 @@
 body{
   font-family: 'Poppins', sans-serif !important;
 }
+.btn-search-cetis{
+  background-color: black !important;
+  transition: 0.5s !important;
+}
+.input-black-border{
+  border-color: black !important;
+}
+.input-black-border:focus{
+  border-color: black !important;
+}
+.btn-search-cetis:hover{
+  background-color: rgb(29, 28, 28) !important;
+}
+.btn-trash-cetis{
+  background-color: black !important;
+  transition: 0.5s !important;
+  color: white !important;
+  border-radius: 0px, 2px, 0px, 100px !important;
+}
+.btn-trash-cetis:hover{
+  background-color: rgb(29, 28, 28) !important;
+}
 .border-radius-0{
   border-radius: 0 !important;
+}
+.border-radius-custom{
+  border-radius: 5px, 5px, 5px, 5px !important;
+}
+.btn-login{
+  background-color: #cf2c2c;
+}
+.btn-login:hover{
+  background-color: #d44545;
 }
 .page-item.active .page-link{
   background-color: #A7201F !important;
   border-color: #A7201F !important;
   color: white !important;
+}
+.shadow-low{
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 .page-link{
   color: #691C32 !important;
@@ -22,6 +56,9 @@ body{
 .font-size-low{
   font-size: 60%;
 }
+.font-size-low-medium{
+  font-size: 80%;
+}
 .font-bold{
  font-weight: bold !important;
 }
@@ -35,6 +72,12 @@ body{
   font-weight: bold;
   color: rgb(128, 128, 128);
   transition: color 0.3s;
+}
+.mr-custom{
+  margin-right: 1rem;
+}
+.ml-custom-dos{
+  margin-left: 5rem;
 }
 .home-header:hover{
   color: black !important;
@@ -129,3 +172,99 @@ body{
     background-color: #A7201F !important;
   } */
   
+  .button-login {
+    position: relative;
+    background-color: #cf2c2c;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .button-login:after {
+    content: "";
+    background: #ee9090;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .button-login:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+  /* Busqueda css */
+  .input-contain{
+    position: relative;
+}
+input{
+    height: 2rem;
+    width: 15rem;
+    border: 2px solid #000000;
+    border-radius: 1rem;
+}
+.placeholder-text{
+  position: absolute;
+  top: 7px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border: 3px solid transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+.text{
+  font-size: .8rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  transform: translate(0);
+    transition: transform 0.15s ease-out, font-size 0.15s ease-out, background-color 0.2s ease-out, color 0.15s ease-out;
+}
+
+input, .placeholder-text{
+  font-size: 1.4rem;
+  padding: 0 1.2rem;
+}
+  input:focus + .placeholder-text .text, :not(input[value=""]) + .placeholder-text .text{
+    background-color: white;
+    font-size: .5rem;
+    color: black;
+    transform: translate(0, -120%);
+}
+input:focus{
+  outline: none;
+  border-color: rgb(0, 0, 0);
+}
+input:focus + .placeholder-text .text{
+  border-color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+.trash-place{
+  position: absolute;
+  top: 7px;
+  bottom: 85px;
+  left: 250px;
+  right: 100px;
+}
+.color-trash{
+  color: rgb(77, 76, 76);
+  transition: 0.3s;
+}
+.color-trash:hover{
+  color: black;
+}

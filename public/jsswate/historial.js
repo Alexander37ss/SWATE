@@ -1,30 +1,21 @@
 var urlHome =  window.location;
 var urlHome =  urlHome.pathname;
 const inputHistorial = document.querySelector('#busquedaHistorial');
-const BotonFiltroHistorial = document.querySelector('#BotonFiltroHistorial');
-const busquedaBotonHistorial = document.querySelector('#busquedaBotonHistorial');
+const botonBorrarFiltro = document.querySelector('#borrarFiltroDinamico')
 const PaseDeSalida = document.querySelector('#PaseDeSalida');
 const Justificante = document.querySelector('#Justificante');
 var table = document.getElementById("TablaHistorial");
 console.log(urlHome);
 
-window.addEventListener('load', BorrarFiltroDinamicoHistorial);
-busquedaBotonHistorial.addEventListener('click', BuscarAlumnosHistorial);
+inputHistorial.addEventListener("keyup", () => {
+  inputHistorial.setAttribute("value", inputHistorial.value);
+})
 
-function BorrarFiltroDinamicoHistorial(){
-    if(urlHome !== "/SWATE/public/historial"){
-      BotonFiltroHistorial.classList.add('btn-danger');
-      BotonFiltroHistorial.classList.remove('btn-secondary');
-    }
-}
 
 function FiltrarPaseSalida(){
   var  filter, tr, td, i, txtValue;
   filter = PaseDeSalida.innerHTML.toUpperCase();
   tr = table.getElementsByTagName("tr");
-
-  BotonFiltroHistorial.classList.add('btn-danger');
-  BotonFiltroHistorial.classList.remove('btn-secondary');
 
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -44,8 +35,6 @@ function FiltrarJustificante(){
   filter = Justificante.innerHTML.toUpperCase();
   tr = table.getElementsByTagName("tr");
 
-  BotonFiltroHistorial.classList.add('btn-danger');
-  BotonFiltroHistorial.classList.remove('btn-secondary');
 
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -61,16 +50,10 @@ function FiltrarJustificante(){
 }
 
 function BuscarAlumnosHistorial() {
+  botonBorrarFiltro.classList.remove('inactive');
   var  filter, tr, td, i, txtValue;
   filter = inputHistorial.value.toUpperCase();
   tr = table.getElementsByTagName("tr");
-  if(inputHistorial.value != ""){
-    BotonFiltroHistorial.classList.add('btn-danger');
-    BotonFiltroHistorial.classList.remove('btn-secondary');
-  }else{
-    BotonFiltroHistorial.classList.remove('btn-danger');
-    BotonFiltroHistorial.classList.add('btn-secondary');
-  }
 
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];

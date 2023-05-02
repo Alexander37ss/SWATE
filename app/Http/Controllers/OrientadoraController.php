@@ -28,8 +28,7 @@ class OrientadoraController extends BaseController
 
             //info de tramites
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
-            ->orderBy('id', 'DESC')
-            ->paginate(12);
+            ->orderBy('id', 'DESC')->get();
             $justificantesMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
             ->whereMonth('created_at', '=', $mes)
             ->whereYear('created_at', '=', $ano)
