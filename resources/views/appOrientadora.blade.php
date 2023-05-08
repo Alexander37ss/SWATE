@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SWATE</title>
   <link rel="icon" type="image/x-icon" href="{{ url('images/logohb.ico') }}">
+  <link rel="icon" href="{{asset('img/cetis.png')}}">
+  <!-- prueba -->
+  
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -120,8 +123,8 @@
               <!-- Notifications Dropdown Menu -->
               <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" >
-                  <i class="fa fa-inbox cursor-pointer"></i>
-                  <span class="badge badge-warning navbar-badge cursor-pointer">{{$preJustificantes}}</span>
+                  <i class="fas fa-inbox cursor-pointer"></i>
+                  <span class="badge badge-light navbar-badge cursor-pointer">{{$preJustificantes}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                   <span class="dropdown-header">Bandeja de entrada</span>
@@ -153,9 +156,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4 sidebar-light-warning" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;">
           <!-- Brand Logo -->
-          <a href="{{asset('/home')}}" class="brand-link">
-            <img src="{{ url('img/cetis.png') }}" alt="baessh" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-semibold">CETIS 107</span>
+          <a href="{{asset('/home')}}" class="brand-link logo-switch">
+          <img src="{{asset('img/cetis.png')}}" class="brand-image-xl logo-xs ml-1">
+          <img src="{{asset('img/dgetilogo2.png')}}" class="brand-image-xs logo-xl ml-5" style="">
           </a>
 
           <!-- Sidebar -->
@@ -166,17 +169,15 @@
                 <img src="{{asset('images/userojo.png')}}"class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name; }}</a>
+                    <a class="d-block">{{ Auth::user()->name; }}</a>
                 {{-- <span>{{(Auth::user()->roles[0]->name)}}</span> --}}
-              <a class="d-block" href="{{ route('logout') }}"
+                <a class="d-block text-dgeti">Orientadora</a>
+<!--                 <a class="d-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
                  {{ __('Cerrar sesión') }}
-                </a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                 @csrf
-             </form> 
+                </a> -->
+                
               </div>
             </div>
 
@@ -199,7 +200,7 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
                   <a href="{{asset('/home')}}" class="nav-link" id="home">
-                  <i class="nav-icon fas fa-home" id="homeicon"></i>
+                  <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
                     <p id = "parrafohome">
                       Inicio
                     </p>
@@ -210,29 +211,29 @@
 
                 <li class="nav-item">
                   <a href="{{asset('/tramites/consultar')}}" class="nav-link" id="consultar">
-                  <i class="fas fa-graduation-cap nav-icon"></i>
+                  <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72L5.18 9L12 5.28L18.82 9zM17 15.99l-5 2.73l-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
                     <p>Consultar alumnos</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{asset('/historial')}}" class="nav-link" id="consultar">
-                  <i class="fas fa-clock nav-icon"></i>
+                  <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89l.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7s-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54l.72-1.21l-3.5-2.08V8H12z"/></svg>
                     <p>Historial de trámites</p>
                   </a>
                 </li>
                 <!-- treeview -->
                 <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="fas fa-plus-square nav-icon"></i>
+            <svg class="mb-1 nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2z"/></svg>
               <p>
-                Otros
+                Otras opciones
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{url('/graficas')}}" class="nav-link">
-                <i class="fas fa-info nav-icon"></i>
+                <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z"/></svg>
                   <p>Información</p>
                 </a>
               </li>
@@ -258,8 +259,16 @@
                     </p>
                   </a>
                 </li> -->
-
-            </nav>
+                <li class="nav-item">
+                  <a href="{{ route('logout') }}" class="fixed-bottom ml-4 mb-4" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <svg class="nav-icon logo-logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+              </svg>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+              @csrf
+            </form> 
+          </li>
+          </nav>
             <!-- /.sidebar-menu -->
           </div>
           <!-- /.sidebar -->

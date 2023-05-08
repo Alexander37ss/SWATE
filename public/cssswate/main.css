@@ -1,6 +1,36 @@
 body{
   font-family: 'Poppins', sans-serif !important;
 }
+:root {
+	--c-white: #fff;
+	--c-black: #000;
+
+	--c-ash: #eaeef6;
+	--c-charcoal: #a0a0a0;
+	--c-void: #141b22;
+
+	--c-fair-pink: #FFEDEC;
+	--c-apricot: #FBC8BE;
+	--c-coffee: #754D42;
+	--c-del-rio: #917072;
+
+	--c-java: #1FCAC5;
+
+	--c-titan-white: #f1eeff;
+	--c-cold-purple: #a69fd6;
+	--c-indigo: #6558d3;
+	--c-governor: #4133B7;
+}
+.text-dgeti{
+  color: #A7201F !important;
+}
+.logo-logout{
+  color:rgb(90, 90, 90);
+  transition: 0.5s;
+}
+.logo-logout:hover{
+  color:rgb(0, 0, 0);
+}
 .btn-search-cetis{
   background-color: black !important;
   transition: 0.5s !important;
@@ -205,66 +235,121 @@ body{
     opacity: 1;
     transition: 0s
   }
-  /* Busqueda css */
-  .input-contain{
+  
+  /* Search box propuesta */
+  .input-box {
+    opacity: 0.7;
+    transition-duration: 0.5s;
     position: relative;
-}
-input{
-    height: 2rem;
-    width: 15rem;
-    border: 2px solid #000000;
-    border-radius: 1rem;
-}
-.placeholder-text{
-  position: absolute;
-  top: 7px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  border: 3px solid transparent;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-.text{
-  font-size: .8rem;
-  padding: 0 0.5rem;
-  background-color: transparent;
-  color: black;
-  transform: translate(0);
-    transition: transform 0.15s ease-out, font-size 0.15s ease-out, background-color 0.2s ease-out, color 0.15s ease-out;
-}
+    height: 50px;
+    max-width: 900px;
+    width: 100%;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+  .input-box:hover{
+    opacity: 1;
+  }
+  .input-box:focus{
+    opacity: 1;
+  }
+  .input-box i,
+  .input-box .button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .input-box i {
+    left: 20px;
+    font-size: 30px;
+    color: #707070;
+  }
+  .input-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    padding: 0 155px 0 65px;
+    background-color: transparent;
+  }
+  .input-box .button {
+    right: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 4px;
+    background-color: #c91313;
+    cursor: pointer;
+  }
+  .input-box .button:active {
+    transform: translateY(-50%) scale(0.98);
+  }
+  /* Responsive */
+  @media screen and (max-width: 500px) {
+    .input-box {
+      height: 66px;
+      margin: 0 8px;
+    }
+    .input-box i {
+      left: 12px;
+      font-size: 25px;
+    }
+    .input-box input {
+      padding: 0 112px 0 50px;
+    }
+    .input-box .button {
+      right: 12px;
+      font-size: 14px;
+      padding: 8px 18px;
+    }
+  }
 
-input, .placeholder-text{
-  font-size: 1.4rem;
-  padding: 0 1.2rem;
-}
-  input:focus + .placeholder-text .text, :not(input[value=""]) + .placeholder-text .text{
-    background-color: white;
-    font-size: .5rem;
-    color: black;
-    transform: translate(0, -120%);
-}
-input:focus{
-  outline: none;
-  border-color: rgb(0, 0, 0);
-}
-input:focus + .placeholder-text .text{
-  border-color: rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
-}
-.trash-place{
-  position: absolute;
-  top: 7px;
-  bottom: 85px;
-  left: 250px;
-  right: 100px;
-}
-.color-trash{
-  color: rgb(77, 76, 76);
-  transition: 0.3s;
-}
-.color-trash:hover{
-  color: black;
-}
+  .card-custom {
+    overflow: hidden;
+    min-height: 450px;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  }
+  
+  .card-custom-img {
+    height: 200px;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-color: inherit;
+  }
+  
+  /* First border-left-width setting is a fallback */
+  .card-custom-img::after {
+    position: absolute;
+    content: '';
+    top: 161px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top-width: 40px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 545px;
+    border-left-width: calc(575px - 5vw);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+  }
+  
+  .card-custom-avatar img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+    position: absolute;
+    top: 100px;
+    left: 1.25rem;
+    width: 100px;
+    height: 100px;
+  }

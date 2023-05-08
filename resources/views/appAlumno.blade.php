@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SWATE</title>
-  <link rel="icon" type="image/x-icon" href="{{ url('images/logohb.ico') }}">
+  <link rel="icon" href="{{asset('img/cetis.png')}}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
   <style>
     div nav ul {
         justify-content: center;
@@ -136,9 +137,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4 sidebar-light-warning">
           <!-- Brand Logo -->
-          <a href="{{asset('/home')}}" class="brand-link">
-            <img src="{{ url('img/cetis.png') }}" alt="baessh" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-semibold">SWATE</span>
+          <a href="{{asset('/home')}}" class="brand-link logo-switch">
+          <img src="{{asset('img/cetis.png')}}" class="brand-image-xl logo-xs ml-1">
+          <img src="{{asset('img/dgetilogo2.png')}}" class="brand-image-xs logo-xl ml-5" style="">
           </a>
 
           <!-- Sidebar -->
@@ -149,8 +150,9 @@
                 <img src="{{asset('images/userojo.png')}}"class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name; }}</a>
+                    <a class="d-block">{{ Auth::user()->name; }}</a>
                 {{-- <span>{{(Auth::user()->roles[0]->name)}}</span> --}}
+                <a class="d-block text-dgeti">Estudiante</a>
               <a class="d-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
