@@ -21,7 +21,7 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <a href="{{url('/login')}}">
-                    <img class="w-10 h-12 fill-current text-gray-800 logo-cetis mt-1 mb-2" src="{{asset('/img/cetis.png')}}">
+                    <img class="w-10 h-12 fill-current text-gray-800 logo-cetis m-auto mb-2" src="{{asset('/img/cetis.png')}}">
                 </a>
                 <hr>
                 <br>

@@ -15,7 +15,8 @@ class tramite extends Model
     protected $fillable = [
         'tipo_id',
         'orientadora_id',
-        'alumno_id'
+        'alumno_id',
+        'autorizado'
     ];    
     
     public function tramite_detalle(){ # Aqui estamos haciendo un INNER JOIN

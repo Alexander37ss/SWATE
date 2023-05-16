@@ -15,6 +15,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
+  <link rel="stylesheet" href="{{asset('cssswate/code.css')}}">
 
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
   <!-- rubik font -->
@@ -251,7 +252,8 @@
               </li>
             </ul>
           </li>
-<!-- 
+          <br><br><br><br><br><br><br><br><br>
+<!--      
                 <li class="nav-item">
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
                     <i class="fas fa-tags nav-icon"></i>
@@ -260,14 +262,15 @@
                   </a>
                 </li> -->
                 <li class="nav-item">
-                  <a href="{{ route('logout') }}" class="fixed-bottom ml-4 mb-4" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <svg class="nav-icon logo-logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
-              </svg>
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-              @csrf
-            </form> 
-          </li>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                <svg class="nav-icon logo-logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                    </svg>
+                  <p>Cerrar sesión</p>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                  </form> 
+              </li>
           </nav>
             <!-- /.sidebar-menu -->
           </div>
@@ -342,6 +345,8 @@
 <script src="{{asset('jsswate/historial.js')}}"></script>
 <script src="{{asset('jsswate/recargarPagina.js')}}"></script>
 <script src="{{asset('jsswate/graficas.js')}}"></script>
+<script src="{{asset('jsswate/card.js')}}"></script>
+<script src="{{asset('jsswate/autocomplete.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->

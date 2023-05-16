@@ -1,97 +1,54 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h4><i class="fas fa-graduation-cap mr-1 ml-3"></i>Consultar Alumnos</h4>
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
-    <li class="breadcrumb-item active">Consultar Alumnos</li>
 @stop
 
 @section('contenido')
-<div class="card shadow-border mr-4 ml-3 border-radius-0">
-<div class="card-body">
-<!-- barra de busqueda -->
-<div class="shadow-sm">
-    <div class="input-group input-group-sm border-radius-custom">
-        <input class="form-control mr-sm-2" id="busquedaConsultar" type="search" placeholder="Escribe el nombre del alumno..." aria-label="Search" onchange="BuscarAlumnos();">
-        <div class="input-group-append">
-            <!-- boton buscador icono -->
-            <button class="btn btn-navbar shadow-sm btn-search-cetis" id="BotonBuscador">
-                <i class="fas fa-search link-activo"></i>
-            </button>
-        </div>
-        <div class="input-group-append">
-            <a id="BotonFiltro" class="btn btn-trash-cetis btn-sm" href="{{asset('tramites/consultar')}}"><i class="fas fa-trash"></i></a>
-        </div>
-    </div>
+<div class="card-body mt-0">
+<div class="input-group float-right mt-0 col-5">
+  <div class="visibility-none" id="remove-filter">
+    <a class="btn btn-light remove-filter" href="{{ url('tramites/consultar') }}"type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14.73 20.83L17.58 18l-2.85-2.83l1.42-1.41L19 16.57l2.8-2.81l1.42 1.41L20.41 18l2.81 2.83l-1.42 1.41L19 19.4l-2.85 2.84l-1.42-1.41M13 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L7.29 16.7a.989.989 0 0 1-.29-.83v-5.12L2.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L13 10.75v9.13M5.04 5L9 10.06v5.52l2 2v-7.53L14.96 5H5.04Z"/></svg></a>
+  </div>
+<div class="input-group-prepend">
+<a class="btn btn-inactive cursor-default"  type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 10.5V6l-2.11 1.06A3.999 3.999 0 0 1 12 12a3.999 3.999 0 0 1-3.89-4.94L5 5.5L12 2l7 3.5v5h-1M12 9l-2-1c0 1.1.9 2 2 2s2-.9 2-2l-2 1m2.75-3.58L12.16 4.1L9.47 5.47l2.6 1.32l2.68-1.37M12 13c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-3 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1Z"/></svg></a>
 </div>
+          @if(Session::has('busqueda'))
+          <input type="text" class="form-control" id="buscadorAlumno" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="findPerfil();">
+          @else
+          <input type="text" class="form-control" id="busquedaConsultar" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="BuscarAlumnos();">
+          @endif
+        </div>
     <br>
-    <div class="responsive-table">
-        <table class="table table-sm table-hover table-striped" id="tabla">
-            <thead>
-                <tr>
-                <!-- Nombre -->
-                <th><div class="dropdown">
-                <button class="btn bg-white dropdown-toggle" type="button" onclick="EnfocarBarraBusqueda();">
-                    <b>Nombre</b>
-                </button>
-                </div>
-            </th>
-                    <!-- Especialidad -->
-            <th>
-                <div class="dropdown">
-                    <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <b>Especialidad</b>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'ELECTRÓNICA'])}}">ELECTRÓNICA</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'OFIMÁTICA'])}}">OFIMÁTICA</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'PROGRAMACIÓN'])}}">PROGRAMACIÓN</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONTABILIDAD'])}}">CONTABILIDAD</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONSTRUCCIÓN'])}}">CONSTRUCCIÓN</a>
-                    </div>
-                </div>
-            </th>
-            <!-- Grupo -->
-            <th>
-                <div class="dropdown">
-                    <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <b>Grupo</b>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '6',])}}">6 semestre</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '4',])}}">4 semestre</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '2',])}}">2 semestre</a>
-                    </div>
-                </div>
-            </th>
-            <th></th>
+    <br>
+    <div class="card">
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <table class="table table-sm" id="tabla">
+          <thead>
+            <tr>
+              <th>Nombre del alumno</th>
+              <th>Especialidad</th>
+              <th>Grado y grupo</th>
             </tr>
-            </thead>
-            <tbody>
-                @foreach ($alumnos as $a)
-                <tr id="Alumno">
-                    <td id="AlumnoTd">{{$a->nombre_completo}}</td>
-                    <td>{{$a->carrera}}</td>
-                    <td>{{$a->grupo}}</td>  
-                    <td>
-                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-sm border-radius-0" style="background-color: #a7201f;">
-                            <i class="far fa-file-pdf link-activo"></i>
-                        </a>
-                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-sm border-radius-0" style="background-color: #a7201f;">
-                        <i class="fas fa-door-open link-activo"></i>
-                        </a>
-                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-sm border-radius-0" style="background-color: #a7201f;">
-                        <i class="fas fa-file-contract link-activo"></i>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    </div>
-    </div>
+          </thead>
+          <tbody>
+            @foreach ($alumnos as $a)
+              <tr class="cursor-pointer">
+                <td><a class="a" href="{{url('perfil', $a->nombre_completo)}}">{{$a->nombre_completo}}</a></td>
+                <td><a class="a" href="{{url('perfil', $a->nombre_completo)}}">{{$a->carrera}}</a></td>
+                <td><a class="a" href="{{url('perfil', $a->nombre_completo)}}">{{$a->grupo}}</a></td>
+              </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        </div>
+      <!-- fin col -->
 @stop

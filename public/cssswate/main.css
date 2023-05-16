@@ -122,7 +122,7 @@ body{
   color: #d63737;
 }
 .inactive{
-    display: none;
+    display: none !important;
 }
 .link-activo{
 
@@ -352,4 +352,7 @@ body{
     left: 1.25rem;
     width: 100px;
     height: 100px;
+  }
+  .a{
+    color: black !important;
   }

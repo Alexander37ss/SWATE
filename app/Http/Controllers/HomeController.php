@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Models\tramite;
 use App\Models\Pre_justificante;
 use App\Models\tramite_detalle;
+use App\Models\Alumno;
 
 class HomeController extends BaseController
 {
@@ -18,11 +19,12 @@ class HomeController extends BaseController
         $ano = $fecha->format('Y');
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
+        $alumno = Alumno::all();
 
             //info de tramites
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
-            ->orderBy('id', 'DESC')
-            ->paginate(12);
+            ->orderBy('id', 'DESC')->get();
+
             $justificantesMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
             ->whereMonth('created_at', '=', $mes)
             ->whereYear('created_at', '=', $ano)
@@ -89,7 +91,7 @@ class HomeController extends BaseController
             $grupoCuatro = Pre_justificante::where('grupo', 4)->get()->count();
             $grupoSeis = Pre_justificante::where('grupo', 6)->get()->count();
 
-            return view('orientadora.home', compact('grupoDos', 'grupoCuatro', 'grupoSeis', 'motivoVacacional', 'motivoSalud', 'motivoPerdida', 'motivoOtro','enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'tramites', 'justificantesMes', 'justificantesAno', 'paseSalidaMes', 'paseSalidaAno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.home', compact('alumno','grupoDos', 'grupoCuatro', 'grupoSeis', 'motivoVacacional', 'motivoSalud', 'motivoPerdida', 'motivoOtro','enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre', 'tramites', 'justificantesMes', 'justificantesAno', 'paseSalidaMes', 'paseSalidaAno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
         }
         
         public function homeHistorialTipo($tipo){
@@ -124,7 +126,7 @@ class HomeController extends BaseController
             ->get()
             ->count();
 
-
+            
             return view('alumno.home', compact('justificantes', 'numJustificantes'));
         }
 

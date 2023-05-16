@@ -73,7 +73,7 @@
                   <div class="form-group ml-4" id="botonesDetalle">
                     <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar</a>
                     <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis" id="refresh">Confirmar y Descargar</a>
-                    <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
+                    <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
                   </div>
               </div>
       </div>

@@ -5,8 +5,7 @@
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
-    <li class="breadcrumb-item active">Solicitudes pendientes</li>
+
 @stop
 
 @section('contenido')

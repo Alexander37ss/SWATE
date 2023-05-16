@@ -4,8 +4,7 @@ const inputHistorial = document.querySelector('#busquedaHistorial');
 const botonBorrarFiltro = document.querySelector('#borrarFiltroDinamico')
 const PaseDeSalida = document.querySelector('#PaseDeSalida');
 const Justificante = document.querySelector('#Justificante');
-var table = document.getElementById("TablaHistorial");
-console.log(urlHome);
+var table = document.querySelector("#TablaHistorial");
 
 inputHistorial.addEventListener("keyup", () => {
   inputHistorial.setAttribute("value", inputHistorial.value);
@@ -49,8 +48,7 @@ function FiltrarJustificante(){
   }
 }
 
-function BuscarAlumnosHistorial() {
-  botonBorrarFiltro.classList.remove('inactive');
+function BuscarAlumnosHistorial(){
   var  filter, tr, td, i, txtValue;
   filter = inputHistorial.value.toUpperCase();
   tr = table.getElementsByTagName("tr");

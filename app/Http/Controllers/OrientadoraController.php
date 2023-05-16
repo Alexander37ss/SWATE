@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use PDF;
+use Session;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Alumno;
@@ -13,6 +14,33 @@ use App\Models\tramite;
 
 class OrientadoraController extends BaseController
 {
+
+    function perfilAlumno($nombre){
+        $alumno = Alumno::where('nombre_completo', $nombre)->first();
+        $alumnoSimil = Alumno::where('nombre_completo', 'LIKE','%'.$nombre.'%')->get()->count();
+        if($alumno == null && $alumnoSimil <= 0){
+            Session::flash('flash_message', 'Mensaje de prueba');
+            return redirect('home');
+        }else if($alumno == null){
+            return redirect()->action(
+                [OrientadoraController::class, 'consultarBusqueda'], [$nombre]);
+        }
+        $tramitetotal = tramite::where('alumno_id', $alumno->id)->get()->count();
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+        
+        return view('orientadora.perfilAlumno', compact('alumno', 'tramitetotal','preJustificantes', 'pre_justificantes'));
+    }
+
+    function consultarBusqueda($nombre){
+        $alumnos = Alumno::where('nombre_completo', 'LIKE','%'.$nombre.'%')->get();
+        Session::flash('busqueda', 'Mensaje de prueba');
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+
+        return view('orientadora.consultar', compact('alumnos', 'preJustificantes', 'pre_justificantes'));
+    }
+
     function historial(){
         $alumnosNum = Alumno::all()->count();
         $fecha = Carbon::now();
@@ -249,6 +277,7 @@ class OrientadoraController extends BaseController
         $tramite = New tramite;
         $tramite->tramite_id = $tramite_detalles->id;
         $tramite->tipo_id = '2';
+        $tramite->autorizado = '1';
         $tramite->orientadora_id = auth()->user()->id;
         $tramite->alumno_id = $id;
         $tramite->save();
@@ -272,7 +301,7 @@ class OrientadoraController extends BaseController
         $datosAlumno = Alumno::where('id', $datosSolicitud->alumno_id)->first();
         $fecha = Carbon::parse($datosSolicitud->fecha_solicitada);
         $mes = $fecha->month; # Aqui obtenemos el mes que se solicito
-        $ano = $fecha->year;
+        $ano = $fecha->year; # Aqui obtenemos el año que se solicito
         
         $fecha_solicitada = $datosSolicitud->fecha_solicitada;
         $preJustificantes = $this->justificantesPendientes;
@@ -280,6 +309,21 @@ class OrientadoraController extends BaseController
         
 
         return view('orientadora.solicitudJustificanteDetalle', compact('datosSolicitud','datosAlumno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
+    }
+    public function tramiteDetalle($id){
+        //Obtienes todos las solicitudes de justificantes
+        $datosSolicitud = tramite::find($id);
+        $datosAlumno = Alumno::where('id', $datosSolicitud->alumno_id)->first();
+        $fecha = Carbon::parse($datosSolicitud->tramite_detalle->fecha_solicitada);
+        $mes = $fecha->month; # Aqui obtenemos el mes que se solicito
+        $ano = $fecha->year;  # Aqui obtenemos el año que se solicito
+        
+        $fecha_solicitada = $datosSolicitud->fecha_solicitada;
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+        
+
+        return view('orientadora.tramiteDetalle', compact('datosSolicitud','datosAlumno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
     }
     # Funciones para afectuar una solicitud
     public function solicitudJustificanteAceptar($nombreAlumno, $idPre){
@@ -302,6 +346,7 @@ class OrientadoraController extends BaseController
         $tramite = New tramite;
         $tramite->tramite_id = $tramite_detalles->id;
         $tramite->tipo_id = '3';
+        $tramite->autorizado = '1';
         $tramite->orientadora_id = auth()->user()->id;
         $tramite->alumno_id = $alumno->id;
         $tramite->save();
@@ -331,6 +376,7 @@ class OrientadoraController extends BaseController
         $tramite = New tramite;
         $tramite->tramite_id = $tramite_detalles->id;
         $tramite->tipo_id = '3';
+        $tramite->autorizado = '1';
         $tramite->orientadora_id = auth()->user()->id;
         $tramite->alumno_id = $datosAlumno->id;
         $tramite->save();
@@ -345,11 +391,30 @@ class OrientadoraController extends BaseController
         return $pdf->download("justificanteAlumno".$datosAlumno->nombre.".pdf");
         
     }
-    public function solicitudJustificanteDenegar($idPre){
+    public function solicitudJustificanteDenegar($nombreAlumno, $idPre){
         $datosPre = Pre_justificante::find($idPre);
-        
-        $datosPre->estatus_solicitud = 2;
+        $datosAlumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
+
+        $datosPre->estatus_solicitud = 1;
         $datosPre->save();
+
+        # Guardamos los datos a la BD (tabla tramite_detalle)
+        $tramite_detalles = New tramite_detalle;
+        $tramite_detalles->motivo = $datosPre->motivo;
+        $tramite_detalles->motivo_otro = $datosPre->otro;
+        $tramite_detalles->fecha_solicitada = $datosPre->fecha_solicitada;
+        $tramite_detalles->del = $datosPre->del;
+        $tramite_detalles->al = $datosPre->al;
+        $tramite_detalles->save();
+        
+        # Guardamos los datos a la BD (tabla tramite)
+        $tramite = New tramite;
+        $tramite->tramite_id = $tramite_detalles->id;
+        $tramite->tipo_id = '3';
+        $tramite->autorizado = '0';
+        $tramite->orientadora_id = auth()->user()->id;
+        $tramite->alumno_id = $datosAlumno->id;
+        $tramite->save();
 
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
