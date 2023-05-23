@@ -1,3 +1,63 @@
+.sidebar-collapse .main-sidebar-custom  .hide-on-collapse {
+  display: none !important;
+}
+
+.sidebar-collapse .main-sidebar-custom :hover .hide-on-collapse {
+  display: block !important;
+}
+.sidebar-collapse .main-sidebar-custom:hover .sidebar-custom p{
+  visibility: visible !important;
+}
+.sidebar-collapse .main-sidebar-custom .sidebar-custom p{
+  visibility: hidden !important;
+}
+.main-sidebar-custom .sidebar-custom p{
+  transition-timing-function: ease;
+  transition-delay: 0.3s;
+}
+.main-sidebar-custom  .sidebar {
+  height: calc(100% - 7.6rem) !important;
+}
+
+.main-sidebar-custom  .sidebar-custom {
+  height: 4rem !important;
+}
+
+.main-sidebar-custom-lg .sidebar {
+  height: calc(100% - 9.6rem) !important;
+}
+
+.main-sidebar-custom-lg .sidebar-custom {
+  height: 6rem !important;
+}
+
+.main-sidebar-custom-xl .sidebar {
+  height: calc(100% - 11.6rem) !important;
+}
+
+.main-sidebar-custom-xl .sidebar-custom {
+  height: 8rem !important;
+}
+
+.sidebar-custom {
+  padding: 0.85rem .5rem !important;
+}
+
+.main-sidebar-custom .pos-right,
+.main-sidebar-custom-lg .pos-right,
+.main-sidebar-custom-xl .pos-right {
+  position: absolute !important;
+  right: .5rem !important;
+}
+
+[class*='sidebar-dark'] .sidebar-custom {
+  border-top: 1px solid #4f5962;
+}
+
+[class*='sidebar-light'] .sidebar-custom {
+  border-top: 1px solid #dee2e6;
+}
+
 .btn-inactive-dos{
   background-color: #a5a5a5 !important;
   color: #3b3b3d !important;
@@ -147,6 +207,12 @@
     border-radius: 5px;
     position: relative;
   }
+  .container .searchInput-sm{
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+  }
   
   .searchInput input{
     height: 55px;
@@ -157,9 +223,21 @@
     padding: 0 60px 0 20px;
     font-size: 18px;
   }
+  .searchInput-sm input{
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    font-size: 16px;
+  }
   
   .searchInput.active input{
     border-radius: 5px 5px 0 0;
+  }
+  .searchInput-sm.active input{
+    border-radius: 3px 3px 0 0;
   }
   
   .searchInput .resultBox{
@@ -201,6 +279,18 @@
     text-align: center;
     line-height: 55px;
     font-size: 20px;
+    color: #ff0707;
+    cursor: pointer;
+  }
+  .searchInput-sm .icon{
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 15px;
     color: #ff0707;
     cursor: pointer;
   }

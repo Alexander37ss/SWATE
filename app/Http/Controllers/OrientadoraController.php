@@ -42,38 +42,34 @@ class OrientadoraController extends BaseController
     }
 
     function historial(){
-        $alumnosNum = Alumno::all()->count();
-        $fecha = Carbon::now();
-        $hora = $fecha->format('H');
-        $dia = $fecha->format('d');
-        $mes = $fecha->format('m');
-        $ano = $fecha->format('Y');
-        $tramitesNumAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
-        ->whereYear('created_at', '=', $ano)
-        ->get()->count();
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
-
             //info de tramites
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
             ->orderBy('id', 'DESC')->get();
-            $justificantesMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
-            ->whereMonth('created_at', '=', $mes)
-            ->whereYear('created_at', '=', $ano)
-            ->get()->count();
-            $justificantesAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 3]])
-            ->whereYear('created_at', '=', $ano)
-            ->get()->count();
-            $paseSalidaMes = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
-            ->whereMonth('created_at', '=', $mes)
-            ->whereYear('created_at', '=', $ano)
-            ->get()->count();
-            $paseSalidaAno = tramite::where([['orientadora_id', auth()->user()->id],['tipo_id', 2]])
-            ->whereYear('created_at', '=', $ano)
-            ->get()->count();
 
+            return view('orientadora.historial', compact('tramites', 'preJustificantes', 'pre_justificantes'));
+    }
+    function historialAceptado(){
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+            //info de tramites
+            $tramites = tramite::where([['orientadora_id', auth()->user()->id],['autorizado', '1']])
+            ->orderBy('id', 'DESC')->get();
 
-            return view('orientadora.historial', compact('tramites', 'justificantesMes', 'justificantesAno', 'paseSalidaMes', 'paseSalidaAno', 'mes', 'ano', 'preJustificantes', 'pre_justificantes'));
+            Session::now('aceptado', 'Mensaje de prueba');
+
+            return view('orientadora.historial', compact('tramites', 'preJustificantes', 'pre_justificantes'));
+    }
+    function historialRechazado(){
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+            //info de tramites
+            $tramites = tramite::where([['orientadora_id', auth()->user()->id], ['autorizado', '0']])
+            ->orderBy('id', 'DESC')->get();
+            Session::now('rechazado', 'Mensaje de prueba');
+
+            return view('orientadora.historial', compact('tramites', 'preJustificantes', 'pre_justificantes'));
     }
     function grafica(){
         $alumnosNum = Alumno::all()->count();
@@ -227,6 +223,7 @@ class OrientadoraController extends BaseController
         $tramite = New tramite;
         $tramite->tramite_id = $tramite_detalles->id;
         $tramite->tipo_id = '3';
+        $tramite->autorizado = '1';
         $tramite->orientadora_id = auth()->user()->id;
         $tramite->alumno_id = $id;
         $tramite->save();

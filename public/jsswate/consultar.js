@@ -1,5 +1,4 @@
 /* Inicializamos constante, instanciamos el buscador con el id busquedaConsultar */
-const busquedaBoton = document.querySelector('#BotonBuscador');
 /* Inicializamos constante, instanciamos el buscador con el id busquedaConsultar */
 const busquedammm = document.querySelector('#busquedaConsultar');
 /* Inicializamos variable y le otorgamos el valor de el url actual */
@@ -33,11 +32,6 @@ function BuscarAlumnos() {
     filter = input.value.toUpperCase();
     table = document.getElementById("tabla");
     tr = table.getElementsByTagName("tr");
-    if(filter === ''){
-      removeFilter.classList.add('visibility-none');
-    }else{
-      removeFilter.classList.remove('visibility-none');
-    }
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[0];

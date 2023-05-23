@@ -65,6 +65,8 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     /* Otros */
     Route::get('/graficas', [OrientadoraController::class, 'grafica']);
     Route::get('/historial', [OrientadoraController::class, 'historial']);
+    Route::get('/historial/aceptados', [OrientadoraController::class, 'historialAceptado']);
+    Route::get('/historial/rechazados', [OrientadoraController::class, 'historialRechazado']);
 });
 
 Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'crearQr']);

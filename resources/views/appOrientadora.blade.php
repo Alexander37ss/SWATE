@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
   <style>
     div nav ul {
         justify-content: center;
@@ -155,7 +155,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar elevation-4 sidebar-light-warning" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;">
+        <aside class="main-sidebar main-sidebar-custom elevation-4 sidebar-light-warning" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;">
           <!-- Brand Logo -->
           <a href="{{asset('/home')}}" class="brand-link logo-switch">
           <img src="{{asset('img/cetis.png')}}" class="brand-image-xl logo-xs ml-1">
@@ -252,8 +252,7 @@
               </li>
             </ul>
           </li>
-          <br><br><br><br><br><br><br><br><br>
-<!--      
+          <!--      
                 <li class="nav-item">
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="nav-link" id="solicitudes_justificate">
                     <i class="fas fa-tags nav-icon"></i>
@@ -261,20 +260,20 @@
                     </p>
                   </a>
                 </li> -->
-                <li class="nav-item">
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+
+            </nav>
+            <!-- /.sidebar-menu -->
+          </div>
+          <!-- /.sidebar -->
+          <div class="sidebar-custom">
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                 <svg class="nav-icon logo-logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
                     </svg>
-                  <p>Cerrar sesión</p>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                   </form> 
-              </li>
-          </nav>
-            <!-- /.sidebar-menu -->
           </div>
-          <!-- /.sidebar -->
         </aside>
 
         <div class="content-wrapper">

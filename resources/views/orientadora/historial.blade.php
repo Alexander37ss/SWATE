@@ -7,34 +7,61 @@
 @stop
 
 @section('contenido')
-<div class="row">
-  <div class="col-8">
-    <div class="card">
+<div class="row d-flex justify-content-end">
+    <div class="input-group w-25">
+      <input type="date" class="form-control border-top w-25" placeholder="Filtrar por fecha" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="BuscarAlumnosHistorial();">
+    </div>
+  <!-- fin input -->
+    <div class="input-group-sm w-25 ml-2 mr-2">
+      <input type="text" class="form-control border-top w-25" placeholder="Buscar alumno" id="busquedaHistorial" onchange="BuscarAlumnosHistorial();">
+    </div>
+  <!-- fin input -->
+  <a href="{{url('historial')}}" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></a>
+</div>
+<!-- fin row -->
+<div class="row mt-2">
+  <div class="col">
+    <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <div class="card-header">
         <h3 class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89l.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7s-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.25 2.52l.77-1.28l-3.52-2.09V8z"/></svg> Historial de trámites</h3>
+        <div class="card-tools">
+        @if(Session::has('aceptado'))
+          <a href="{{url('historial')}}" class="font-light-a a mr-2 cursor-pointer">Todos</a>
+          <a href="{{url('historial/aceptados')}}" class="underline--magical a  mr-2 cursor-pointer">Aceptados</a>
+          <a href="{{url('historial/rechazados')}}" class="font-light-a ml-1 cursor-pointer">Rechazados</a>
+        @elseif(Session::has('rechazado'))
+        <a href="{{url('historial')}}" class="font-light-a mr-2 cursor-pointer">Todos</a>
+        <a href="{{url('historial/aceptados')}}" class="font-light-a mr-2 cursor-pointer">Aceptados</a>
+        <a href="{{url('historial/rechazados')}}" class="underline--magical a mr-2 cursor-pointer">Rechazados</a>
+        @else    
+        <a href="{{url('historial')}}" class="underline--magical a mr-2 cursor-pointer">Todos</a>
+        <a href="{{url('historial/aceptados')}}" class="font-light-a mr-2 cursor-pointer">Aceptados</a>
+        <a href="{{url('historial/rechazados')}}" class="font-light-a ml-1 cursor-pointer">Rechazados</a>
+        @endif
+        </div>
+        <br><br>
       </div>
       <!-- /.card-header -->
       <div class="card-body p-0">
         <table class="table table-sm" id="TablaHistorial">
-          <thead>
+<!--           <thead>
             <tr>
-              <th>Fecha</th>
-              <th>Alumno</th>
-              <th>Motivo</th>
+              <th><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6l9-4.91V17h2V9L12 3z"/></svg> Alumno</th>
+              <th><i class="fas fa-file"></i> Trámite</th>
+              <th><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg> Fecha</th>
+              <th>Estatus</th>
+              <th></th>
             </tr>
-          </thead>
+          </thead> -->
           <tbody>
             @foreach ($tramites as $tra)
-                  <tr class="cursor-pointer">
-                    <td>{{$tra->created_at->format('d/m/Y');}}</td>
-                    <td>{{$tra->alumno->nombre_completo}}</td>
-                    <td>
-                      @if ($tra->tramite_detalle->motivo != 'Otro...')
-                      {{$tra->tramite_detalle->motivo}}
-                      @else
-                      {{$tra->tramite_detalle->motivo_otro}}
-                      @endif
-                    </td>
+                  <tr>
+                    <td width="15%">{{$tra->created_at->format('d/m/Y');}}</td>
+                    <td width="30%"><span class="">@if($tra->tipo_id == 3) Justificante @else Pase de salida @endif por {{$tra->tramite_detalle->motivo}}</span></td>
+                    <td width="40%"><a class="ml-1 text-secondary style-2" href="{{url('perfil', $tra->alumno->nombre_completo)}}">{{$tra->alumno->nombre_completo}}</a></td>
+                    <!-- <td>@if($tra->autorizado == 1)<span class="badge bg-primary">Aceptado</span> @else <span class="badge bg-danger">Rechazado</span>  @endif</td> -->
+                    <td width="20%">@if($tra->autorizado == '1') <span class="badge bg-primary">Aceptado</span> @else <span class="badge bg-danger">Rechazado</span> @endif</td>
+                    <td><a class="a span style-4" href="{{ url('tramite_detalle', $tra->id) }}" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"/></svg></a></td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -45,29 +72,6 @@
           <!-- /.card -->
         </div>
       <!-- fin col -->
-      <div class="col">
-        <!-- input alumno -->
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <a class="btn btn-inactive cursor-default"  type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 10.5V6l-2.11 1.06A3.999 3.999 0 0 1 12 12a3.999 3.999 0 0 1-3.89-4.94L5 5.5L12 2l7 3.5v5h-1M12 9l-2-1c0 1.1.9 2 2 2s2-.9 2-2l-2 1m2.75-3.58L12.16 4.1L9.47 5.47l2.6 1.32l2.68-1.37M12 13c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-3 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1Z"/></svg></a>
-          </div>
-          <input type="text" class="form-control" id="busquedaHistorial" placeholder="Escribe el nombre del alumno" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="BuscarAlumnosHistorial();">
-        </div>
-        <!-- input fecha -->
-        <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <a class="btn btn-inactive cursor-default"  type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 14q-.425 0-.713-.288T11 13q0-.425.288-.713T12 12q.425 0 .713.288T13 13q0 .425-.288.713T12 14Zm-4 0q-.425 0-.713-.288T7 13q0-.425.288-.713T8 12q.425 0 .713.288T9 13q0 .425-.288.713T8 14Zm8 0q-.425 0-.713-.288T15 13q0-.425.288-.713T16 12q.425 0 .713.288T17 13q0 .425-.288.713T16 14Zm-4 4q-.425 0-.713-.288T11 17q0-.425.288-.713T12 16q.425 0 .713.288T13 17q0 .425-.288.713T12 18Zm-4 0q-.425 0-.713-.288T7 17q0-.425.288-.713T8 16q.425 0 .713.288T9 17q0 .425-.288.713T8 18Zm8 0q-.425 0-.713-.288T15 17q0-.425.288-.713T16 16q.425 0 .713.288T17 17q0 .425-.288.713T16 18ZM5 22q-.825 0-1.413-.588T3 20V6q0-.825.588-1.413T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.588 1.413T19 22H5Zm0-2h14V10H5v10Z"/></svg></a>
-          </div>
-          <input type="date" class="form-control" id="busquedaHistorial" placeholder="Filtrar por fecha" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="BuscarAlumnosHistorial();">
-          <div class="input-group-append">
-            </div>
-          </div>
-          <!-- borrar filtro(s) -->
-          <div class="input-group">
-            <a class="btn btn-outline-dark" href="{{ url('historial') }}" type="button">Borrar filtros</a>
-          </div>
-        </div>
-        <!-- fin col -->
 </div>
 <!-- fin row -->
 </div>

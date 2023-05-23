@@ -5,6 +5,12 @@ body{
 	--c-white: #fff;
 	--c-black: #000;
 
+  --link-1: #D65472;
+	--link-2: #37C5F0;
+	--link-3: gold;
+	--text: #18272F;
+	--counter: #30B67D;
+
 	--c-ash: #eaeef6;
 	--c-charcoal: #a0a0a0;
 	--c-void: #141b22;
@@ -21,12 +27,93 @@ body{
 	--c-indigo: #6558d3;
 	--c-governor: #4133B7;
 }
+.style-4 {
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		left: 0;
+	}
+
+	&::before {
+		background-color: #6558d3;
+		height: 2px;
+		bottom: 0;
+		transform-origin: 100% 50%;
+		transform: scaleX(0);
+		transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+	}
+
+	&:hover::before {
+		transform-origin: 0% 50%;
+		transform: scaleX(1);
+	}
+
+	&::after {
+		content: attr(data-replace);
+		height: 100%;
+		top: 0;
+		transform-origin: 100% 50%;
+		transform: translate3d(200%, 0, 0);
+		transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+		color: var(--link-1);
+	}
+
+	&:hover::after {
+		transform: translate3d(0, 0, 0);
+	}
+
+	.span {
+		display: inline-block;
+		transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+	}
+
+	&:hover span {
+		transform: translate3d(-200%, 0, 0);
+	}
+}
+.style-2 {
+	position: relative;
+  color: var(--c-black);
+	transition: color .3s ease-in-out;
+	
+	&::before {
+		content: '';
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		height: 3px;
+		background-color: var(--c-indigo);
+		transform: scaleX(0);
+		transition: transform .3s ease-in-out;
+	}
+	
+	&:hover {
+		color: var(--link-1);
+	}
+	
+	&:hover::before {
+		transform: scaleX(1);
+	}	
+}
+
 .text-dgeti{
   color: #A7201F !important;
 }
 .logo-logout{
   color:rgb(90, 90, 90);
   transition: 0.5s;
+}
+.btn .btn-borderless{
+  background-color: white !important;
+  color: black !important;
+  border: 1px;
+  border-color: #343a40;
 }
 .logo-logout:hover{
   color:rgb(0, 0, 0);
@@ -79,15 +166,39 @@ body{
 .bg-yellow-custom{
   background-color: rgb(241, 241, 29);
 }
+.underline--magical {
+  background-image: linear-gradient(120deg, #108afc 0%, #1488f5 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  transition: 0.25s ease-in;
+  &:hover {
+    background-size: 100% 88%;
+    color: white !important;
+  }
+}
 .font-light{
  color: hsl(229, 6%, 66%);
- font-weight: lighter;
+ font-weight: lighter !important;
+}
+.font-light-a{
+ color: hsl(229, 6%, 66%);
+ font-weight: lighter !important;
+ transition: 0.5s;
+}
+.font-light-a:hover{
+ color: hsl(0, 0%, 0%);
+ font-weight: lighter !important;
+}
+.font-light2{
+ color: hsl(0, 0%, 100%);
+ font-weight: lighter !important;
 }
 .font-size-low{
-  font-size: 60%;
+  font-size: 70%;
 }
 .font-size-low-medium{
-  font-size: 80%;
+  font-size: 85.25%;
 }
 .font-bold{
  font-weight: bold !important;
@@ -142,6 +253,33 @@ body{
 .bg-cetis2{
     background-color: #9f2241 !important;
     color: white !important;
+}
+.bg-cetis3{
+    background-color: #A7201F !important;
+    color: white !important;
+}
+.bg-cetis-table{
+  background-color: #ffffff !important;
+  transition: 0.15s;
+}
+.bg-cetis-table td a{
+  transition: .5s ease-in-out;
+}
+.bg-cetis-table:hover td a{
+  color: #000000 !important;
+}
+.bg-cetis-table:hover{
+  background-color: #e5ebf6 !important;
+}
+.text-cetis{
+  color: black !important;
+}
+.text-cetis2{
+  color: #9f2241 !important;
+  font-weight: bolder;
+}
+.text-cetis:hover{
+  color: #9f2241 !important;
 }
 .justificante{
   background-color: #98989A;
