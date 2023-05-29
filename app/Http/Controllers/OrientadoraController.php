@@ -44,32 +44,39 @@ class OrientadoraController extends BaseController
     function historial(){
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('Y-m-d');
             //info de tramites
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
             ->orderBy('id', 'DESC')->get();
 
-            return view('orientadora.historial', compact('tramites', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.historial', compact('tramites', 'fecha', 'preJustificantes', 'pre_justificantes'));
     }
     function historialAceptado(){
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('Y-m-d');
+
             //info de tramites
             $tramites = tramite::where([['orientadora_id', auth()->user()->id],['autorizado', '1']])
             ->orderBy('id', 'DESC')->get();
 
             Session::now('aceptado', 'Mensaje de prueba');
 
-            return view('orientadora.historial', compact('tramites', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.historial', compact('tramites', 'fecha', 'preJustificantes', 'pre_justificantes'));
     }
     function historialRechazado(){
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('Y-m-d');
             //info de tramites
             $tramites = tramite::where([['orientadora_id', auth()->user()->id], ['autorizado', '0']])
             ->orderBy('id', 'DESC')->get();
             Session::now('rechazado', 'Mensaje de prueba');
 
-            return view('orientadora.historial', compact('tramites', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.historial', compact('tramites', 'fecha', 'preJustificantes', 'pre_justificantes'));
     }
     function grafica(){
         $alumnosNum = Alumno::all()->count();

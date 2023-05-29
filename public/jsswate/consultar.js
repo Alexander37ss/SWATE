@@ -1,5 +1,4 @@
 /* Inicializamos constante, instanciamos el buscador con el id busquedaConsultar */
-/* Inicializamos constante, instanciamos el buscador con el id busquedaConsultar */
 const busquedammm = document.querySelector('#busquedaConsultar');
 /* Inicializamos variable y le otorgamos el valor de el url actual */
 var url = window.location;
@@ -10,7 +9,8 @@ const removeFilter = document.querySelector('#remove-filter');
 unico que necesitamos es el pathname para hacer la comparacion de ruta */
 url = url.pathname;
 /* Funcion para cambiar de color el boton de borrar filtro cuando exista un filtro activo */
-window.addEventListener('load', BorrarFiltroDinamico);
+var resultados = document.querySelector("#resultados");
+window.addEventListener('load', EnfocarBarraBusqueda);
 busquedaBoton.addEventListener('click', BuscarAlumnos);
 
 
@@ -28,6 +28,7 @@ function EnfocarBarraBusqueda(){
 function BuscarAlumnos() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
+    var numResultados = 0;
     input = document.getElementById("busquedaConsultar");
     filter = input.value.toUpperCase();
     table = document.getElementById("tabla");
@@ -39,9 +40,11 @@ function BuscarAlumnos() {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
+          numResultados++;
         } else {
           tr[i].style.display = "none";
         }
       }
     }
+    resultados.innerText = numResultados;
   }

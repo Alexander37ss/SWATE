@@ -1,5 +1,6 @@
 body{
   font-family: 'Poppins', sans-serif !important;
+  line-height: 1.5;
 }
 :root {
 	--c-white: #fff;
@@ -27,6 +28,103 @@ body{
 	--c-indigo: #6558d3;
 	--c-governor: #4133B7;
 }
+.font-arial{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.a-underline{
+  color: rgb(107, 107, 107);
+}
+.a-underline:hover{
+  text-decoration: underline;
+  color: #108afc;
+}
+.ab-underline{
+  color: rgb(0, 0, 0);
+}
+.ab-underline:hover{
+  text-decoration: underline;
+  color: #108afc;
+}
+
+.input-github{
+  padding: 5px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #24292e;
+  vertical-align: middle;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
+  
+}
+.input-github:focus{
+    border-color: #0366d6;
+    outline: none;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.btn-github{
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.btn-github:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.btn-github:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.btn-github:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.btn-github:focus {
+  outline: 1px transparent;
+}
+
+.btn-github:before {
+  display: none;
+}
+
+.btn-github:-webkit-details-marker {
+  display: none;
+}
+
+
 .style-4 {
 	overflow: hidden;
 	position: relative;
@@ -260,16 +358,12 @@ body{
 }
 .bg-cetis-table{
   background-color: #ffffff !important;
-  transition: 0.15s;
 }
 .bg-cetis-table td a{
   transition: .5s ease-in-out;
 }
-.bg-cetis-table:hover td a{
-  color: #000000 !important;
-}
 .bg-cetis-table:hover{
-  background-color: #e5ebf6 !important;
+  background-color: #f7f7f7 !important;
 }
 .text-cetis{
   color: black !important;

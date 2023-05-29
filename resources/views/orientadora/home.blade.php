@@ -42,14 +42,13 @@
     <div class="row ml-5 mr-3">
         @foreach($tramites as $a)
         <div class="col-md-4 mb-4">
-            <a href="{{url('tramite_detalle', $a->id)}}" class="a">
             @if($a->autorizado == 1)
-            <div class="card-custom">
-                @else <div class="card-custom card-refuse">
+            <div class="card-custom shadow-none bg-white" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px !important; background-color: white !important;">
+                @else <div class="card-custom card-refuse bg-white" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px !important; background-color: white !important;">
                     @endif
-<!--         <span class="pricing">
-				<span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/></svg>
+                    <!--         <span class="pricing">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/></svg>
 				</span>
 			</span> -->
     <h3 class="card__title">Trámite @if($a->autorizado == 1) <span class="text-blue">aceptado</span><span class="badge bg-primary float-right"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/></svg></span> @else <span class="text-red">rechazado</span><span class="badge bg-danger float-right"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z"/></svg></span>  @endif </h3>
@@ -57,6 +56,7 @@
     <div class="card__date">
         {{$a->created_at->format('d/m/Y');}}
     </div>
+    <a href="{{url('tramite_detalle', $a->id)}}" class="a">
     @if($a->autorizado == 1)
     <div class="card__arrow">
     @else <div class="card__arrow_altern">
@@ -66,8 +66,8 @@
         </svg>
     </div>
 </div>
-</div>
 </a>
+</div>
         @if(++$i == 9) 
         <?php 
                   break;
@@ -77,12 +77,10 @@
                 </div>
                 <br>
                 <div class="mx-auto" align="center">
-                    <a class="btn btn-danger" href="{{url('historial')}}"> 
+                    <a class="btn-github a" href="{{url('historial')}}"> 
                         Mostrar más       
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
-                            <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
-                        </svg>
-    </a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>
+                    </a>
                 </div>
                 </div>
                 <br>
