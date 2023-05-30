@@ -14,7 +14,7 @@
           <div class="col-md-3">
 
             <!-- Profile Image -->
-            <div class="card card-danger card-outline">
+            <div class="card card-danger card-outline" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
@@ -54,9 +54,9 @@
             <!-- /.card -->
             <div class="col">
                 <!-- About Me Box -->
-                <div class="card card-danger">
-                    <div class="card-header">
-                        <h3 class="card-title">Acerca de</h3>
+                <div class="card card-light" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
+                    <div class="card-header" style="border-radius: 10px 10px 0px 0px !important;">
+                        Acerca de
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
