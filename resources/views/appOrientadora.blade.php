@@ -4,25 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SWATE</title>
+  <!-- icon page -->
   <link rel="icon" type="image/x-icon" href="{{ url('images/logohb.ico') }}">
   <link rel="icon" href="{{asset('img/cetis.png')}}">
-  <!-- prueba -->
-  
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
   <link rel="stylesheet" href="{{asset('cssswate/code.css')}}">
-
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
-  <!-- rubik font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- fonts -->
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- personal fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
+  <!-- fin head -->
   <style>
     div nav ul {
         justify-content: center;
@@ -36,7 +36,7 @@
 
 <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0 shadow-md" style="background-color: #A7201F;">
+        <nav class="main-header navbar navbar-expand navbar-light border-bottom-0 shadow-md" >
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -125,7 +125,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" >
                   <i class="fas fa-inbox cursor-pointer"></i>
-                  <span class="badge badge-light navbar-badge cursor-pointer">{{$preJustificantes}}</span>
+                  <span class="badge badge-primary navbar-badge cursor-pointer">{{$preJustificantes}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                   <span class="dropdown-header">Bandeja de entrada</span>

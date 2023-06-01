@@ -4,17 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SWATE</title>
+  <!-- icon page -->
   <link rel="icon" href="{{asset('img/cetis.png')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
+  <link rel="stylesheet" href="{{asset('cssswate/code.css')}}">
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
+  <!-- fonts -->
+  <!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- personal fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
+<!-- fin head -->
   <style>
     div nav ul {
         justify-content: center;
@@ -25,7 +33,7 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini sidebar-collapse">
 <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark border-bottom-0" style="background-color: #A7201F;">
+        <nav class="main-header navbar navbar-expand navbar-light border-bottom-0">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -135,7 +143,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar elevation-4 sidebar-light-warning">
+        <aside class="main-sidebar main-sidebar-custom elevation-4 sidebar-light-warning">
           <!-- Brand Logo -->
           <a href="{{asset('/home')}}" class="brand-link logo-switch">
           <img src="{{asset('img/cetis.png')}}" class="brand-image-xl logo-xs ml-1">
@@ -153,11 +161,11 @@
                     <a class="d-block">{{ Auth::user()->name; }}</a>
                 {{-- <span>{{(Auth::user()->roles[0]->name)}}</span> --}}
                 <a class="d-block text-dgeti">Estudiante</a>
-              <a class="d-block" href="{{ route('logout') }}"
+<!--               <a class="d-block" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
                  {{ __('Cerrar sesión') }}
-                </a>
+                </a> -->
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                  @csrf
@@ -184,7 +192,7 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
                   <a href="{{asset('/home')}}" class="nav-link" id="home">
-                  <i class="nav-icon fas fa-home" id="homeicon"></i>
+                  <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
                     <p id = "parrafohome">
                       Inicio
                     </p>
@@ -192,16 +200,22 @@
                 </li>
                 {{-- material del alumno --}}
 
+                <li class="nav-item">
+                      <a href="{{url('alumno/misSolicitudes')}}" class="nav-link">
+                      <i class="far fa-paper-plane nav-icon"></i>
+                        <p>Mis solicitudes</p>
+                      </a>
+                    </li>
                     <li class="nav-item">
                       <a href="{{url('alumno/justificante')}}" class="nav-link"> 
-                      <i class="fas fa-file-alt nav-icon"></i>
+                      <i class="far fa-file nav-icon"></i>
                         <p>Solicitar justificante</p>
                       </a>
                     </li>
                 <li class="nav-item">
                       <a href="{{url('alumno/constancia/pdf', auth()->user()->name)}}" class="nav-link" onclick="constanciaDescargar();">
-                      <i class="fas fa-file-pdf nav-icon"></i>
-                        <p>Descargar constancia</p>
+                      <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 20q-.825 0-1.413-.588T4 18v-3h2v3h12v-3h2v3q0 .825-.588 1.413T18 20H6Zm6-4l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11l-5 5Z"/></svg>
+                        <p>Descargar Constancia</p>
                       </a>
                     </li>
 
@@ -209,6 +223,15 @@
             <!-- /.sidebar-menu -->
           </div>
           <!-- /.sidebar -->
+          <div class="sidebar-custom">
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                <svg class="nav-icon logo-logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                    </svg>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                  </form> 
+          </div>
         </aside>
 
         <div class="content-wrapper">

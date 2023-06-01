@@ -80,6 +80,10 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
     /* Justificante de parte del alumno */
     Route::get('/justificante', [AlumnoController::class, 'justificante']);
     
+    Route::get('/misSolicitudes', [AlumnoController::class, 'solicitudes']);
+
+    Route::get('/misSolicitudes/cancelar/{id}', [AlumnoController::class, 'solicitudCancelar']);
+
     /* pre-justificante de parte del alumno */
     Route::post('/prejustificante/{nombrealumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
     

@@ -79,6 +79,13 @@
 .cursor-default{
   cursor: default !important;
 }
+.vertical-center {
+  position: absolute;
+  top: 50%; /* Alinea el elemento en la mitad vertical del cuerpo */
+  transform: translateY(-50%); /* Ajusta la posición vertical del elemento */
+  left: 50%; /* Alinea el elemento en la mitad vertical del cuerpo */
+  transform: translateX(-50%); /* Ajusta la posición vertical del elemento */
+}
 .card-custom {
     --border-radius: 0.75rem;
     --primary-color: #7257fa;

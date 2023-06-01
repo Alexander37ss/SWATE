@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use PDF;
+use Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
@@ -17,12 +18,30 @@ class AlumnoController extends Controller
         return view('alumno.justificante');
     }
 
+    function solicitudCancelar($id){
+        $preJustificante = Pre_justificante::where('id', $id);
+        $preJustificante->delete();
+        return redirect('alumno/misSolicitudes');
+    }
+    function solicitudes(){
+        $datosAlumno = Alumno::where('nombre_completo', auth()->user()->name)->first();
+        $preJustificante = Pre_justificante::where([['alumno_id', $datosAlumno->id], ['estatus_solicitud', 0]])->orderBy('id', 'DESC')->get();
+        $fecha = Pre_justificante::where([['alumno_id', $datosAlumno->id], ['estatus_solicitud', 0]])->orderBy('id', 'DESC')->pluck('created_at');
+        $mes = [];
+        for($i = 0; $i < count($fecha); $i++){
+            $mes[$i] = $fecha[$i]->format('m');
+        }
+        if(isset($preJustificante) && count($preJustificante) <= 0){
+            Session::flash('no_solicitud', 'Mensaje de prueba');
+        }
+        return view('alumno.solicitudes', compact('preJustificante', 'datosAlumno', 'mes'));
+    }
+
     # Esto se ejecuta cuando el alumno lleno el formulario para solicitar justificante
     function pre_justificanteAlumno(Request $request, $nombreAlumno){
         # Inserción de datos a la tabla pre_justificantes
         $datosAlumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
         $Pre_justificante = new Pre_justificante;
-
         $Pre_justificante->alumno_id = $datosAlumno->id;
 
         $Pre_justificante->motivo = $request->input('motivo');
