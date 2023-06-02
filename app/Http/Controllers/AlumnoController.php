@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use PDF;
+use Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
@@ -13,8 +14,27 @@ use App\Models\User;
 class AlumnoController extends Controller
 {
     # Nos lleva a la vista tramites.justificantes
-    function justificante($nombreAlumno){
+    function justificante(){
         return view('alumno.justificante');
+    }
+
+    function solicitudCancelar($id){
+        $preJustificante = Pre_justificante::where('id', $id);
+        $preJustificante->delete();
+        return redirect('alumno/misSolicitudes');
+    }
+    function solicitudes(){
+        $datosAlumno = Alumno::where('nombre_completo', auth()->user()->name)->first();
+        $preJustificante = Pre_justificante::where([['alumno_id', $datosAlumno->id], ['estatus_solicitud', 0]])->orderBy('id', 'DESC')->get();
+        $fecha = Pre_justificante::where([['alumno_id', $datosAlumno->id], ['estatus_solicitud', 0]])->orderBy('id', 'DESC')->pluck('created_at');
+        $mes = [];
+        for($i = 0; $i < count($fecha); $i++){
+            $mes[$i] = $fecha[$i]->format('m');
+        }
+        if(isset($preJustificante) && count($preJustificante) <= 0){
+            Session::flash('no_solicitud', 'Mensaje de prueba');
+        }
+        return view('alumno.solicitudes', compact('preJustificante', 'datosAlumno', 'mes'));
     }
 
     # Esto se ejecuta cuando el alumno lleno el formulario para solicitar justificante
@@ -22,7 +42,6 @@ class AlumnoController extends Controller
         # Inserción de datos a la tabla pre_justificantes
         $datosAlumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
         $Pre_justificante = new Pre_justificante;
-
         $Pre_justificante->alumno_id = $datosAlumno->id;
 
         $Pre_justificante->motivo = $request->input('motivo');
@@ -35,6 +54,8 @@ class AlumnoController extends Controller
         $Pre_justificante->fecha_solicitada = $fecha->format('Y-m-j');
 
         $Pre_justificante->estatus_solicitud = 0;
+        
+        $Pre_justificante->grupo = $datosAlumno->grupo;
 
         $Pre_justificante->save();
 
@@ -48,7 +69,11 @@ class AlumnoController extends Controller
         ->get();
         $preJustificantes = $preJustificantes->count();
         
-        return view('alumno.home', compact('justificantes'));
+        $numJustificantes = tramite::where('alumno_id', auth()->user()->id)
+        ->get()
+        ->count();
+        
+        return view('alumno.home', compact('justificantes', 'numJustificantes'));
     }
     
     # Descargar constancia estudio, vista alumno
@@ -59,7 +84,7 @@ class AlumnoController extends Controller
         $mes = $fecha->format('m');
         $ano = $fecha->format('Y');
         PDF::SetPaper('A4', 'landscape'); //Configuracion de la libreria
-        $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano)); //Carga la vista y la convierte a PDF
+        $pdf = PDF::loadView('PDF.ConstanciaAlumno', array('alumno' => $alumno, 'fecha' => $fecha, 'dia' => $dia, 'mes' => $mes, 'ano' => $ano, )); //Carga la vista y la convierte a PDF
         return $pdf->download("constanciaAlumno".$alumno->nombre.".pdf"); //Descarga el PDF con ese nombre
     }
 }

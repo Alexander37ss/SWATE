@@ -20,12 +20,13 @@ return new class extends Migration
             
             $table->string('motivo');
             $table->string('motivo_otro')->nullable();
-
-            $table->integer('del'); # desde que dia
-            $table->integer('al');  # hasta que dia
-
+            
+            $table->date('del'); # desde que dia
+            $table->date('al');  # hasta que dia
+            
             $table->date('fecha_solicitada');
             $table->integer('estatus_solicitud'); # 0 sin responder - 1 aceptada - 2 negada
+            $table->string('grupo');
             
             $table->foreign('alumno_id')->references('id')->on('alumnos');
             # $table->img('INE_img');

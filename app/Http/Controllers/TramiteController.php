@@ -34,7 +34,7 @@ class TramiteController extends BaseController
                             'fecha_solicitada' => $fecha_solicitada, 
                             'del' => $tramite_detalle->del, 'al' => $tramite_detalle->al, 'mes' => $mes)); //Carga la vista y la convierte a PDF
         
-        return $pdf->stream("justificanteAlumno".$alumno->nombre.".pdf");
+        return $pdf->download("justificanteAlumno".$alumno->nombre.".pdf");
     }
 
 }

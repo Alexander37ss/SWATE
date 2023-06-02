@@ -20,142 +20,69 @@
         "11" => 'Noviembre',
         "12" => 'Diciembre'
     ];
-?>
-<div class="row">
-  <div class="mr-1 col-md-4">
-  <div class="info-box bg-success">
-      <span class="info-box-icon"><i class="fa fa-file"></i></span>
-      <div class="info-box-content">
-      <span class="info-box-text">Justificantes de <?php echo($meses[ $mes ]);?> del {{$ano}}</span>
-      <span class="info-box-number">{{ $justificantes->count() }}</span>
-      </div>
-      <!-- /.info-box-content -->
-      </div>
-    <!-- /.info-box -->
+    $i = 0;
+    ?>
+<div class="container" style="margin-top: 50px">
+  <div class="searchInput shadow-sm">
+    <input type="text" placeholder="Escribe el nombre del alumno" id="buscadorAlumno" onchange="findPerfil();">
+    <div class="resultBox">
     </div>
-  <!-- /.col -->
-  <div class="col-md-4">
-    <div class="info-box bg-success">
-      <span class="info-box-icon"><i class="fa fa-file"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">Pases de salida de <?php echo($meses[ $mes ]);?> del {{$ano}}</span>
-        <span class="info-box-number">{{ $paseSalida->count() }}</span>
-      </div>
-      <!-- /.info-box-content -->
+    <div class="icon"><i class="fas fa-search"></i></div>
+  </div>
+  @if(Session::has('flash_message'))
+      <li class="text-red text-sm mt-2 ml-1" style="list-style: none;">El nombre del alumno no se encuentra en nuestros registros. Por favor, verifique que haya escrito su nombre completo correctamente.</li>
+  @endif
+</div>
+<br><br><br>
+    <div class="text-center">
+        <h3 class="font-bold">Últimas actividades</h3>
     </div>
-        <!-- /.info-box -->
-  </div>
-  <!-- /.col -->
-    <div class="ml-1 col-md-8 col-sm-6 col-12">
-    <div class="small-box bg-gradient-warning">
-  <div class="inner">
-    <h3>{{ $preJustificantes }}</h3>
-    <p>Solicitudes pendientes</p>
-  </div>
-  <div class="icon">
-    <i class="fas fa-bell"></i>
-  </div>
-  <a href="{{asset('tramites/solicitudJustificante')}}" class="small-box-footer">
-    Ver más <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-      <!-- /.info-box-content -->
-</div>
-        <!-- /.info-box -->
-</div>
-  <!-- /.col -->
-<br>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="mb-2 card-title"><i class="far fa-clock"></i> Historial De Tramites</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body">
-          <!-- barra de busqueda -->
-          <div class="shadow-sm">
-            <div class="input-group input-group-sm">
-              <input class="form-control mr-sm-2" id="busquedaHistorial" type="search" placeholder="Escribe el nombre del alumno..." aria-label="Search" onchange="BuscarAlumnosHistorial();">
-              <div class="input-group-append">
-                <button class="btn btn-navbar shadow-sm" id="busquedaBotonHistorial" style="background-color: #a7201f;">
-                  <i class="fas fa-search link-activo"></i>
-                </button>
-              </div>
-              <div class="input-group-append">
-                <a id="BotonFiltroHistorial" class="btn btn-secondary btn-sm" href="{{asset('home')}}">Borrar filtros</a>
-              </div>
-            </div>
-          </div>
-          <!-- fin barra de busqueda -->
-          <br>
-          <!-- TABLA -->
-          <div class="responsive-table">
-            <table class="table table-sm table-hover table-striped" id="TablaHistorial">
-                <thead>
-                    <tr>
-                        <th>
-                            <div class="dropdown">
-                                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <b>Tipo de tramite</b>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{url('tramites/historialJustificante', ['tipo' => 2])}}">Pase De Salida</a>
-                                    <a class="dropdown-item" href="{{url('tramites/historialJustificante', ['tipo' => 3])}}">Justificante</a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>Alumno</th>
-                        <th>Motivo</th>
-                        <th>
-                            <div class="dropdown">
-                                <button class="btn bg-white dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <b>Fecha creada</b>
-                                </button>
-                                <div class="dropdown-menu pt-0 pb-0" aria-labelledby="dropdownMenuButton">
-                                  <input class="form-control" id="busquedaFecha" type="date" placeholder="YYYY-MM" aria-label="Search" onchange="BuscarFecha();">
-                                </div>
-                            </div>
-                        </th>
-                        <th>Dia(s) solicitados</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach ($tramites as $tra)
-                        <tr>
-                            <td>{{$tra->tipo->nombre}}</td>
-                            <td>{{$tra->alumno->nombre_completo}}</td>
-                            <td>
-                              @if ($tra->tramite_detalle->motivo != 'Otro...')
-                                {{$tra->tramite_detalle->motivo}}
-                              @else
-                                {{$tra->tramite_detalle->motivo_otro}}
-                              @endif
-                            </td>
-                            <td>{{$tra->tramite_detalle->fecha_solicitada}}</td>
-                            <td>                              
-                              @if ($tra->tramite_detalle->del == $tra->tramite_detalle->al)
-                                {{$tra->tramite_detalle->del}}
-                              @else
-                                {{$tra->tramite_detalle->del}} - {{$tra->tramite_detalle->al}}
-                              @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+    <hr class="w-50">
+    <br>
+    <div class="row ml-5 mr-3">
+        @foreach($tramites as $a)
+        <div class="col-md-4 mb-4">
+            @if($a->autorizado == 1)
+            <div class="card-custom shadow-none bg-white" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px !important; background-color: white !important;">
+                @else <div class="card-custom card-refuse bg-white" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px !important; background-color: white !important;">
+                    @endif
+                    <!--         <span class="pricing">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/></svg>
+				</span>
+			</span> -->
+    <h3 class="card__title">Trámite @if($a->autorizado == 1) <span class="text-blue">aceptado</span><span class="badge bg-primary float-right"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/></svg></span> @else <span class="text-red">rechazado</span><span class="badge bg-danger float-right"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z"/></svg></span>  @endif </h3>
+    <p class="card__content">Has @if($a->autorizado == 1) aceptado @else rechazado @endif el @if($a->tipo_id == 3) justificante @else pase de salida @endif del alumno <b>{{$a->alumno->nombre_completo}}</b> por motivos de <b>desconocido</b>.</p>
+    <div class="card__date">
+        {{$a->created_at->format('d/m/Y');}}
     </div>
-  </div>
+    <a href="{{url('tramite_detalle', $a->id)}}" class="a">
+    @if($a->autorizado == 1)
+    <div class="card__arrow">
+    @else <div class="card__arrow_altern">
+    @endif
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
+            <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
+        </svg>
+    </div>
 </div>
-@stop
+</a>
+</div>
+        @if(++$i == 9) 
+        <?php 
+                  break;
+                  ?>
+                  @endif
+                  @endforeach
+                </div>
+                <br>
+                <div class="mx-auto" align="center">
+                    <a class="btn-github a" href="{{url('historial')}}"> 
+                        Mostrar más       
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>
+                    </a>
+                </div>
+                </div>
+                <br>
+                  @stop
+                  

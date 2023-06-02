@@ -1,93 +1,51 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h1>Consultar Alumnos</h1>
 @stop
 
 @section('breadcrum')
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}" class="lopez">Inicio</a></li>
-    <li class="breadcrumb-item active">Consultar Alumnos</li>
 @stop
 
 @section('contenido')
-<!-- barra de busqueda -->
-<div class="shadow-sm">
-    <div class="input-group input-group-sm">
-        <input class="form-control mr-sm-2" id="busquedaConsultar" type="search" placeholder="Escribe el nombre del alumno..." aria-label="Search" onchange="BuscarAlumnos();">
-        <div class="input-group-append">
-            <!-- boton buscador icono -->
-            <button class="btn btn-navbar shadow-sm" id="BotonBuscador" style="background-color: #a7201f;">
-                <i class="fas fa-search link-activo"></i>
-            </button>
-        </div>
-        <div class="input-group-append">
-            <a id="BotonFiltro" class="btn btn-secondary btn-sm" href="{{asset('tramites/consultar')}}">Borrar filtros</a>
-        </div>
+  <div class="float-right mt-0 col-4">
+    <div class="input-group ml-5">
+    @if(Session::has('busqueda'))
+      <input type="text" class="input-github w-75" id="buscadorAlumno" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="findPerfil();">
+      @else
+      <input type="text" class="input-github w-75" id="busquedaConsultar" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="BuscarAlumnos();">
+      @endif
+      <div class="input-group-append">
+        <button class="btn-github ml-1"><i class="fas fa-search"></i></button>
+      </div>
+      <!-- fin botón -->
     </div>
-</div>
+  <!-- fin input group -->
+  </div>
+  <!-- fin col -->
     <br>
-    <div class="responsive-table">
-        <table class="table table-sm table-hover table-striped" id="tabla">
-            <thead>
-                <tr>
-                <!-- Nombre -->
-                <th><div class="dropdown">
-                <button class="btn bg-white dropdown-toggle" type="button" onclick="EnfocarBarraBusqueda();">
-                    <b>Nombre</b>
-                </button>
-                </div>
-            </th>
-                    <!-- Especialidad -->
-            <th>
-                <div class="dropdown">
-                    <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <b>Especialidad</b>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'ELECTRÓNICA'])}}">ELECTRÓNICA</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'OFIMÁTICA'])}}">OFIMÁTICA</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'PROGRAMACIÓN'])}}">PROGRAMACIÓN</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONTABILIDAD'])}}">CONTABILIDAD</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/especialidad', ['Especialidad' => 'CONSTRUCCIÓN'])}}">CONSTRUCCIÓN</a>
-                    </div>
-                </div>
-            </th>
-            <!-- Grupo -->
-            <th>
-                <div class="dropdown">
-                    <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <b>Grupo</b>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '6',])}}">6 semestre</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '4',])}}">4 semestre</a>
-                        <a class="dropdown-item" href="{{url('tramites/consultar/grupo', ['Grupo' => '2',])}}">2 semestre</a>
-                    </div>
-                </div>
-            </th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach ($alumnos as $a)
-                <tr id="Alumno">
-                    <td id="AlumnoTd">{{$a->nombre_completo}}</td>
-                    <td>{{$a->carrera}}</td>
-                    <td>{{$a->grupo}}</td>  
-                    <td>
-                        <a title="Descargar constancia" href="{{ url('constancia/pdf', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
-                            <i class="far fa-file-pdf link-activo"></i>
-                        </a>
-                        <a title="Crear pase de salida" href="{{ url('tramites/pase_salida', $a->nombre_completo) }}" class="btn btn-sm " style="background-color: #a7201f;">
-                        <i class="fas fa-door-open link-activo"></i>
-                        </a>
-                        <a title="Crear justificante" href="{{ url('tramites/justificanteOrientadora', $a->nombre_completo) }}" class="btn btn-sm" style="background-color: #a7201f;">
-                        <i class="fas fa-file-contract link-activo"></i>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <br>
+    <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <div class="card-header">
+          <span id="resultados">100</span> resultados de {{$alumnos->count();}}
+        </div>
+        <table class="table table-hover table-sm" id="tabla">
+          <tbody>
+            @foreach ($alumnos as $a)
+              <tr class="bg-cetis-table">
+                <td><svg class="text-blue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024"><path fill="currentColor" d="M288 320a224 224 0 1 0 448 0a224 224 0 1 0-448 0zm544 608H160a32 32 0 0 1-32-32v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 0 1-32 32z"/></svg><a class="ab-underline" href="{{url('perfil', $a->nombre_completo)}}"> {{$a->nombre_completo}}</a></td>
+                <td class="text-secondary" width="40%">{{$a->carrera}}</td>
+                <td class="text-secondary text-center">{{$a->grupo}}</td>
+              </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        </div>
+        <!-- fin col -->
 @stop

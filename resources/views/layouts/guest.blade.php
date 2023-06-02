@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&family=Rubik:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
 
 
         <!-- Scripts -->
@@ -18,12 +20,11 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
- 
+                
+                </div>
+            <div class="w-full sm:max-w-md mt-6 px-1 py-1 shadow-md overflow-hidden" style="background-color: #A7201F; border-radius: 5px 5px 0px 0px;">
             </div>
-
-            <div class="w-full sm:max-w-md mt-6 px-1 py-1 shadow-md overflow-hidden" style="background-color: #A7201F; border-radius: 0px 0px 0px 0px;">
-            </div>
-            <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden" style="border-radius: 0px 0px 0px 0px;">
+            <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden" style="border-radius: 0px 0px 5px 5px;">
                 {{ $slot }}
             </div>
         </div>

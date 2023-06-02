@@ -12,16 +12,15 @@
 @section('contenido')
 <?php 
     $meses = [
-        "01" => 'ENERO',
-        "02" => 'FEBRERO',
-        "03" => 'MARZO',
+        "1" => 'ENERO',
+        "2" => 'FEBRERO',
         "3" => 'MARZO',
-        "04" => 'ABRIL',
-        "05" => 'MAYO',
-        "06" => 'JUNIO',
-        "07" => 'JULIO',
-        "08" => 'AGOSTO',
-        "09" => 'SEPTIEMBRE',
+        "4" => 'ABRIL',
+        "5" => 'MAYO',
+        "6" => 'JUNIO',
+        "7" => 'JULIO',
+        "8" => 'AGOSTO',
+        "9" => 'SEPTIEMBRE',
         "10" => 'OCTUBRE',
         "11" => 'NOVIEMBRE',
         "12" => 'DICIEMBRE'
@@ -56,7 +55,8 @@
 
                 <div class="form-group ml-4">
                     <!-- Del -->
-                    </b>Se desea justificar los día(s):<b>
+                    <b>Se desea justificar los día(s):</b>
+                    <br>
                         @for ($i = $datosSolicitud->del; $i <=$datosSolicitud->al; $i++){{ $i }}, @endfor 
                         DE <?php echo($meses[ $mes ]);?>
                         del <?php echo($ano);?></b>.
@@ -73,7 +73,7 @@
                   <div class="form-group ml-4" id="botonesDetalle">
                     <a href="{{ url('tramites/solicitudAceptarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Confirmar</a>
                     <a href="{{ url('tramites/solicitudDescargarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis" id="refresh">Confirmar y Descargar</a>
-                    <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
+                    <a href="{{ url('tramites/solicitudDenegarJustificante')}}/{{$datosAlumno->nombre_completo}}/{{$datosSolicitud->id}}" class="btn bg-cetis">Denegar</a>
                   </div>
               </div>
       </div>

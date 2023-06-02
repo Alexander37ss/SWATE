@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tipo_id');
             $table->unsignedBigInteger('orientadora_id');
             $table->unsignedBigInteger('alumno_id');
+            $table->boolean('autorizado');
             
             $table->foreign('tramite_id')       ->references('id')->on('tramite_detalles');
             $table->foreign('tipo_id')          ->references('id')->on('tipo_tramites');

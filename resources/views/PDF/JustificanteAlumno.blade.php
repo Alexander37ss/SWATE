@@ -107,12 +107,12 @@
     <p align="center"><b>ORIENTADORA EDUCATIVA DEL 2DO. SEMESTRE</b></p>
     <br>
 <!--     tabla -->
-    <table class="table table-striped">
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Asignatura</th>
-                <th>Nombre del Profesor</th>
-                <th>Firma</th>
+                <th class="text-center">Asignatura</th>
+                <th class="text-center">Nombre del docente</th>
+                <th class="text-center">Firma</th>
             </tr>
         </thead>
         <tbody>

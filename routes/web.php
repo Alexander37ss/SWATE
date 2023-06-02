@@ -23,7 +23,6 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => ['admin', 'role:admin']], function(){
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -34,6 +33,7 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('tramites/historialJustificante/{tipo}', [HomeController::class, 'homeHistorialTipo']);
 
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
+    Route::get('tramites/consultar/{nombre}', [OrientadoraController::class, 'consultarBusqueda']);  
     Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
     Route::get('tramites/consultar/grupo/{grupo}', [OrientadoraController::class, 'consultarGrupo']);  
     
@@ -47,14 +47,26 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     # Decisiones de la orientadora a peticiones de justificantes
     Route::get('tramites/solicitudAceptarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteAceptar']);
     Route::get('tramites/solicitudDescargarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteAceptarDescargar']);
-    Route::get('tramites/solicitudDenegarJustificante/{idPre}', [OrientadoraController::class, 'solicitudJustificanteDenegar']);
+    Route::get('tramites/solicitudDenegarJustificante/{nombreAlumno}/{idPre}', [OrientadoraController::class, 'solicitudJustificanteDenegar']);
     
     /* Pase de salida de parte de orientacion */
     Route::get('tramites/pase_salida/{nombrealumno}', [OrientadoraController::class, 'paseSalida']);    
     Route::post('tramites/procesoPaseSalida/{id}', [OrientadoraController::class, 'paseSalidaPDF']);    
         
     /* Constancia de estudio para ambas partes*/
-    Route::get('constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
+    Route::get('constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);   
+    
+    /* Detalles de tramites ya aceptados */
+    Route::get('/tramite_detalle/{id}', [OrientadoraController::class, 'tramiteDetalle']);
+
+    /* Perfil de alumno */
+    Route::get('/perfil/{nombre_alumno}', [OrientadoraController::class, 'perfilAlumno']);
+    
+    /* Otros */
+    Route::get('/graficas', [OrientadoraController::class, 'grafica']);
+    Route::get('/historial', [OrientadoraController::class, 'historial']);
+    Route::get('/historial/aceptados', [OrientadoraController::class, 'historialAceptado']);
+    Route::get('/historial/rechazados', [OrientadoraController::class, 'historialRechazado']);
 });
 
 Route::get('crear/qr/{idJustificante}', [TramiteController::class, 'crearQr']);
@@ -66,10 +78,14 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
     Route::get('/home/{tipo}', [HomeController::class, 'homeAlumnoTipo']);
 
     /* Justificante de parte del alumno */
-    Route::get('/justificante/{nombreAlumno}', [AlumnoController::class, 'justificante']);
+    Route::get('/justificante', [AlumnoController::class, 'justificante']);
     
+    Route::get('/misSolicitudes', [AlumnoController::class, 'solicitudes']);
+
+    Route::get('/misSolicitudes/cancelar/{id}', [AlumnoController::class, 'solicitudCancelar']);
+
     /* pre-justificante de parte del alumno */
-    Route::post('/prejustificante/{nombreAlumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
+    Route::post('/prejustificante/{nombrealumno}', [AlumnoController::class, 'pre_justificanteAlumno']);
     
     /* crear constancia del alumno */
     Route::get('/constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);    
