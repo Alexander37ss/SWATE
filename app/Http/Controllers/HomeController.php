@@ -120,14 +120,19 @@ class HomeController extends BaseController
         /** Funciones para visualización del historial del alumno */ 
         public function homeAlumno(){
             $justificantes = tramite::where('alumno_id', auth()->user()->id)
-            ->orderBy('id', 'DESC')
+            ->orderBy('id', 'DESC')->take(3) //toma 3 registros
             ->get();
             $numJustificantes = tramite::where('alumno_id', auth()->user()->id)
             ->get()
             ->count();
+            $fecha = tramite::where([['alumno_id', auth()->user()->id], ['autorizado', 1]])->orderBy('id', 'DESC')->pluck('created_at');
+            $mes = [];
+            for($i = 0; $i < count($fecha); $i++){
+                $mes[$i] = $fecha[$i]->format('m');
+             }
 
             
-            return view('alumno.home', compact('justificantes', 'numJustificantes'));
+            return view('alumno.home', compact('justificantes', 'numJustificantes', 'mes'));
         }
 
         public function homeAlumnoTipo($tipo){
