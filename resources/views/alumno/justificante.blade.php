@@ -45,12 +45,12 @@
             <div class="row">
               <div class="col-2">
                 <p class="mb-2 font-bold">Desde</p>
-                <input type="date" class="input-github w-1 py-2" name="del">
+                <input type="date" class="input-github w-1 py-2 shadow-sm" name="del" required>
               </div>
             <!-- col -->
             <div class="col">
               <p class="mb-2 font-bold">Hasta</p>
-              <input type="date" class="input-github w-1 py-2" name="al">
+              <input type="date" class="input-github w-1 py-2 shadow-sm" name="al" required>
             </div>
           <!-- col -->
           </div>

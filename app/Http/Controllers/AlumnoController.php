@@ -23,6 +23,11 @@ class AlumnoController extends Controller
         $preJustificante->delete();
         return redirect('alumno/misSolicitudes');
     }
+
+    function solicitudEditar($id){
+        $preJustificante = Pre_justificante::where('id', $id);
+        return view('alumno.justificante', compact('preJustificante'));
+    }
     function solicitudes(){
         $datosAlumno = Alumno::where('nombre_completo', auth()->user()->name)->first();
         $preJustificante = Pre_justificante::where([['alumno_id', $datosAlumno->id], ['estatus_solicitud', 0]])->orderBy('id', 'DESC')->get();
@@ -73,7 +78,7 @@ class AlumnoController extends Controller
         ->get()
         ->count();
         
-        return view('alumno.home', compact('justificantes', 'numJustificantes'));
+        return redirect('alumno/home');
     }
     
     # Descargar constancia estudio, vista alumno

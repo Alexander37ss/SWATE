@@ -5,7 +5,21 @@
 
 @section('contenido')
 <?php 
-  $i = 0;
+    $meses = [
+        "01" => 'Enero',
+        "02" => 'Febrero',
+        "03" => 'Marzo',
+        "04" => 'Abril',
+        "05" => 'Mayo',
+        "06" => 'Junio',
+        "07" => 'Julio',
+        "08" => 'Agosto',
+        "09" => 'Septiembre',
+        "10" => 'Octubre',
+        "11" => 'Noviembre',
+        "12" => 'Diciembre'
+    ];
+    $i = 0;
 ?>
 <label class="inactive" id="numeroJustificantes">{{$numJustificantes}}</label>
 <div class="container-fluid">
@@ -24,10 +38,11 @@
 
                   <p>Descarga o usa el codigo QR para justificar tus faltas.</p>
                 </div>
-        <h5>Últimos tramites <label class="text-success font-italic">aceptados</label></h5>
+        <h5 class="text-center">Últimos tramites <span class="text-success">aceptados</span></h5>
+        <hr>
         <div class="row">
           @foreach ($justificantes as $just)
-          <div class="card col ml-2 card-outline card-success">
+          <div class="card col ml-2" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
             <div class="card-header">
               <h3 class="card-title">Justificante #{{$numJustificantes}}</h3>
               <div class="card-tools">
@@ -58,18 +73,14 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            {{$just->tramite_detalle->fecha_solicitada}}
+          {{$just->tramite_detalle->created_at->format('d')}} de <?php echo($meses[ $mes[$i] ]);?> del {{$just->tramite_detalle->created_at->format('Y')}}
           </div>
           <!-- /.card-footer -->
         </div>
         <!-- /.card -->
-        @if(++$i == 3) 
-        <?php 
-                  break;
-                  ?>
-                  @endif
                   <?php
                   --$numJustificantes;
+                  $i++;
                   ?>
                   @endforeach
                 </div>
@@ -142,5 +153,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
+</div> 
 @stop
