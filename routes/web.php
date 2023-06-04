@@ -5,6 +5,7 @@ use App\Http\Controllers\TramiteController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrientadoraController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,7 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     /* Pase de salida de parte de orientacion */
     Route::get('tramites/pase_salida/{nombrealumno}', [OrientadoraController::class, 'paseSalida']);    
     Route::post('tramites/procesoPaseSalida/{id}', [OrientadoraController::class, 'paseSalidaPDF']);    
+    Route::get('tramites/padre/{id}', [MailController::class, 'index']);
         
     /* Constancia de estudio para ambas partes*/
     Route::get('constancia/pdf/{nombreusuario}', [AlumnoController::class, 'ConstanciaAlumnoPDF']);   

@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('nombre_completo');
             $table->string('CURP');
             $table->string('sexo');
+            $table->string('correo_tutor');
             
             $table->timestamps();
 

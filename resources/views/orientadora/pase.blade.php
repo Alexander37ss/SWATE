@@ -52,6 +52,9 @@
     <!-- card body -->
     <div class="card-footer">
       <button type="submit" class="btn bg-cetis">Confirmar</button>
+      <a href="{{asset('/tramites/consultar')}}/{{$alumno->id}}" class="btn bg-cetis" id="consultar">
+        <p>Enviar Email al Tutor</p>
+      </a>
     </div>
   </form>
 </div>

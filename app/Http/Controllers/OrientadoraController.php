@@ -277,7 +277,7 @@ class OrientadoraController extends BaseController
         $tramite_detalles->motivo_otro = $otro;
         $tramite_detalles->fecha_solicitada = $fecha->format('Y-m-j');
         $tramite_detalles->save();
-
+        
         $tramite = New tramite;
         $tramite->tramite_id = $tramite_detalles->id;
         $tramite->tipo_id = '2';
