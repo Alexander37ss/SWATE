@@ -92,9 +92,11 @@
         <b>{{ $alumno->nombre_completo}}</b> quien, por motivos <b>
         @if($motivo == 'Otro'){{$otro}} @else {{$motivo}} @endif
         </b>, no asistió a clase el(los) dia(s):<b>
-        @for ($i = $del; $i <=$al; $i++) {{ $i }}, @endfor 
-        DE <?php echo($meses[ $mes ]);?>
-        del {{ $fecha_solicitada->format('Y') }}</b> del presente año. 
+        @if ($del == $al)
+                              {{$del}}
+                            @else
+                              {{$del}} al {{$al}}
+                            @endif
         <br>
         Cabe señalar que es RESPONSABILIDAD del ALUMNO(A) regularizarse en la entrega de trabajos y/o tareas que el(la) profesor(a) haya encomendado, haciendo mención que el presente documento NO EXENTA al alumno de sus obligaciones académicas.
     </div>

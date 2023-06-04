@@ -119,8 +119,11 @@ class HomeController extends BaseController
 
         /** Funciones para visualización del historial del alumno */ 
         public function homeAlumno(){
-            $justificantes = tramite::where('alumno_id', auth()->user()->id)
+            $nuevosJustificantes = tramite::where('alumno_id', auth()->user()->id)
             ->orderBy('id', 'DESC')->take(3) //toma 3 registros
+            ->get();
+            $justificantes = tramite::where('alumno_id', auth()->user()->id)
+            ->orderBy('id', 'DESC')
             ->get();
             $numJustificantes = tramite::where('alumno_id', auth()->user()->id)
             ->get()
@@ -132,7 +135,7 @@ class HomeController extends BaseController
              }
 
             
-            return view('alumno.home', compact('justificantes', 'numJustificantes', 'mes'));
+            return view('alumno.home', compact('justificantes', 'nuevosJustificantes', 'numJustificantes', 'mes'));
         }
 
         public function homeAlumnoTipo($tipo){

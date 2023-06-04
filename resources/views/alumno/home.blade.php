@@ -38,13 +38,14 @@
 
                   <p>Descarga o usa el codigo QR para justificar tus faltas.</p>
                 </div>
-        <h5 class="text-center">Últimos tramites <span class="text-success">aceptados</span></h5>
+        <h5 class="text-center">Últimos justificantes <span class="text-success">aceptados</span></h5>
         <hr>
+        <br>
         <div class="row">
-          @foreach ($justificantes as $just)
+          @foreach ($nuevosJustificantes as $just)
           <div class="card col ml-2" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
             <div class="card-header">
-              <h3 class="card-title">Justificante #{{$numJustificantes}}</h3>
+              <h3 class="card-title">Justificante {{$numJustificantes}}</h3>
               <div class="card-tools">
               <a title="Descargar PDF" class="btn badge badge-success" style="color: white;" href="{{url('descargar/qr', $just->id)}}">
                   <i class="fas fa-download"></i>
@@ -57,20 +58,21 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            Tu justificante por motivos de 
-            <b>@if ($just->tramite_detalle->motivo != 'Otro...')
+            Tú justificante por motivos de 
+            @if ($just->tramite_detalle->motivo != 'Otro...')
               {{$just->tramite_detalle->motivo}}
               @else
               {{$just->tramite_detalle->motivo_otro}}
               @endif
-            </b>
-            que abarca los dias del <b>@if ($just->tramite_detalle->del == $just->tramite_detalle->al)
+            
+            que abarca los dias del @if ($just->tramite_detalle->del == $just->tramite_detalle->al)
                               {{$just->tramite_detalle->del}}
                             @else
                               {{$just->tramite_detalle->del}} al {{$just->tramite_detalle->al}}
-                            @endif </b>
-            fue aceptado por la orientadora <b>{{$just->user->name}}</b>.
+                            @endif 
+            fue aceptado por la orientadora {{$just->user->name}}.
           </div>
+          <hr class="my-0">
           <!-- /.card-body -->
           <div class="card-footer">
           {{$just->tramite_detalle->created_at->format('d')}} de <?php echo($meses[ $mes[$i] ]);?> del {{$just->tramite_detalle->created_at->format('Y')}}
@@ -86,7 +88,7 @@
                 </div>
                 <!-- fin row -->
                 <br>
-                <div class="card">
+                <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
                   <div class="card-header">
                     <h3 class="mb-2 card-title"><i class="far fa-clock"></i> Historial De Tramites</h3>
                     
@@ -97,23 +99,14 @@
           </div>
         </div>
         
-        <div class="card-body">
+        <div class="card-body p-0">
           <div class="responsive-table">
-            <table class="table table-sm table-hover table-striped" id="TablaHistorial">
+            <table class="table table-sm" id="TablaHistorial">
                 <thead>
                     <tr>
-                        <th>Orientadora a cargo</th>
+                        <th>Orientadora</th>
                         <th>Motivo</th>
-                        <th>
-                            <div class="dropdown">
-                                <button class="btn bg-white dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <b>Fecha creada</b>
-                                </button>
-                                <div class="dropdown-menu pt-0 pb-0" aria-labelledby="dropdownMenuButton">
-                                  <input class="form-control" id="busquedaFecha" type="date" placeholder="YYYY-MM" aria-label="Search" onchange="BuscarFecha();">
-                                </div>
-                            </div>
-                        </th>
+                        <th>Fecha creada</th>
                         <th>Dia(s) solicitados</th>
                         <th>Descargar</th>
                     </tr>
@@ -135,11 +128,14 @@
                             @if ($just->tramite_detalle->del == $just->tramite_detalle->al)
                               {{$just->tramite_detalle->del}}
                             @else
-                              {{$just->tramite_detalle->del}} - {{$just->tramite_detalle->al}}
+                              {{$just->tramite_detalle->del}} al {{$just->tramite_detalle->al}}
                             @endif
                           </td>
                           <td>
-                                <a title="Descargar QR" class="btn" style="color: white; background-color: #a7201f;" href="{{url('crear/qr', $just->id)}}">
+                                <a title="Descargar PDF" class="btn btn-success btn-sm" style="color: white;" href="{{url('descargar/qr', $just->id)}}">
+                                <i class="fas fa-download"></i>
+                                </a>
+                                <a title="Descargar QR" class="btn btn-primary btn-sm" style="color: white;" href="{{url('crear/qr', $just->id)}}">
                                   <i class="fas fa-qrcode"></i>
                                 </a>
                           </td>

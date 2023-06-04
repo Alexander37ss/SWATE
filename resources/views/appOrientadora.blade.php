@@ -32,11 +32,11 @@
   $i = 0;
 ?>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-mini sidebar-collapse">
 
 <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-light border-bottom-0 shadow-md" >
+        <nav class="main-header navbar navbar-expand navbar-light shadow-md border-bottom-null" >
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -132,7 +132,7 @@
                   <div class="dropdown-divider"></div>
                   @foreach ($pre_justificantes as $pre)
                   <a href="{{ url('tramites/solicitudJustificante', $pre->id)}}" class="dropdown-item btn">
-                    <i class="fas fa-envelope mr-2"></i>@if($pre->motivo == 'Otro'){{$pre->motivo_otro}} @else {{$pre->motivo}} @endif 
+                    <i class="fas fa-envelope mr-2"></i>Justificante 
                     <span class="float-left text-muted text-sm">{{$pre->alumno->nombre_completo}}</span>
                   </a>
                   @if(++$i == 3) 
@@ -145,11 +145,6 @@
                   <a href="{{asset('/tramites/solicitudJustificante')}}" class="dropdown-item dropdown-footer rojo-cetis">Ver todas las notificaciones</a>
                 </div>
               </li> 
-              <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                  <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-              </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -236,18 +231,6 @@
                 <a href="{{url('/graficas')}}" class="nav-link">
                 <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z"/></svg>
                   <p>Información</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
                 </a>
               </li>
             </ul>
@@ -346,6 +329,8 @@
 <script src="{{asset('jsswate/graficas.js')}}"></script>
 <script src="{{asset('jsswate/card.js')}}"></script>
 <script src="{{asset('jsswate/autocomplete.js')}}"></script>
+<script src="{{asset('jsswate/pase.js')}}"></script>
+<script src="{{asset('jsswate/navbar.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->

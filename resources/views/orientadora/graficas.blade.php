@@ -51,7 +51,7 @@
 <!-- Saludo al usuario -->
 <div class="row">
     <div class="col ml-2 mr-2">
-        <div class="card shadow-border">
+        <div class="card shadow-border" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
             <div class="card-header">
             <h5 class="card-title m-0">Información destacada</h5>
         </div>
@@ -88,7 +88,7 @@
                     
                         <div class="info-box-content">
                         <span class="info-box-text">Trámites este mes</span>
-                        <span class="info-box-number">{{$justificantesMes}} <span class='font-size-low font-light'>@if($diferenciaMeses > 0)<i class="fas fa-arrow-up" style="color: green;"></i> {{$diferenciaMeses}} más que el mes anterior</span> @elseif($diferenciaMeses < 0) <i class="fas fa-arrow-down" style="color: red;"></i> {{$diferenciaMeses}} menos que el mes anterior @else Igual que el mes anterior @endif</span></span>
+                        <span class="info-box-number">{{$justificantesMes}} <span class='font-size-low font-light'>@if($diferenciaMeses > 0)<i class="fas fa-arrow-up" style="color: green;"></i> {{$diferenciaMeses}} más que el mes anterior</span> @elseif($diferenciaMeses < 0) <i class="fas fa-arrow-down" style="color: red;"></i> {{$diferenciaMeses}} que el mes anterior @else Igual que el mes anterior @endif</span></span>
                     </div>
                 </div>
                 </div>
@@ -113,7 +113,7 @@
 <!-- Grafica este año -->
 <div class="row">
   <div class="col-md-4" id="graficaY">
-    <div class="card shadow-border ml-3">
+    <div class="card shadow-border ml-3" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <div class="card-header">
         <h3 class="card-title">Tipos de trámites (este año)</h3>
         <div class="card-tools">
@@ -142,7 +142,7 @@
   <!-- /.card -->
   <!-- Grafica este mes -->
   <div class="col-md-4 inactive" id="graficaM">
-      <div class="card shadow-border ml-3 ">
+      <div class="card shadow-border ml-3" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <div class="card-header">
         <h3 class="card-title">Tipos de trámites (este mes)</h3>
         <div class="card-tools">
@@ -169,7 +169,7 @@
   </div>
 </div>
   <div class="col-md-4">
-  <div class="card shadow-border">
+  <div class="card shadow-border" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <div class="card-header">
         <h3 class="card-title">Trámites por grupo</h3>
         <div class="card-tools">
@@ -187,7 +187,7 @@
     </div>
   <!-- Grafica por motivos -->
   <div class="col-md-4">
-  <div class="card shadow-border mr-3">
+  <div class="card shadow-border mr-3" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
     <div class="card-header">
       <h3 class="card-title">Trámites por motivo</h3>
       <div class="card-tools">
@@ -203,7 +203,7 @@
   </div>
   </div>
   <div class="col ml-5 mr-5 p-6">
-    <div class="card shadow-border collapsed-card">
+    <div class="card shadow-border collapsed-card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <div class="card-header">
         <h3 class="card-title">Trámites a lo largo del año</h3>
         <div class="card-tools">

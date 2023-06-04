@@ -1,129 +1,67 @@
 @extends('appOrientadora')
 
 @section('titulo')
-    <h1>Justificante</h1>
 @stop
 
 @section('breadcrum')
 @stop
 
 @section('contenido')
-<link rel="stylesheet" href="{{asset('cssswate/main.css')}}">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-10">
-            <!-- general form elements -->
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{ url('tramites/procesoJustificante')}}/{{$alumno->id}}" method="POST">
-                @csrf
-                <div class="card-body">
-               <!-- Alumno -->
-                <div class = "form-group">
-                <label for="">Alumno:</label>
-                <input name="nombre" type="text" class= "form-control" disabled value="{{ $alumno -> nombre_completo}}">
-                </div>
-                <!-- Motivo -->
-                <div class="form-group">
-                  <label for="exampleSelectBorder">Motivo:</label>
-                  <select name="motivo" class="custom-select form-control-border" id="MotivoJustificante" onchange="AparecerOtroMotivoJustificante()" required>
-                    <option>Escoge un motivo...</option>
-                    <option value="Motivo de salud">Motivo de salud</option>
-                    <option value="Motivo vacacional">Motivo vacacional</option>
-                    <option value="Motivo de perdida">Motivo de perdida</option>
-                    <option value="Otro">Otro...</option>
-                  </select>
-                </div>
-                <!-- Otro... -->
-                  <div class="form-group inactive" id="OtroMotivoJustificante">
-                        <label>Otro:</label>
-                        <textarea class="form-control" name="otro" rows="3" placeholder="Escribe..."></textarea>
-                      </div>
-                <div class="row">
-                        <!-- Del -->
-                        <div class="form-group mr-5 ml-1">
-                            <label for="exampleFormControlSelect2">Del día:</label>
-                            <select name="del" multiple class="form-control" id="exampleFormControlSelect2" required>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
-            </select>
-        </div>
-        <!-- Al -->
-        <div class="form-group">
-            <label for="exampleFormControlSelect2">Al día:</label>
-            <select name="al" multiple class="form-control" id="exampleFormControlSelect2" required>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
-            </select>
-        </div>
-      </div>
-    </div>
-    <!-- card body -->
-    <div class="card-footer">
-      <button type="submit" class="btn bg-cetis">Confirmar</button>
-    </div>
-  </form>
-</div>
-<script src="{{ asset('jsswate/justificanteOrientadora.js') }}"></script>
 
+<section class="content">
+  <div class="container-fluid">
+  <form action="{{ url('tramites/procesoJustificante')}}/{{$alumno->id}}" method="POST">
+          @csrf 
+  <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
+      <!-- /.card-header -->
+      <div class="card-header">
+      <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M19.903 8.586a.997.997 0 0 0-.196-.293l-6-6a.997.997 0 0 0-.293-.196c-.03-.014-.062-.022-.094-.033a.991.991 0 0 0-.259-.051C13.04 2.011 13.021 2 13 2H6c-1.103 0-2 .897-2 2v16c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V9c0-.021-.011-.04-.013-.062a.952.952 0 0 0-.051-.259c-.01-.032-.019-.063-.033-.093zM16.586 8H14V5.414L16.586 8zM6 20V4h6v5a1 1 0 0 0 1 1h5l.002 10H6z"/><path fill="currentColor" d="M8 12h8v2H8zm0 4h8v2H8zm0-8h2v2H8z"/></svg> Formulario de justificante
+      </div>
+      <div class="card-body ml-2 mr-2">
+   <!-- Alumno -->
+        <div class="mb-3">
+        <p class="mb-2 font-bold">Alumno</p>
+         <input name="nombre" type="text" class= "input-github shadow-sm w-75 py-2" disabled value="{{ $alumno -> nombre_completo}}">
+        </div>
+            <!-- Motivo -->
+            <div class="mb-3">
+              <p class="mb-2 font-bold">Motivo</p>
+              <select name="motivo" class="input-github shadow-sm w-75 py-2" id="motivos" onchange="AparecerOtroMotivo()" required>
+                <option selected disabled>Escoge un motivo...</option>
+                <option value="Motivos de salud">Motivo de salud</option>
+                <option value="Motivos vacacional">Motivo vacacional</option>
+                <option value="Motivos de perdida">Motivo de perdida</option>
+                <option value="Otro">Otro...</option>
+              </select>
+            </div>
+            <!-- Otro... -->
+            <div class="form-group inactive" id="OtroMotivo">
+              <p class="font-bold">Otro:</p>
+              <textarea name="motivo_otro" class="input-github w-75" rows="3" placeholder="Escribe..."></textarea>
+            </div>
+            <!-- Fechas -->
+            <div class="row">
+              <div class="col-2">
+                <p class="mb-2 font-bold">Desde</p>
+                <input type="date" class="input-github w-1 py-2 shadow-sm" name="del" onfocus="{{}}" required>
+              </div>
+            <!-- col -->
+            <div class="col">
+              <p class="mb-2 font-bold">Hasta</p>
+              <input type="date" class="input-github w-1 py-2 shadow-sm" name="al" required>
+            </div>
+          <!-- col -->
+          </div>
+          <!-- row -->
+          <div class="float-right">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-check text-white"></i></button>
+          </div>
+        </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+    <!-- x -->
+    </form>
+    </div>
+    </div>
 @stop

@@ -1,3 +1,7 @@
+.border-bottom-null{
+  border-bottom: 1px solid transparent !important;
+}
+
 .sidebar-collapse .main-sidebar-custom  .hide-on-collapse {
   display: none !important;
 }

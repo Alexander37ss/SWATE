@@ -32,13 +32,24 @@ class OrientadoraController extends BaseController
         return view('orientadora.perfilAlumno', compact('alumno', 'tramitetotal','preJustificantes', 'pre_justificantes'));
     }
 
+    function consultarBusquedaAvanzado(Request $request){
+        $alumnosTotal = Alumno::all()->count();
+        $nombreAlumno = $request->nombre;
+        $alumnos = Alumno::where('nombre_completo', 'LIKE','%'.$nombreAlumno.'%')->get();
+        Session::now('busqueda', 'Mensaje de prueba');
+        $preJustificantes = $this->justificantesPendientes;
+        $pre_justificantes = $this->justificanteDetalles;
+        return view('orientadora.consultar', compact('alumnos', 'alumnosTotal', 'preJustificantes', 'pre_justificantes'));
+    }
+
     function consultarBusqueda($nombre){
+        $alumnosTotal = Alumno::all()->count();
         $alumnos = Alumno::where('nombre_completo', 'LIKE','%'.$nombre.'%')->get();
-        Session::flash('busqueda', 'Mensaje de prueba');
+        Session::now('busqueda', 'Mensaje de prueba');
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
 
-        return view('orientadora.consultar', compact('alumnos', 'preJustificantes', 'pre_justificantes'));
+        return view('orientadora.consultar', compact('alumnos', 'alumnosTotal', 'preJustificantes', 'pre_justificantes'));
     }
 
     function historial(){
@@ -47,10 +58,11 @@ class OrientadoraController extends BaseController
         $fecha = Carbon::now();
         $fecha = $fecha->format('Y-m-d');
             //info de tramites
+            $tramitesTotal = tramite::where('orientadora_id', auth()->user()->id)->count();
             $tramites = tramite::where('orientadora_id', auth()->user()->id)
             ->orderBy('id', 'DESC')->get();
 
-            return view('orientadora.historial', compact('tramites', 'fecha', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.historial', compact('tramites', 'tramitesTotal','fecha', 'preJustificantes', 'pre_justificantes'));
     }
     function historialAceptado(){
         $preJustificantes = $this->justificantesPendientes;
@@ -59,12 +71,13 @@ class OrientadoraController extends BaseController
         $fecha = $fecha->format('Y-m-d');
 
             //info de tramites
+            $tramitesTotal = tramite::where('orientadora_id', auth()->user()->id)->count();
             $tramites = tramite::where([['orientadora_id', auth()->user()->id],['autorizado', '1']])
             ->orderBy('id', 'DESC')->get();
 
             Session::now('aceptado', 'Mensaje de prueba');
 
-            return view('orientadora.historial', compact('tramites', 'fecha', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.historial', compact('tramites', 'tramitesTotal', 'fecha', 'preJustificantes', 'pre_justificantes'));
     }
     function historialRechazado(){
         $preJustificantes = $this->justificantesPendientes;
@@ -72,11 +85,12 @@ class OrientadoraController extends BaseController
         $fecha = Carbon::now();
         $fecha = $fecha->format('Y-m-d');
             //info de tramites
+            $tramitesTotal = tramite::where('orientadora_id', auth()->user()->id)->count();
             $tramites = tramite::where([['orientadora_id', auth()->user()->id], ['autorizado', '0']])
             ->orderBy('id', 'DESC')->get();
             Session::now('rechazado', 'Mensaje de prueba');
 
-            return view('orientadora.historial', compact('tramites', 'fecha', 'preJustificantes', 'pre_justificantes'));
+            return view('orientadora.historial', compact('tramites', 'tramitesTotal', 'fecha', 'preJustificantes', 'pre_justificantes'));
     }
     function grafica(){
         $alumnosNum = Alumno::all()->count();
@@ -178,11 +192,12 @@ class OrientadoraController extends BaseController
     # Funciones para visualizar la vista consultar y sus filtros
     public function consultar(){
         //consultas el alumno
+        $alumnosTotal = Alumno::all()->count();
         $alumnos = Alumno::all();
         $preJustificantes = $this->justificantesPendientes;
         $pre_justificantes = $this->justificanteDetalles;
 
-        return view('orientadora.consultar', compact('alumnos', 'preJustificantes', 'pre_justificantes'));
+        return view('orientadora.consultar', compact('alumnos', 'alumnosTotal', 'preJustificantes', 'pre_justificantes'));
     }
     function consultarEspecialidad($especialidad){
         $alumnos = Alumno::where('carrera', $especialidad)->get();

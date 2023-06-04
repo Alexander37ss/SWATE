@@ -8,15 +8,23 @@
 
 @section('contenido')
   <div class="float-right mt-0 col-4">
+    @if(Session::has('busqueda'))
+      <form action="{{ url('tramites/consultar/busqueda') }}" method="POST">
+      @csrf
+      @endif
     <div class="input-group ml-5">
     @if(Session::has('busqueda'))
-      <input type="text" class="input-github w-75" id="buscadorAlumno" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="findPerfil();">
+      <input type="text" name="nombre" class="input-github w-75" id="buscadorAlumno" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+      <button class="btn-github ml-1" type="submit"><i class="fas fa-search"></i></button>
+      </div>
+      </form>
       @else
       <input type="text" class="input-github w-75" id="busquedaConsultar" placeholder="Filtrar por nombre" aria-label="Recipient's username" aria-describedby="basic-addon2" onchange="BuscarAlumnos();">
-      @endif
       <div class="input-group-append">
         <button class="btn-github ml-1"><i class="fas fa-search"></i></button>
       </div>
+      @endif
       <!-- fin botón -->
     </div>
   <!-- fin input group -->
@@ -26,9 +34,9 @@
     <br>
     <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <!-- /.card-header -->
-      <div class="card-body p-0">
+      <div class="card-body p-0"> 
         <div class="card-header">
-          <span id="resultados">100</span> resultados de {{$alumnos->count();}}
+          <span id="resultados">{{$alumnos->count();}}</span> resultados de {{$alumnosTotal}}
         </div>
         <table class="table table-hover table-sm" id="tabla">
           <tbody>
@@ -47,5 +55,6 @@
           <!-- /.card -->
         </div>
         </div>
+        <br>
         <!-- fin col -->
 @stop

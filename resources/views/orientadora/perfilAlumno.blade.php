@@ -14,11 +14,11 @@
           <div class="col-md-3">
 
             <!-- Profile Image -->
-            <div class="card card-danger card-outline" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
+            <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src="{{asset('images/userojo.png')}}"
+                  <img class="img-fluid img-circle w-25 mb-2"
+                       src="{{asset('images/userojoPerfil.png')}}"
                        alt="User profile picture">
                 </div>
 

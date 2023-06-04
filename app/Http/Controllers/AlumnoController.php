@@ -25,8 +25,34 @@ class AlumnoController extends Controller
     }
 
     function solicitudEditar($id){
+        $preJustificante = Pre_justificante::where('id', $id)->first();
+        return view('alumno.editar', compact('preJustificante', 'id'));
+    }
+    function editarConfirmado(Request $request, $nombreAlumno, $id){
         $preJustificante = Pre_justificante::where('id', $id);
-        return view('alumno.justificante', compact('preJustificante'));
+        $preJustificante->delete();
+        
+        $datosAlumno = Alumno::where('nombre_completo', $nombreAlumno)->first();
+        
+        $Pre_justificante = new Pre_justificante;
+        $Pre_justificante->alumno_id = $datosAlumno->id;
+
+        $Pre_justificante->motivo = $request->input('motivo');
+        $Pre_justificante->motivo_otro = $request->input('motivo_otro');
+
+        $Pre_justificante->del = $request->input('del');
+        $Pre_justificante->al = $request->input('al');
+
+        $fecha = Carbon::now();
+        $Pre_justificante->fecha_solicitada = $fecha->format('Y-m-j');
+
+        $Pre_justificante->estatus_solicitud = 0;
+        
+        $Pre_justificante->grupo = $datosAlumno->grupo;
+
+        $Pre_justificante->save();
+        
+        return redirect('alumno/misSolicitudes');
     }
     function solicitudes(){
         $datosAlumno = Alumno::where('nombre_completo', auth()->user()->name)->first();

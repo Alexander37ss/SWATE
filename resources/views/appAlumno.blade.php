@@ -30,10 +30,10 @@
   </style>
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed  sidebar-mini sidebar-collapse">
 <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-light border-bottom-0">
+        <nav class="main-header navbar navbar-expand navbar-light border-bottom-null">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -133,13 +133,8 @@
                   <a href="#" class="dropdown-item dropdown-footer">Ver todas las notificaciones</a>
                 </div>
               </li> --}}
-              <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                  <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-              </li>
             </ul>
-        </nav>
+          </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -207,18 +202,29 @@
                       </a>
                     </li>
                     <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-file"></i>
+                    <p>
+                      Trámites
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                  <li class="nav-item">
                       <a href="{{url('alumno/justificante')}}" class="nav-link"> 
-                      <i class="far fa-file nav-icon"></i>
+                      <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.903 8.586a.997.997 0 0 0-.196-.293l-6-6a.997.997 0 0 0-.293-.196c-.03-.014-.062-.022-.094-.033a.991.991 0 0 0-.259-.051C13.04 2.011 13.021 2 13 2H6c-1.103 0-2 .897-2 2v16c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V9c0-.021-.011-.04-.013-.062a.952.952 0 0 0-.051-.259c-.01-.032-.019-.063-.033-.093zM16.586 8H14V5.414L16.586 8zM6 20V4h6v5a1 1 0 0 0 1 1h5l.002 10H6z"/><path fill="currentColor" d="M8 12h8v2H8zm0 4h8v2H8zm0-8h2v2H8z"/></svg>
                         <p>Solicitar justificante</p>
                       </a>
                     </li>
                 <li class="nav-item">
                       <a href="{{url('alumno/constancia/pdf', auth()->user()->name)}}" class="nav-link" onclick="constanciaDescargar();">
                       <svg class="nav-icon mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 20q-.825 0-1.413-.588T4 18v-3h2v3h12v-3h2v3q0 .825-.588 1.413T18 20H6Zm6-4l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11l-5 5Z"/></svg>
-                        <p>Descargar Constancia</p>
+                        <p>Constancia</p>
                       </a>
                     </li>
-
+                  </ul>
+                </li>
+                    
             </nav>
             <!-- /.sidebar-menu -->
           </div>
@@ -303,6 +309,7 @@
 <script src="{{asset('jsswate/justificanteAlumno.js')}}"></script>
 <script src="{{asset('jsswate/historial.js')}}"></script>
 <script src="{{asset('jsswate/alumnoHome.js')}}"></script>
+<script src="{{asset('jsswate/navbar.js')}}"></script>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{asset('js/dashboard2.js')}}"></script>-->

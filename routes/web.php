@@ -32,10 +32,9 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
     Route::get('home', [HomeController::class, 'homeHistorial']);    
     Route::get('tramites/historialJustificante/{tipo}', [HomeController::class, 'homeHistorialTipo']);
 
+    Route::post('tramites/consultar/busqueda', [OrientadoraController::class, 'consultarBusquedaAvanzado']);  
     Route::get('tramites/consultar', [OrientadoraController::class, 'consultar']);  
     Route::get('tramites/consultar/{nombre}', [OrientadoraController::class, 'consultarBusqueda']);  
-    Route::get('tramites/consultar/especialidad/{especialidad}', [OrientadoraController::class, 'consultarEspecialidad']);  
-    Route::get('tramites/consultar/grupo/{grupo}', [OrientadoraController::class, 'consultarGrupo']);  
     
     /* Justificante de parte de orientacion */
     Route::get('tramites/justificanteOrientadora/{nombrealumno}', [OrientadoraController::class, 'justificanteOrientadora']);
@@ -61,7 +60,7 @@ Route::group(['middleware' => ['admin', 'role:admin']], function(){
 
     /* Perfil de alumno */
     Route::get('/perfil/{nombre_alumno}', [OrientadoraController::class, 'perfilAlumno']);
-    
+
     /* Otros */
     Route::get('/graficas', [OrientadoraController::class, 'grafica']);
     Route::get('/historial', [OrientadoraController::class, 'historial']);
@@ -84,6 +83,7 @@ Route::group(['prefix' => 'alumno', 'middleware' => ['alumno', 'role:alumno']], 
 
     Route::get('/misSolicitudes/cancelar/{id}', [AlumnoController::class, 'solicitudCancelar']);
     Route::get('/misSolicitudes/editar/{id}', [AlumnoController::class, 'solicitudEditar']);
+    Route::post('/misSolicitudes/editar/{nombreAlumno}/{id}', [AlumnoController::class, 'editarConfirmado']);
 
     /* pre-justificante de parte del alumno */
     Route::post('/prejustificante/{nombrealumno}', [AlumnoController::class, 'pre_justificanteAlumno']);

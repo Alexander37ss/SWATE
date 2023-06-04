@@ -12,7 +12,7 @@
   <div class="col-9">
     <div class="card" style="border-radius: 10px 10px 10px 10px !important; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
       <div class="card-header">
-        <span id="resultadosHistorial">{{$tramites->count();}}</span> resultados de {{$tramites->count();}}
+        <span id="resultadosHistorial">{{$tramites->count();}}</span> resultados de {{$tramitesTotal}}
         <div class="card-tools">
         @if(Session::has('aceptado'))
         <a href="{{url('historial')}}" class="font-light-a mr-2 cursor-pointer">Todos</a>
