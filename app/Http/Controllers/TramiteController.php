@@ -15,7 +15,7 @@ class TramiteController extends BaseController
 {
     # Descargar el QR vista general (sin iniciar sesión)
     function crearQr($idJustificante){
-        return QrCode::size(300)->generate('http://164.92.190.198/descargar/qr/'.$idJustificante);
+        return QrCode::size(300)->generate('https://swate.servicioscetis107.com/descargar/qr/'.$idJustificante);
     }
 
     function QrDescargarJustificante($idJustificante){
